@@ -6,12 +6,14 @@ from pathlib import Path
 from typing import List
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
-from analysis.plot_style import apply_publication_style, get_palette, style_axes
+from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
 
 INPUT_LONG = Path("output/spectra_long.csv")
 OUTPUT_DIR = Path("output/composed")
 LOG_Y = False
+NORMALIZE_Y = True
 DPI = 200
 SAFE_TEXT_RE = re.compile(r"[^a-z0-9]+")
 
@@ -42,23 +44,36 @@ def plot_group(dataset: str, param_set: str, group: pd.DataFrame, out_path: Path
     palette = get_palette(len(grouped))
 
     fig, ax = plt.subplots(figsize=(10, 5.5))
+    x_all: List[np.ndarray] = []
     for color, (sample_id, g) in zip(palette, grouped):
         g = g.sort_values("wavelength_nm")
         row = g.iloc[0]
+        x = g["wavelength_nm"].to_numpy(dtype=float)
+        x_all.append(x)
+        y = g["irradiance_W_m2_nm"].to_numpy(dtype=float)
+        if NORMALIZE_Y:
+            scale = float(np.nanmax(y)) if np.isfinite(y).any() else 0.0
+            if scale > 0:
+                y = y / scale
+            else:
+                y = np.zeros_like(y, dtype=float)
         ax.plot(
-            g["wavelength_nm"].to_numpy(),
-            g["irradiance_W_m2_nm"].to_numpy(),
+            x,
+            y,
             label=label_curve(row),
             color=color,
             alpha=0.95,
         )
 
     ax.set_title(f"{dataset} | {param_set}")
-    ax.set_xlabel("Wavelength (nm)")
-    ax.set_ylabel("Irradiance (W/(m2*nm))")
+    x_full = np.concatenate(x_all) if x_all else np.array([], dtype=float)
+    ax.set_xlabel(f"Wavelength {spectral_interval_label(x_full)}")
+    ax.set_ylabel("Normalized Irradiance (a.u.)" if NORMALIZE_Y else "Irradiance (W m$^{-2}$ nm$^{-1}$)")
     style_axes(ax, grid_axis="both")
     if LOG_Y:
         ax.set_yscale("log")
+    elif NORMALIZE_Y:
+        ax.set_ylim(0, 1.05)
     if group["sample_id"].nunique() > 1:
         ax.legend(loc="best", fontsize=9, frameon=True)
 

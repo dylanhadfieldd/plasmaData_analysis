@@ -5,12 +5,14 @@ import re
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
-from analysis.plot_style import apply_publication_style, get_palette, style_axes
+from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
 
 INPUT_LONG = Path("output/spectra_long.csv")
 OUTPUT_DIR = Path("output/charts")
 LOG_Y = False
+NORMALIZE_Y = True
 DPI = 200
 SAFE_TEXT_RE = re.compile(r"[^a-z0-9]+")
 
@@ -60,13 +62,23 @@ def main() -> int:
         try:
             fig, ax = plt.subplots(figsize=(10, 5.5))
             color = get_palette(1)[0]
-            ax.plot(g["wavelength_nm"].to_numpy(), g["irradiance_W_m2_nm"].to_numpy(), color=color)
+            x = g["wavelength_nm"].to_numpy(dtype=float)
+            y = g["irradiance_W_m2_nm"].to_numpy(dtype=float)
+            if NORMALIZE_Y:
+                scale = float(np.nanmax(y)) if np.isfinite(y).any() else 0.0
+                if scale > 0:
+                    y = y / scale
+                else:
+                    y = np.zeros_like(y, dtype=float)
+            ax.plot(x, y, color=color)
             ax.set_title(make_title(row))
-            ax.set_xlabel("Wavelength (nm)")
-            ax.set_ylabel("Irradiance (W/(m2*nm))")
+            ax.set_xlabel(f"Wavelength {spectral_interval_label(x)}")
+            ax.set_ylabel("Normalized Irradiance (a.u.)" if NORMALIZE_Y else "Irradiance (W m$^{-2}$ nm$^{-1}$)")
             style_axes(ax, grid_axis="both")
             if LOG_Y:
                 ax.set_yscale("log")
+            elif NORMALIZE_Y:
+                ax.set_ylim(0, 1.05)
 
             out_path.parent.mkdir(parents=True, exist_ok=True)
             fig.tight_layout()

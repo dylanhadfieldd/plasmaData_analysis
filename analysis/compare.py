@@ -8,7 +8,7 @@ from typing import List, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from analysis.plot_style import apply_publication_style, get_palette, style_axes
+from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
 
 INPUT_LONG = Path("output/spectra_long.csv")
 OUTPUT_DIR = Path("output/combined")
@@ -17,6 +17,7 @@ OUTPUT_PNG = OUTPUT_DIR / "combined.png"
 WAVELENGTH_ROUND = 3
 DPI = 200
 SHOW_STD_BAND = True
+NORMALIZE_Y = True
 SAFE_TEXT_RE = re.compile(r"[^a-z0-9]+")
 
 
@@ -64,22 +65,35 @@ def curve_label(row: pd.Series) -> str:
 def plot_tables(tables: List[pd.DataFrame], out_path: Path, title: str) -> None:
     fig, ax = plt.subplots(figsize=(11, 6))
     palette = get_palette(len(tables))
+    x_all: List[np.ndarray] = []
     for color, t in zip(palette, tables):
         row = t.iloc[0]
-        x = t["wavelength_nm"].to_numpy()
-        y = t["irradiance_mean"].to_numpy()
+        x = t["wavelength_nm"].to_numpy(dtype=float)
+        x_all.append(x)
+        y = t["irradiance_mean"].to_numpy(dtype=float)
+        s = t["irradiance_std"].to_numpy(dtype=float)
+        if NORMALIZE_Y:
+            scale = float(np.nanmax(y)) if np.isfinite(y).any() else 0.0
+            if scale > 0:
+                y = y / scale
+                s = s / scale
+            else:
+                y = np.zeros_like(y, dtype=float)
+                s = np.zeros_like(s, dtype=float)
         ax.plot(x, y, label=curve_label(row), color=color, alpha=0.95)
         if SHOW_STD_BAND:
-            s = t["irradiance_std"].to_numpy()
             n = t["n_curves"].to_numpy()
             mask = np.isfinite(s) & (n >= 2)
             if mask.any():
                 ax.fill_between(x[mask], (y - s)[mask], (y + s)[mask], color=color, alpha=0.15)
 
     ax.set_title(title)
-    ax.set_xlabel("Wavelength (nm)")
-    ax.set_ylabel("Irradiance (W/(m2*nm))")
+    x_full = np.concatenate(x_all) if x_all else np.array([], dtype=float)
+    ax.set_xlabel(f"Wavelength {spectral_interval_label(x_full)}")
+    ax.set_ylabel("Normalized Irradiance (a.u.)" if NORMALIZE_Y else "Irradiance (W m$^{-2}$ nm$^{-1}$)")
     style_axes(ax, grid_axis="both")
+    if NORMALIZE_Y:
+        ax.set_ylim(0, 1.05)
     if tables:
         ax.legend(loc="best", fontsize=8, frameon=True)
 

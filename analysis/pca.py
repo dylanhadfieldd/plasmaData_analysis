@@ -93,13 +93,35 @@ def run_pca_block(df: pd.DataFrame, out_dir: Path, color_col: Optional[str] = No
                 groups = list(scores_df.groupby(color_col, dropna=False))
                 palette = get_palette(len(groups))
                 for color, (label, grp) in zip(palette, groups):
-                    ax.scatter(grp["PC1"], grp["PC2"], label=str(label), s=26, color=color, alpha=0.9)
+                    ax.scatter(
+                        grp["PC1"],
+                        grp["PC2"],
+                        label=str(label),
+                        s=34,
+                        color=color,
+                        alpha=0.9,
+                        edgecolors="#222222",
+                        linewidths=0.35,
+                    )
                 ax.legend(loc="best", fontsize=8)
             else:
-                ax.scatter(scores_df["PC1"], scores_df["PC2"], s=26, color=get_palette(1)[0], alpha=0.9)
+                ax.scatter(
+                    scores_df["PC1"],
+                    scores_df["PC2"],
+                    s=34,
+                    color=get_palette(1)[0],
+                    alpha=0.9,
+                    edgecolors="#222222",
+                    linewidths=0.35,
+                )
 
-            ax.set_xlabel("PC1")
-            ax.set_ylabel("PC2")
+            evr = pca.explained_variance_ratio_
+            pc1_var = 100.0 * float(evr[0]) if evr.size >= 1 else 0.0
+            pc2_var = 100.0 * float(evr[1]) if evr.size >= 2 else 0.0
+            ax.axhline(0, color="#888888", linewidth=0.8, alpha=0.8, zorder=0)
+            ax.axvline(0, color="#888888", linewidth=0.8, alpha=0.8, zorder=0)
+            ax.set_xlabel(f"PC1 ({pc1_var:.1f}%)")
+            ax.set_ylabel(f"PC2 ({pc2_var:.1f}%)")
             ax.set_title(f"PCA scores ({out_dir.name})")
             style_axes(ax, grid_axis="both")
             fig.tight_layout()

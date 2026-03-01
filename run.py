@@ -1,10 +1,23 @@
-#!/usr/bin/env python3 testing push
+#!/usr/bin/env python3
 
 from __future__ import annotations
 
 from typing import Callable, List, Tuple
 
-from analysis import compare, compose, features, ind_charts, kinetics, kinetics_charts, pca, preprocess, species
+from analysis import (
+    chem_species_analysis,
+    compare,
+    compose,
+    executive_reports,
+    features,
+    ind_charts,
+    ms_output,
+    ms_output_charts,
+    output_layout,
+    pca,
+    preprocess,
+    species,
+)
 
 Step = Tuple[str, Callable[[], int]]
 
@@ -13,11 +26,14 @@ RUN_STEPS: List[Step] = [
     ("ind_charts", ind_charts.main),
     ("compose", compose.main),
     ("compare", compare.main),
+    ("ms_output", ms_output.main),
+    ("ms_output_charts", ms_output_charts.main),
     ("features", features.main),
     ("species", species.main),
-    ("kinetics", kinetics.main),
-    ("kinetics_charts", kinetics_charts.main),
+    ("chem_species_analysis", chem_species_analysis.main),
     ("pca", pca.main),
+    ("output_layout", output_layout.main),
+    ("executive_reports", executive_reports.main),
 ]
 
 

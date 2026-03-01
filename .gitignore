@@ -1,1 +1,8 @@
 reports/
+output/
+msOutput/
+chemSpecies_output/
+stats/
+__pycache__/
+analysis/__pycache__/
+*.pyc
