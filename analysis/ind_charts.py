@@ -10,7 +10,7 @@ import pandas as pd
 from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
 
 INPUT_LONG = Path("output/spectra_long.csv")
-OUTPUT_DIR = Path("output/charts")
+OUTPUT_ROOT = Path("output")
 LOG_Y = False
 NORMALIZE_Y = True
 DPI = 200
@@ -57,7 +57,7 @@ def main() -> int:
         row = g.iloc[0]
         dataset = str(row["dataset"])
         plot_name = safe_name(str(sample_id)) + ".png"
-        out_path = OUTPUT_DIR / dataset / plot_name
+        out_path = OUTPUT_ROOT / dataset / "spectral" / "base" / "charts" / "individual" / plot_name
 
         try:
             fig, ax = plt.subplots(figsize=(10, 5.5))

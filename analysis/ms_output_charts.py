@@ -19,12 +19,14 @@ try:
 except ModuleNotFoundError:
     from plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes, to_species_label
 
-AVERAGED_CURVES_CSV = Path("msOutput/averaged_curves_long.csv")
-AVERAGED_PEAKS_CSV = Path("msOutput/averaged_peaks_top10.csv")
-TRIAL_PEAKS_CSV = Path("msOutput/trial_peaks_top10.csv")
-NIST_MATCHES_CSV = Path("msOutput/nist_matches_top3.csv")
-TARGET_MATCHES_CSV = Path("msOutput/target_species_peak_matches.csv")
-OUT_DIR = Path("msOutput/figures")
+RAW_DIR = Path("output/meta/spectral/base/raw")
+OUTPUT_ROOT = Path("output")
+AVERAGED_CURVES_CSV = RAW_DIR / "averaged_curves_long.csv"
+AVERAGED_PEAKS_CSV = RAW_DIR / "averaged_peaks_top10.csv"
+TRIAL_PEAKS_CSV = RAW_DIR / "trial_peaks_top10.csv"
+NIST_MATCHES_CSV = RAW_DIR / "nist_matches_top3.csv"
+TARGET_MATCHES_CSV = RAW_DIR / "target_species_peak_matches.csv"
+OUT_DIR = OUTPUT_ROOT / "meta" / "spectral" / "base" / "charts" / "diagnostics"
 DPI = 220
 
 
@@ -349,9 +351,20 @@ def main() -> int:
         plot_nist_top1_species(nist_matches, target_matches),
     ]
 
-    print("Wrote msOutput figures:")
+    print("Wrote diagnostic figures:")
     for p in figure_paths:
         print(f"  {p}")
+
+    try:
+        from analysis.output_layout import write_labeled_assets
+    except ModuleNotFoundError:
+        from output_layout import write_labeled_assets
+
+    for scope in ("air", "diameter", "meta"):
+        scope_dir = OUTPUT_ROOT / scope
+        if scope_dir.exists():
+            write_labeled_assets(scope, scope_dir)
+    print("Wrote labeled spectral assets under output/*/spectral/labels")
     return 0
 
 

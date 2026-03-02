@@ -13,7 +13,6 @@ from analysis import (
     ind_charts,
     ms_output,
     ms_output_charts,
-    output_layout,
     pca,
     preprocess,
     species,
@@ -32,7 +31,6 @@ RUN_STEPS: List[Step] = [
     ("species", species.main),
     ("chem_species_analysis", chem_species_analysis.main),
     ("pca", pca.main),
-    ("output_layout", output_layout.main),
     ("executive_reports", executive_reports.main),
 ]
 

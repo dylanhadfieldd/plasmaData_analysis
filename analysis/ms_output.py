@@ -16,20 +16,21 @@ IN_LONG = Path("output/spectra_long.csv")
 NIST_CSV = Path("configs/nist_lines.csv")
 NIST_FETCH_SPECIES_CSV = Path("configs/nist_fetch_species.csv")
 TARGET_SPECIES_CSV = Path("configs/target_species_lines.csv")
-OUT_DIR = Path("msOutput")
+OUTPUT_ROOT = Path("output")
+SCOPES = ("air", "diameter", "meta")
 NIST_ENDPOINT = "https://physics.nist.gov/cgi-bin/ASD/lines1.pl"
 NIST_TIMEOUT_S = 45
 
-AVERAGED_CURVES_CSV = OUT_DIR / "averaged_curves_long.csv"
-AVERAGED_PEAKS_CSV = OUT_DIR / "averaged_peaks_top10.csv"
-TRIAL_PEAKS_CSV = OUT_DIR / "trial_peaks_top10.csv"
-NIST_MATCHES_CSV = OUT_DIR / "nist_matches_top3.csv"
-NIST_MATCH_SUMMARY_CSV = OUT_DIR / "nist_match_summary.csv"
-TARGET_MATCHES_CSV = OUT_DIR / "target_species_peak_matches.csv"
-TARGET_MATCH_SUMMARY_CSV = OUT_DIR / "target_species_match_summary.csv"
-NIST_SOURCE_LINES_CSV = OUT_DIR / "nist_lines_live.csv"
-NIST_FETCH_STATUS_CSV = OUT_DIR / "nist_fetch_status.csv"
-WORKBOOK_XLSX = OUT_DIR / "peak_species_review.xlsx"
+AVERAGED_CURVES_NAME = "averaged_curves_long.csv"
+AVERAGED_PEAKS_NAME = "averaged_peaks_top10.csv"
+TRIAL_PEAKS_NAME = "trial_peaks_top10.csv"
+NIST_MATCHES_NAME = "nist_matches_top3.csv"
+NIST_MATCH_SUMMARY_NAME = "nist_match_summary.csv"
+TARGET_MATCHES_NAME = "target_species_peak_matches.csv"
+TARGET_MATCH_SUMMARY_NAME = "target_species_match_summary.csv"
+NIST_SOURCE_LINES_NAME = "nist_lines_live.csv"
+NIST_FETCH_STATUS_NAME = "nist_fetch_status.csv"
+WORKBOOK_NAME = "peak_species_review.xlsx"
 
 TOP_N_PEAKS = 10
 TOP_NIST_CANDIDATES = 3
@@ -82,6 +83,35 @@ def require_columns(df: pd.DataFrame, cols: Sequence[str], source_name: str) -> 
         print(f"{source_name} missing columns: {missing}")
         return False
     return True
+
+
+def scope_raw_dir(scope: str) -> Path:
+    return OUTPUT_ROOT / scope / "spectral" / "base" / "raw"
+
+
+def write_scoped_csv(df: pd.DataFrame, file_name: str, allow_global: bool = False) -> List[Path]:
+    written: List[Path] = []
+    for scope in SCOPES:
+        out_dir = scope_raw_dir(scope)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        if scope == "meta":
+            part = df.copy()
+        elif allow_global:
+            part = df.copy()
+        elif "dataset" in df.columns:
+            part = df[df["dataset"].astype(str).str.lower() == scope].copy()
+        else:
+            part = pd.DataFrame(columns=df.columns)
+        out_path = out_dir / file_name
+        part.to_csv(out_path, index=False)
+        written.append(out_path)
+    return written
+
+
+def meta_raw_path(file_name: str) -> Path:
+    out = scope_raw_dir("meta") / file_name
+    out.parent.mkdir(parents=True, exist_ok=True)
+    return out
 
 
 def average_curves(df: pd.DataFrame) -> pd.DataFrame:
@@ -590,11 +620,10 @@ def get_nist_lines_for_range(low_nm: float, high_nm: float) -> tuple[pd.DataFram
 
     live_df, status_df = fetch_nist_lines_live(low_nm=low_nm, high_nm=high_nm, spectra_list=spectra_list)
     if not status_df.empty:
-        NIST_FETCH_STATUS_CSV.parent.mkdir(parents=True, exist_ok=True)
-        status_df.to_csv(NIST_FETCH_STATUS_CSV, index=False)
+        status_df.to_csv(meta_raw_path(NIST_FETCH_STATUS_NAME), index=False)
     if not live_df.empty:
         normalized = normalize_nist_lines(live_df, source_label="live_nist")
-        normalized.to_csv(NIST_SOURCE_LINES_CSV, index=False)
+        normalized.to_csv(meta_raw_path(NIST_SOURCE_LINES_NAME), index=False)
         ok = int((status_df["status"] == "ok").sum()) if "status" in status_df.columns else 0
         fail = int((status_df["status"] != "ok").sum()) if "status" in status_df.columns else 0
         print(f"[OK] Pulled {len(normalized)} NIST lines (queries ok={ok}, fail={fail}).")
@@ -773,14 +802,13 @@ def main() -> int:
     if not require_columns(spectra_long, REQUIRED_LONG_COLS, str(IN_LONG)):
         return 2
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-
     averaged = average_curves(spectra_long)
     if averaged.empty:
         print("No averaged curves could be built from input.")
         return 2
 
-    averaged.to_csv(AVERAGED_CURVES_CSV, index=False)
+    written_paths: List[Path] = []
+    written_paths.extend(write_scoped_csv(averaged, AVERAGED_CURVES_NAME))
 
     averaged_peaks = build_peak_table(
         averaged,
@@ -790,7 +818,7 @@ def main() -> int:
         top_n=TOP_N_PEAKS,
         extra_cols=["n_curves"],
     )
-    averaged_peaks.to_csv(AVERAGED_PEAKS_CSV, index=False)
+    written_paths.extend(write_scoped_csv(averaged_peaks, AVERAGED_PEAKS_NAME))
 
     trial_group_cols = ["dataset", "param_set", "channel", "sample_id"]
     if "trial" in spectra_long.columns:
@@ -802,7 +830,7 @@ def main() -> int:
         intensity_label="peak_intensity",
         top_n=TOP_N_PEAKS,
     )
-    trial_peaks.to_csv(TRIAL_PEAKS_CSV, index=False)
+    written_paths.extend(write_scoped_csv(trial_peaks, TRIAL_PEAKS_NAME))
 
     try:
         targets = load_target_species_lines(TARGET_SPECIES_CSV)
@@ -814,9 +842,9 @@ def main() -> int:
         targets=targets,
         tolerance_nm=TARGET_MATCH_TOLERANCE_NM,
     )
-    target_matches.to_csv(TARGET_MATCHES_CSV, index=False)
+    written_paths.extend(write_scoped_csv(target_matches, TARGET_MATCHES_NAME))
     target_match_summary = build_target_match_summary(target_matches)
-    target_match_summary.to_csv(TARGET_MATCH_SUMMARY_CSV, index=False)
+    written_paths.extend(write_scoped_csv(target_match_summary, TARGET_MATCH_SUMMARY_NAME))
 
     range_low = float(np.nanmin(averaged["wavelength_nm"].to_numpy(dtype=float)))
     range_high = float(np.nanmax(averaged["wavelength_nm"].to_numpy(dtype=float)))
@@ -827,9 +855,14 @@ def main() -> int:
         return 2
 
     matches = match_peaks_to_nist(averaged_peaks, nist_df)
-    matches.to_csv(NIST_MATCHES_CSV, index=False)
+    written_paths.extend(write_scoped_csv(matches, NIST_MATCHES_NAME))
     nist_match_summary = build_nist_match_summary(matches)
-    nist_match_summary.to_csv(NIST_MATCH_SUMMARY_CSV, index=False)
+    written_paths.extend(write_scoped_csv(nist_match_summary, NIST_MATCH_SUMMARY_NAME))
+    written_paths.extend(write_scoped_csv(fetch_status, NIST_FETCH_STATUS_NAME, allow_global=True))
+    if nist_df is not None and not nist_df.empty:
+        nist_live_path = meta_raw_path(NIST_SOURCE_LINES_NAME)
+        nist_df.to_csv(nist_live_path, index=False)
+        written_paths.append(nist_live_path)
 
     unmatched = unmatched_averaged_peaks(averaged_peaks, matches)
     summary = build_summary(averaged_peaks, trial_peaks, matches)
@@ -847,22 +880,15 @@ def main() -> int:
             nist_df if nist_df is not None else pd.DataFrame(),
             fetch_status,
             unmatched,
-            WORKBOOK_XLSX,
+            meta_raw_path(WORKBOOK_NAME),
         )
     except Exception as e:
         excel_error = e
 
     print("\nWrote:")
-    print(f"  {AVERAGED_CURVES_CSV}")
-    print(f"  {AVERAGED_PEAKS_CSV}")
-    print(f"  {TRIAL_PEAKS_CSV}")
-    print(f"  {NIST_MATCHES_CSV}")
-    print(f"  {NIST_MATCH_SUMMARY_CSV}")
-    print(f"  {TARGET_MATCHES_CSV}")
-    print(f"  {TARGET_MATCH_SUMMARY_CSV}")
-    print(f"  {NIST_SOURCE_LINES_CSV}")
-    print(f"  {NIST_FETCH_STATUS_CSV}")
-    print(f"  {WORKBOOK_XLSX}")
+    for path in sorted(set(written_paths)):
+        print(f"  {path}")
+    print(f"  {meta_raw_path(WORKBOOK_NAME)}")
 
     if excel_error is not None:
         print(f"[FAIL] Excel workbook write failed: {excel_error}")

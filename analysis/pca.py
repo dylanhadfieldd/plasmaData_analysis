@@ -10,11 +10,13 @@ from sklearn.decomposition import PCA
 from analysis.plot_style import apply_publication_style, get_palette, style_axes
 
 IN_CSV = Path("output/features.csv")
-OUT_DIR = Path("stats/pca")
+OUTPUT_ROOT = Path("output")
 N_COMPONENTS = 5
 SCALE = False
 INCLUDE_COLS: Optional[List[str]] = None
 EXCLUDE_NUMERIC_COLS = {"trial"}
+DIAMETER_DATASET = "diameter"
+TIP_MIDDLE_BASE_CHANNELS = {"tip", "middle", "base"}
 
 
 def select_variable_columns(df: pd.DataFrame) -> List[str]:
@@ -26,12 +28,75 @@ def select_variable_columns(df: pd.DataFrame) -> List[str]:
 
 def impute_nan_matrix(x: np.ndarray) -> np.ndarray:
     x = np.where(np.isfinite(x), x, np.nan)
-    col_means = np.nanmean(x, axis=0)
-    col_means = np.where(np.isfinite(col_means), col_means, 0.0)
+    col_means = np.zeros(x.shape[1], dtype=float)
+    valid_cols = np.any(np.isfinite(x), axis=0)
+    if np.any(valid_cols):
+        col_means[valid_cols] = np.nanmean(x[:, valid_cols], axis=0)
     mask = np.isnan(x)
     if mask.any():
         x[mask] = np.take(col_means, np.where(mask)[1])
     return x
+
+
+def _norm_text(value: object) -> str:
+    return str(value).strip().lower()
+
+
+def diameter_subset(
+    df: pd.DataFrame,
+    *,
+    param_set: Optional[str] = None,
+    tip_middle_base_only: bool = False,
+) -> pd.DataFrame:
+    if "dataset" not in df.columns:
+        return pd.DataFrame(columns=df.columns)
+
+    out = df[df["dataset"].map(_norm_text) == DIAMETER_DATASET].copy()
+    if out.empty:
+        return out
+
+    if param_set is not None:
+        if "param_set" not in out.columns:
+            return pd.DataFrame(columns=df.columns)
+        out = out[out["param_set"].map(_norm_text) == _norm_text(param_set)].copy()
+        if out.empty:
+            return out
+
+    if tip_middle_base_only:
+        if "channel" not in out.columns:
+            return pd.DataFrame(columns=df.columns)
+        out = out[out["channel"].map(_norm_text).isin(TIP_MIDDLE_BASE_CHANNELS)].copy()
+
+    return out.reset_index(drop=True)
+
+
+def averaged_tip_middle_base(df: pd.DataFrame) -> pd.DataFrame:
+    cols = list(df.columns)
+    d = diameter_subset(df, tip_middle_base_only=True)
+    if d.empty or "channel" not in d.columns:
+        return pd.DataFrame(columns=cols)
+
+    var_cols = select_variable_columns(d)
+    if not var_cols:
+        return pd.DataFrame(columns=cols)
+
+    # Average features across 1mm and 0.5mm for each channel (Tip/Middle/Base).
+    grouped = d.groupby(d["channel"].map(_norm_text), dropna=False)
+    rows = []
+    for channel_key, g in grouped:
+        row = {c: np.nan for c in cols}
+        row["dataset"] = DIAMETER_DATASET
+        row["param_set"] = "averaged_1.0mm0.5mm_tipmiddlebase"
+        row["trial"] = np.nan
+        row["channel"] = str(channel_key)
+        row["sample_id"] = f"diameter__avg__{channel_key}"
+        for c in var_cols:
+            row[c] = pd.to_numeric(g[c], errors="coerce").mean()
+        rows.append(row)
+
+    if not rows:
+        return pd.DataFrame(columns=cols)
+    return pd.DataFrame(rows, columns=cols).reset_index(drop=True)
 
 
 def run_pca_block(df: pd.DataFrame, out_dir: Path, color_col: Optional[str] = None) -> int:
@@ -145,10 +210,35 @@ def main() -> int:
         return 2
 
     status = 0
-    status = max(status, run_pca_block(df, OUT_DIR / "combined", color_col="dataset"))
+    status = max(status, run_pca_block(df, OUTPUT_ROOT / "meta" / "pca", color_col="dataset"))
     if "dataset" in df.columns:
         for dataset, g in df.groupby("dataset", dropna=False):
-            status = max(status, run_pca_block(g.reset_index(drop=True), OUT_DIR / str(dataset), color_col="param_set"))
+            dataset_name = str(dataset).strip()
+            if dataset_name.lower() in {"air", "diameter"}:
+                out_dir = OUTPUT_ROOT / dataset_name.lower() / "pca"
+            else:
+                out_dir = OUTPUT_ROOT / "meta" / "pca" / dataset_name
+            status = max(status, run_pca_block(g.reset_index(drop=True), out_dir, color_col="param_set"))
+
+    # Diameter-specific PCA blocks:
+    # - keep existing 1mm and 0.5mm runs
+    # - add averaged tip/middle/base run
+    # - do not emit tip_middle_base* folders
+    d_1mm = diameter_subset(df, param_set="1mm", tip_middle_base_only=False)
+    status = max(status, run_pca_block(d_1mm, OUTPUT_ROOT / "diameter" / "pca" / "1mm", color_col="channel"))
+
+    d_05mm = diameter_subset(df, param_set="0.5mm", tip_middle_base_only=False)
+    status = max(status, run_pca_block(d_05mm, OUTPUT_ROOT / "diameter" / "pca" / "0.5mm", color_col="channel"))
+
+    d_avg_tmb = averaged_tip_middle_base(df)
+    status = max(
+        status,
+        run_pca_block(
+            d_avg_tmb,
+            OUTPUT_ROOT / "diameter" / "pca" / "averaged_1.0mm0.5mm_tipmiddlebase",
+            color_col="channel",
+        ),
+    )
 
     return status
 

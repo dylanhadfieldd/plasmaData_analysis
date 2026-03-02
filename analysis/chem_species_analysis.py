@@ -13,12 +13,19 @@ try:
 except ModuleNotFoundError:
     from plot_style import apply_publication_style, get_palette, style_axes, to_species_label
 
-TARGET_MATCHES_CSV = Path("msOutput/target_species_peak_matches.csv")
-OUT_ROOT = Path("chemSpecies_output")
-OUT_CSV_DIR = OUT_ROOT / "csv"
-OUT_FIG_DIR = OUT_ROOT / "figures"
+OUTPUT_ROOT = Path("output")
+TARGET_MATCHES_CSV = OUTPUT_ROOT / "meta" / "spectral" / "base" / "raw" / "target_species_peak_matches.csv"
+SCOPES = ("air", "diameter", "meta")
 DPI = 220
 TOP_SPECIES = 8
+
+
+def scope_csv_dir(scope: str) -> Path:
+    return OUTPUT_ROOT / scope / "chemspecies" / "csv"
+
+
+def scope_fig_dir(scope: str) -> Path:
+    return OUTPUT_ROOT / scope / "chemspecies" / "figures"
 
 
 def safe_ratio(a: pd.Series, b: pd.Series) -> pd.Series:
@@ -593,10 +600,19 @@ def plot_group_total_signal(group_long: pd.DataFrame, out_path: Path) -> None:
     plt.close(fig)
 
 
+def scope_csv_slice(df: pd.DataFrame, scope: str, allow_global: bool = False) -> pd.DataFrame:
+    if scope == "meta":
+        return df.copy()
+    if "dataset" in df.columns:
+        return df[df["dataset"].astype(str).str.lower() == scope].copy()
+    return df.copy() if allow_global else pd.DataFrame(columns=df.columns)
+
+
 def main() -> int:
     apply_publication_style()
-    OUT_CSV_DIR.mkdir(parents=True, exist_ok=True)
-    OUT_FIG_DIR.mkdir(parents=True, exist_ok=True)
+    for scope in SCOPES:
+        scope_csv_dir(scope).mkdir(parents=True, exist_ok=True)
+        scope_fig_dir(scope).mkdir(parents=True, exist_ok=True)
 
     matches = load_target_matches(TARGET_MATCHES_CSV)
     group_long, group_wide = build_group_concentration_tables(matches)
@@ -604,40 +620,55 @@ def main() -> int:
     delta = air_vs_diameter_species_delta(summary)
     findings = build_key_group_findings(group_long)
 
-    group_long.to_csv(OUT_CSV_DIR / "group_species_concentration_long.csv", index=False)
-    group_wide.to_csv(OUT_CSV_DIR / "group_species_concentration_wide.csv", index=False)
-    summary.to_csv(OUT_CSV_DIR / "dataset_species_concentration_summary.csv", index=False)
-    delta.to_csv(OUT_CSV_DIR / "air_vs_diameter_species_delta.csv", index=False)
-    findings.to_csv(OUT_CSV_DIR / "key_species_group_findings.csv", index=False)
+    csv_outputs = {
+        "group_species_concentration_long.csv": group_long,
+        "group_species_concentration_wide.csv": group_wide,
+        "dataset_species_concentration_summary.csv": summary,
+        "air_vs_diameter_species_delta.csv": delta,
+        "key_species_group_findings.csv": findings,
+    }
+    written_paths: List[Path] = []
+    for scope in SCOPES:
+        for name, df in csv_outputs.items():
+            allow_global = name == "air_vs_diameter_species_delta.csv"
+            part = scope_csv_slice(df, scope, allow_global=allow_global)
+            if part.empty:
+                continue
+            out_path = scope_csv_dir(scope) / name
+            part.to_csv(out_path, index=False)
+            written_paths.append(out_path)
 
-    plot_group_heatmap(group_long, OUT_FIG_DIR / "fig1_group_species_concentration_heatmap.png")
-    plot_dataset_stacked(summary, OUT_FIG_DIR / "fig2_dataset_species_concentration_mix.png")
-    plot_air_vs_diameter_delta(delta, OUT_FIG_DIR / "fig3_air_vs_diameter_species_delta.png")
-    plot_group_total_signal(group_long, OUT_FIG_DIR / "fig4_meta_group_total_signal.png")
+    meta_fig_dir = scope_fig_dir("meta")
+    plot_group_heatmap(group_long, meta_fig_dir / "fig1_group_species_concentration_heatmap.png")
+    plot_dataset_stacked(summary, meta_fig_dir / "fig2_dataset_species_concentration_mix.png")
+    plot_air_vs_diameter_delta(delta, meta_fig_dir / "fig3_air_vs_diameter_species_delta.png")
+    plot_group_total_signal(group_long, meta_fig_dir / "fig4_meta_group_total_signal.png")
+    written_paths.extend(
+        [
+            meta_fig_dir / "fig1_group_species_concentration_heatmap.png",
+            meta_fig_dir / "fig2_dataset_species_concentration_mix.png",
+            meta_fig_dir / "fig3_air_vs_diameter_species_delta.png",
+            meta_fig_dir / "fig4_meta_group_total_signal.png",
+        ]
+    )
     for scope in ("air", "diameter"):
-        plot_scope_group_heatmap(group_long, scope, OUT_FIG_DIR / f"{scope}_group_species_concentration_heatmap.png")
-        plot_scope_species_mix(group_long, scope, OUT_FIG_DIR / f"{scope}_species_concentration_mix.png")
-        plot_scope_species_rank(summary, scope, OUT_FIG_DIR / f"{scope}_species_rank_with_variability.png")
-        plot_scope_param_heatmap(group_long, scope, OUT_FIG_DIR / f"{scope}_param_species_heatmap.png")
+        fig_dir = scope_fig_dir(scope)
+        plot_scope_group_heatmap(group_long, scope, fig_dir / f"{scope}_group_species_concentration_heatmap.png")
+        plot_scope_species_mix(group_long, scope, fig_dir / f"{scope}_species_concentration_mix.png")
+        plot_scope_species_rank(summary, scope, fig_dir / f"{scope}_species_rank_with_variability.png")
+        plot_scope_param_heatmap(group_long, scope, fig_dir / f"{scope}_param_species_heatmap.png")
+        written_paths.extend(
+            [
+                fig_dir / f"{scope}_group_species_concentration_heatmap.png",
+                fig_dir / f"{scope}_species_concentration_mix.png",
+                fig_dir / f"{scope}_species_rank_with_variability.png",
+                fig_dir / f"{scope}_param_species_heatmap.png",
+            ]
+        )
 
     print("Wrote chemSpecies outputs:")
-    print(f"  {OUT_CSV_DIR / 'group_species_concentration_long.csv'}")
-    print(f"  {OUT_CSV_DIR / 'group_species_concentration_wide.csv'}")
-    print(f"  {OUT_CSV_DIR / 'dataset_species_concentration_summary.csv'}")
-    print(f"  {OUT_CSV_DIR / 'air_vs_diameter_species_delta.csv'}")
-    print(f"  {OUT_CSV_DIR / 'key_species_group_findings.csv'}")
-    print(f"  {OUT_FIG_DIR / 'fig1_group_species_concentration_heatmap.png'}")
-    print(f"  {OUT_FIG_DIR / 'fig2_dataset_species_concentration_mix.png'}")
-    print(f"  {OUT_FIG_DIR / 'fig3_air_vs_diameter_species_delta.png'}")
-    print(f"  {OUT_FIG_DIR / 'fig4_meta_group_total_signal.png'}")
-    print(f"  {OUT_FIG_DIR / 'air_group_species_concentration_heatmap.png'}")
-    print(f"  {OUT_FIG_DIR / 'air_species_concentration_mix.png'}")
-    print(f"  {OUT_FIG_DIR / 'air_species_rank_with_variability.png'}")
-    print(f"  {OUT_FIG_DIR / 'air_param_species_heatmap.png'}")
-    print(f"  {OUT_FIG_DIR / 'diameter_group_species_concentration_heatmap.png'}")
-    print(f"  {OUT_FIG_DIR / 'diameter_species_concentration_mix.png'}")
-    print(f"  {OUT_FIG_DIR / 'diameter_species_rank_with_variability.png'}")
-    print(f"  {OUT_FIG_DIR / 'diameter_param_species_heatmap.png'}")
+    for path in sorted(set(written_paths)):
+        print(f"  {path}")
     print(
         f"Done. groups={len(group_wide)} species_rows={len(group_long)} "
         f"dataset_rows={len(summary)}"

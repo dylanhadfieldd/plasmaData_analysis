@@ -12,6 +12,7 @@ SAFE_TEXT_RE = re.compile(r"[^a-z0-9]+")
 INPUT_DIRS = [Path("data/air"), Path("data/diameter")]
 OUTPUT_DIR = Path("output")
 WAVELENGTH_ROUND = 3
+SCOPES = ("air", "diameter", "meta")
 
 
 def split_base_and_trial(stem: str) -> Tuple[str, Optional[int]]:
@@ -136,6 +137,20 @@ def write_outputs(metadata_df: pd.DataFrame, spectra_long_df: pd.DataFrame, out_
     wide.to_csv(out_dir / "spectra_wide.csv", index=False)
 
 
+def write_scoped_base_raw(metadata_df: pd.DataFrame, spectra_long_df: pd.DataFrame, out_root: Path) -> None:
+    for scope in SCOPES:
+        raw_dir = out_root / scope / "spectral" / "base" / "raw"
+        raw_dir.mkdir(parents=True, exist_ok=True)
+        if scope == "meta":
+            m_part = metadata_df.copy()
+            s_part = spectra_long_df.copy()
+        else:
+            m_part = metadata_df[metadata_df["dataset"].astype(str).str.lower() == scope].copy()
+            s_part = spectra_long_df[spectra_long_df["dataset"].astype(str).str.lower() == scope].copy()
+
+        write_outputs(m_part.reset_index(drop=True), s_part.reset_index(drop=True), raw_dir)
+
+
 def main() -> int:
     in_files = find_input_files()
     if not in_files:
@@ -208,6 +223,7 @@ def main() -> int:
         ds_meta = metadata_df[metadata_df["dataset"] == dataset].reset_index(drop=True)
         ds_long = spectra_long_df[spectra_long_df["dataset"] == dataset].reset_index(drop=True)
         write_outputs(ds_meta, ds_long, OUTPUT_DIR / dataset)
+    write_scoped_base_raw(metadata_df, spectra_long_df, OUTPUT_DIR)
 
     print("\nWrote:")
     print(f"  {OUTPUT_DIR / 'metadata.csv'}")
@@ -217,6 +233,11 @@ def main() -> int:
         print(f"  {OUTPUT_DIR / dataset / 'metadata.csv'}")
         print(f"  {OUTPUT_DIR / dataset / 'spectra_long.csv'}")
         print(f"  {OUTPUT_DIR / dataset / 'spectra_wide.csv'}")
+    for scope in SCOPES:
+        raw_dir = OUTPUT_DIR / scope / "spectral" / "base" / "raw"
+        print(f"  {raw_dir / 'metadata.csv'}")
+        print(f"  {raw_dir / 'spectra_long.csv'}")
+        print(f"  {raw_dir / 'spectra_wide.csv'}")
     print(f"\nDone. Parsed OK={ok} FAIL={bad}")
     return 0 if bad == 0 else 2
 

@@ -11,9 +11,7 @@ import pandas as pd
 from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
 
 INPUT_LONG = Path("output/spectra_long.csv")
-OUTPUT_DIR = Path("output/combined")
-OUTPUT_CSV = OUTPUT_DIR / "combined_averages_long.csv"
-OUTPUT_PNG = OUTPUT_DIR / "combined.png"
+OUTPUT_ROOT = Path("output")
 WAVELENGTH_ROUND = 3
 DPI = 200
 SHOW_STD_BAND = True
@@ -134,14 +132,18 @@ def main() -> int:
         print("No groups successfully averaged.")
         return 2
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    meta_compared_dir = OUTPUT_ROOT / "meta" / "spectral" / "base" / "charts" / "compared"
+    meta_compared_dir.mkdir(parents=True, exist_ok=True)
+    output_csv = meta_compared_dir / "combined_averages_long.csv"
+    output_png = meta_compared_dir / "combined.png"
+
     combined_long = pd.concat(avg_tables, ignore_index=True)
-    combined_long.to_csv(OUTPUT_CSV, index=False)
-    plot_tables(avg_tables, OUTPUT_PNG, "Averaged Spectra by Dataset / Parameter Set / Channel")
+    combined_long.to_csv(output_csv, index=False)
+    plot_tables(avg_tables, output_png, "Averaged Spectra by Dataset / Parameter Set / Channel")
 
     for dataset, ds_table in combined_long.groupby("dataset", dropna=False):
         ds_tables = [t for t in avg_tables if str(t.iloc[0]["dataset"]) == str(dataset)]
-        ds_dir = OUTPUT_DIR / safe_name(str(dataset))
+        ds_dir = OUTPUT_ROOT / safe_name(str(dataset)) / "spectral" / "base" / "charts" / "compared"
         ds_dir.mkdir(parents=True, exist_ok=True)
         ds_csv = ds_dir / "averages_long.csv"
         ds_png = ds_dir / f"{safe_name(str(dataset))}.png"
@@ -149,10 +151,10 @@ def main() -> int:
         plot_tables(ds_tables, ds_png, f"Averaged Spectra - {dataset}")
 
     print("\nWrote:")
-    print(f"  {OUTPUT_CSV}")
-    print(f"  {OUTPUT_PNG}")
+    print(f"  {output_csv}")
+    print(f"  {output_png}")
     for dataset in sorted(combined_long["dataset"].astype(str).unique()):
-        ds_dir = OUTPUT_DIR / safe_name(dataset)
+        ds_dir = OUTPUT_ROOT / safe_name(dataset) / "spectral" / "base" / "charts" / "compared"
         print(f"  {ds_dir / 'averages_long.csv'}")
         print(f"  {ds_dir / (safe_name(dataset) + '.png')}")
     print(f"\nDone. Groups OK={ok} FAIL={bad}")

@@ -1,35 +1,9 @@
 # Plasma Data Analysis
 
-Short summary: this pipeline takes raw plasma spectra CSVs and produces scoped analysis outputs for `air`, `diameter`, and `meta`.
+This workflow runs from raw plasma spectra CSV inputs in `data/air` and `data/diameter` and writes final outputs directly to `output/air`, `output/diameter`, and `output/meta` in one pass (`python run.py`). The pipeline parses and standardizes spectra (`preprocess`), generates individual/composed/compared spectral charts, computes averaged curves and top peaks, matches peaks to configured target species lines and NIST candidate lines, derives feature tables for statistics, runs species concentration aggregation, runs PCA, writes labeled spectra and diagnostics, and then builds one Excel report per scope. Final scoped outputs are organized under `spectral/base/raw` (traceable CSVs), `spectral/base/charts` (unlabeled figures), `spectral/labels` (species-labeled figures), `chemspecies/csv`, `chemspecies/figures`, `pca`, and `<scope>_executive_report.xlsx`.
 
-## Input
+Air findings: the air scope contains 14 samples across 4 parameter/channel groups, with 24 matched target-species lines out of 60 target checks (40.0% match coverage). Mean relative species concentration is dominated by `N2` (70.2%), followed by `N2+` (25.0%) and `OH` (6.4%). PCA on air features shows variance concentrated in PC1 (97.3%) with PC2 at 2.1%, indicating one dominant axis of air-condition variation.
 
-- Raw spectra CSV files in `data/raw/`
-- Target species list in `configs/target_species_lines.csv`
-- NIST species query list in `configs/nist_fetch_species.csv`
-- Optional offline NIST mirror: `configs/nist_lines.csv` (template: `configs/nist_lines_template.csv`)
+Diameter findings: the diameter scope contains 7 samples across 7 parameter/channel groups, with 49 matched target-species lines out of 105 target checks (46.7% match coverage). Mean relative species concentration is dominated by `N2` (73.9%) and `N2+` (25.5%), with small `O II` (0.7%) and `OH` (0.6%) contributions. PCA on diameter features shows PC1 at 93.2% and PC2 at 6.5%, indicating stronger secondary variation than air, consistent with tip/middle/base and diameter-parameter differences.
 
-## Run
-
-```bash
-python run.py
-```
-
-## Output
-
-Pipeline writes results to:
-
-- `output/air/`
-- `output/diameter/`
-- `output/meta/`
-
-Each scope contains:
-
-- `spectral/`
-- `spectral/base/raw` (traceable CSV outputs)
-- `spectral/base/charts` (unlabeled spectral figures)
-- `spectral/labels` (species-labeled spectral figures)
-- `chemspecies/csv` and `chemspecies/figures`
-- `pca/`
-- `<scope>_executive_report.xlsx`
-
+Meta findings: the meta scope combines air and diameter into 21 samples across 11 groups, with 73 matched target-species lines out of 165 checks (44.2% match coverage). Combined mean relative concentration is `N2` 72.5%, `N2+` 25.3%, `OH` 2.8%, and `O II` 0.7%. Air-vs-diameter delta shows the largest species difference in `OH` (air higher by 0.0577 absolute relative-concentration units), while diameter is higher for `N2` (-0.0363 air-minus-diameter), and slightly higher for `O II` and `N2+`; PCA in meta remains PC1-dominant (96.0%) with PC2 at 3.3%.

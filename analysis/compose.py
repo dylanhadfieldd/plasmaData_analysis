@@ -11,7 +11,7 @@ import pandas as pd
 from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
 
 INPUT_LONG = Path("output/spectra_long.csv")
-OUTPUT_DIR = Path("output/composed")
+OUTPUT_ROOT = Path("output")
 LOG_Y = False
 NORMALIZE_Y = True
 DPI = 200
@@ -102,7 +102,7 @@ def main() -> int:
     for (dataset, param_set), g in grouped:
         dataset = str(dataset)
         param_set = str(param_set)
-        out_path = OUTPUT_DIR / dataset / f"{safe_name(param_set)}.png"
+        out_path = OUTPUT_ROOT / dataset / "spectral" / "base" / "charts" / "composed" / f"{safe_name(param_set)}.png"
         try:
             plot_group(dataset, param_set, g, out_path)
             print(f"[OK] {dataset}/{param_set} ({g['sample_id'].nunique()} curves) -> {out_path}")
