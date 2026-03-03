@@ -17,6 +17,8 @@ DPI = 200
 SHOW_STD_BAND = True
 NORMALIZE_Y = True
 SAFE_TEXT_RE = re.compile(r"[^a-z0-9]+")
+AIR_BASELINE_PARAM = "100H"
+AIR_COMPARE_PARAMS = ("5H..01A", "5H..5A", "5H..9A")
 
 
 def safe_name(text: str) -> str:
@@ -101,6 +103,33 @@ def plot_tables(tables: List[pd.DataFrame], out_path: Path, title: str) -> None:
     plt.close(fig)
 
 
+def plot_air_pairwise_tables(air_tables: List[pd.DataFrame], out_dir: Path) -> List[Path]:
+    by_param: dict[str, pd.DataFrame] = {}
+    for t in air_tables:
+        param = str(t.iloc[0]["param_set"])
+        channel = str(t.iloc[0]["channel"])
+        if channel.lower() != "bulk":
+            continue
+        by_param[param] = t
+
+    baseline = by_param.get(AIR_BASELINE_PARAM)
+    if baseline is None:
+        return []
+
+    out_paths: List[Path] = []
+    for compare_param in AIR_COMPARE_PARAMS:
+        other = by_param.get(compare_param)
+        if other is None:
+            continue
+        charts = [baseline, other]
+        compare_label = compare_param.replace("5H..", "")
+        out_path = out_dir / f"air_100h_vs_{safe_name(compare_label)}.png"
+        title = f"Air Averaged Spectra Comparison: {AIR_BASELINE_PARAM} vs {compare_label}"
+        plot_tables(charts, out_path, title)
+        out_paths.append(out_path)
+    return out_paths
+
+
 def main() -> int:
     apply_publication_style()
 
@@ -149,6 +178,10 @@ def main() -> int:
         ds_png = ds_dir / f"{safe_name(str(dataset))}.png"
         ds_table.to_csv(ds_csv, index=False)
         plot_tables(ds_tables, ds_png, f"Averaged Spectra - {dataset}")
+        if str(dataset).lower() == "air":
+            pair_paths = plot_air_pairwise_tables(ds_tables, ds_dir)
+            for p in pair_paths:
+                print(f"  {p}")
 
     print("\nWrote:")
     print(f"  {output_csv}")

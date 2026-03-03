@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Callable, List, Tuple
 
 from analysis import (
+    air_reactive_auc,
     chem_species_analysis,
     compare,
     compose,
@@ -30,6 +31,7 @@ RUN_STEPS: List[Step] = [
     ("features", features.main),
     ("species", species.main),
     ("chem_species_analysis", chem_species_analysis.main),
+    ("air_reactive_auc", air_reactive_auc.main),
     ("pca", pca.main),
     ("executive_reports", executive_reports.main),
 ]
