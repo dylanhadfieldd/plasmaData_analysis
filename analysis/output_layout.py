@@ -23,6 +23,7 @@ TMP_ROOT = Path("_output_relayout_tmp")
 SCOPES = ("air", "diameter", "meta")
 SCOPE_DIRS = ("spectral", "chemspecies", "pca")
 LABELED_TOP_N = 8
+REACTIVE_NIST_SPECIES = {"N", "O", "HE"}
 
 MS_RAW_FILES = (
     "averaged_curves_long.csv",
@@ -83,6 +84,16 @@ def safe_name(text: str) -> str:
     out = "".join(ch.lower() if ch.isalnum() else "_" for ch in str(text).strip())
     out = "_".join([p for p in out.split("_") if p])
     return out or "group"
+
+
+def nist_species_in_scope(value: object) -> bool:
+    # Keep only species of interest (N, O, He), regardless of ionization stage text.
+    text = str(value).strip()
+    if not text:
+        return False
+    token = text.split()[0].upper()
+    token = "".join(ch for ch in token if ch.isalpha())
+    return token in REACTIVE_NIST_SPECIES
 
 
 def ensure_dirs(root: Path) -> None:
@@ -169,6 +180,7 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
                     "dataset": target.get("dataset", np.nan),
                     "param_set": target.get("param_set", np.nan),
                     "channel": target.get("channel", np.nan),
+                    "candidate_rank": np.nan,
                     "peak_rank": target.get("matched_peak_rank", np.nan),
                     "peak_wavelength_nm_0p1": target.get("matched_peak_wavelength_nm_0p1", np.nan),
                     "peak_intensity_refined": target.get("matched_peak_intensity", np.nan),
@@ -184,9 +196,9 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
     if nist_csv.exists():
         nist = pd.read_csv(nist_csv)
         if not nist.empty:
-            nist = nist[pd.to_numeric(nist.get("candidate_rank"), errors="coerce") == 1].copy()
+            nist["candidate_rank"] = pd.to_numeric(nist.get("candidate_rank"), errors="coerce")
             nist["peak_wavelength_nm_0p1"] = pd.to_numeric(nist.get("peak_wavelength_nm_0p1"), errors="coerce")
-            nist = nist[nist["peak_wavelength_nm_0p1"] < 300.0].copy()
+            nist = nist[np.isfinite(nist["peak_wavelength_nm_0p1"])].copy()
             if not nist.empty:
                 if "nist_species" in nist.columns:
                     nist["trace_species"] = nist["nist_species"].fillna("").astype(str)
@@ -194,10 +206,16 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
                     nist["trace_species"] = nist["nist_spectra_query"].fillna("").astype(str)
                 else:
                     nist["trace_species"] = "unknown"
+                nist = nist[nist["trace_species"].map(nist_species_in_scope)].copy()
             if not nist.empty:
+                nist = nist.sort_values(
+                    ["dataset", "param_set", "channel", "peak_rank", "candidate_rank"],
+                    ascending=[True, True, True, True, True],
+                    ignore_index=True,
+                )
 
                 nist["source_url"] = ""
-                nist["status"] = "nist_sub300_candidate"
+                nist["status"] = "nist_reactive_candidate"
                 if fetch_csv.exists():
                     fetch = pd.read_csv(fetch_csv)
                     if {"spectra", "source_url"}.issubset(fetch.columns) and "nist_spectra_query" in nist.columns:
@@ -216,6 +234,7 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
                         "dataset": nist.get("dataset", np.nan),
                         "param_set": nist.get("param_set", np.nan),
                         "channel": nist.get("channel", np.nan),
+                        "candidate_rank": nist.get("candidate_rank", np.nan),
                         "peak_rank": nist.get("peak_rank", np.nan),
                         "peak_wavelength_nm_0p1": nist.get("peak_wavelength_nm_0p1", np.nan),
                         "peak_intensity_refined": nist.get("peak_intensity_refined", nist.get("peak_intensity", np.nan)),
@@ -223,7 +242,7 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
                         "trace_species": nist.get("trace_species", "").fillna("").astype(str),
                         "target_wavelength_nm": np.nan,
                         "source_url": nist.get("source_url", ""),
-                        "status": nist.get("status", "nist_sub300_candidate"),
+                        "status": nist.get("status", "nist_reactive_candidate"),
                     }
                 )
                 frames.append(sub)
@@ -237,7 +256,9 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
                 has_nist = pd.DataFrame()
                 if frames:
                     all_frames = pd.concat(frames, ignore_index=True)
-                    has_nist = all_frames[all_frames.get("status", "") == "nist_sub300_candidate"].copy()
+                    has_nist = all_frames[
+                        all_frames.get("status", "").isin({"nist_reactive_candidate", "nist_sub300_candidate"})
+                    ].copy()
                 if not has_nist.empty:
                     nist_keys = (
                         has_nist[["dataset", "param_set", "channel", "peak_wavelength_nm_0p1"]]
@@ -256,6 +277,7 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
                             "dataset": missing.get("dataset", np.nan),
                             "param_set": missing.get("param_set", np.nan),
                             "channel": missing.get("channel", np.nan),
+                            "candidate_rank": np.nan,
                             "peak_rank": missing.get("peak_rank", np.nan),
                             "peak_wavelength_nm_0p1": missing.get("peak_wavelength_nm_0p1", np.nan),
                             "peak_intensity_refined": missing.get("peak_intensity_refined", missing.get("peak_intensity", np.nan)),
@@ -277,7 +299,7 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
     out["peak_wavelength_nm_0p1"] = pd.to_numeric(out["peak_wavelength_nm_0p1"], errors="coerce")
     out = out.dropna(subset=["peak_wavelength_nm_0p1"]).copy()
     out = out.drop_duplicates(
-        subset=["dataset", "param_set", "channel", "peak_wavelength_nm_0p1", "trace_species"],
+        subset=["dataset", "param_set", "channel", "peak_wavelength_nm_0p1", "trace_species", "status"],
         keep="first",
     )
     return out.sort_values(["param_set", "channel", "peak_wavelength_nm_0p1", "trace_species"], ignore_index=True)
@@ -285,33 +307,36 @@ def build_labeled_traceability(scope_dir: Path) -> pd.DataFrame:
 
 def annotate_group_chart(ax: plt.Axes, label_df: pd.DataFrame) -> None:
     top = label_df.copy()
+    top["candidate_rank"] = pd.to_numeric(top.get("candidate_rank"), errors="coerce")
     top["peak_intensity_refined"] = pd.to_numeric(top["peak_intensity_refined"], errors="coerce")
     top["peak_wavelength_nm_0p1"] = pd.to_numeric(top["peak_wavelength_nm_0p1"], errors="coerce")
     top["target_wavelength_nm"] = pd.to_numeric(top.get("target_wavelength_nm"), errors="coerce")
     top["label_priority"] = top.get("status", "").map(
         {
             "target_match": 0,
+            "nist_reactive_candidate": 1,
             "nist_sub300_candidate": 1,
             "nist_sub300_oxygen_candidate": 1,
             "sub300_unassigned": 2,
         }
     ).fillna(3)
+    top["candidate_rank_priority"] = top["candidate_rank"].where(np.isfinite(top["candidate_rank"]), 999.0)
     top = top[np.isfinite(top["peak_intensity_refined"]) & np.isfinite(top["peak_wavelength_nm_0p1"])].copy()
     if top.empty:
         return
 
     targeted = top[np.isfinite(top["target_wavelength_nm"])].copy()
     targeted = targeted.sort_values(["target_wavelength_nm", "peak_intensity_refined"], ascending=[True, False])
-    sub300 = top[top["peak_wavelength_nm_0p1"] < 300.0].copy()
-    sub300 = sub300.sort_values(
-        ["peak_wavelength_nm_0p1", "label_priority", "peak_intensity_refined"],
-        ascending=[True, True, False],
+    candidates = top.copy()
+    candidates = candidates.sort_values(
+        ["peak_wavelength_nm_0p1", "label_priority", "candidate_rank_priority", "peak_intensity_refined"],
+        ascending=[True, True, True, False],
     )
 
-    merged = pd.concat([targeted, sub300], ignore_index=True)
+    merged = pd.concat([targeted, candidates], ignore_index=True)
     merged = merged.sort_values(
-        ["peak_wavelength_nm_0p1", "label_priority", "peak_intensity_refined"],
-        ascending=[True, True, False],
+        ["peak_wavelength_nm_0p1", "label_priority", "candidate_rank_priority", "peak_intensity_refined"],
+        ascending=[True, True, True, False],
         ignore_index=True,
     )
     merged = merged.drop_duplicates(subset=["peak_wavelength_nm_0p1"], keep="first")
@@ -325,7 +350,11 @@ def annotate_group_chart(ax: plt.Axes, label_df: pd.DataFrame) -> None:
         target_wl = row["target_wavelength_nm"]
         if np.isfinite(target_wl):
             label = f"{species} [{float(target_wl):.0f}, {x:.1f} nm]"
-        elif str(row.get("status", "")) in {"nist_sub300_candidate", "nist_sub300_oxygen_candidate"}:
+        elif str(row.get("status", "")) in {
+            "nist_reactive_candidate",
+            "nist_sub300_candidate",
+            "nist_sub300_oxygen_candidate",
+        }:
             label = f"{species} @ {x:.1f} nm (NIST)"
         else:
             label = f"Unassigned sub300 @ {x:.1f} nm"
