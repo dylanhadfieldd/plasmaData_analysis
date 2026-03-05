@@ -1,0 +1,2108 @@
+dataset,sample_id,param_set,trial,channel,wavelength_nm,irradiance_W_m2_nm
+diameter,diameter__0.5mm__base,0.5mm,,Base,200.0,3.16e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,201.0,2.65e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,202.0,2.28e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,203.0,2e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,204.0,1.78e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,205.0,1.6e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,206.0,1.45e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,207.0,1.32e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,208.0,1.22e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,209.0,1.13e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,210.0,1.05e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,211.0,9.37e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,212.0,8.44e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,213.0,7.68e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,214.0,7.05e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,215.0,6.51e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,216.0,5.64e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,217.0,4.97e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,218.0,4.44e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,219.0,4.02e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,220.0,3.67e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,221.0,3.29e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,222.0,2.98e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,223.0,2.73e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,224.0,2.51e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,225.0,2.33e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,226.0,2.24e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,227.0,2.15e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,228.0,2.08e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,229.0,2e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,230.0,1.94e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,231.0,1.84e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,232.0,1.76e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,233.0,1.68e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,234.0,1.61e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,235.0,1.55e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,236.0,1.4e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,237.0,1.28e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,238.0,1.18e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,239.0,1.1e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,240.0,1.02e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,241.0,9.15e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,242.0,8.28e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,243.0,7.56e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,244.0,6.96e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,245.0,6.45e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,246.0,6.07e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,247.0,5.73e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,248.0,5.43e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,249.0,5.16e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,250.0,4.92e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,251.0,4.92e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,252.0,4.93e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,253.0,4.94e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,254.0,4.95e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,255.0,4.96e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,256.0,5.01e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,257.0,5.07e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,258.0,5.12e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,259.0,5.17e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,260.0,5.23e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,261.0,5.16e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,262.0,5.08e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,263.0,5.02e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,264.0,4.95e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,265.0,4.88e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,266.0,4.65e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,267.0,4.44e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,268.0,4.25e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,269.0,4.08e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,270.0,3.92e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,271.0,3.72e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,272.0,3.54e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,273.0,3.38e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,274.0,3.23e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,275.0,3.1e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,276.0,2.93e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,277.0,2.77e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,278.0,2.63e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,279.0,2.51e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,280.0,2.39e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,281.0,2.32e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,282.0,2.26e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,283.0,2.2e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,284.0,2.14e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,285.0,2.08e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,286.0,2.08e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,287.0,2.08e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,288.0,2.08e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,289.0,2.08e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,290.0,2.06e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,291.0,2.04e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,292.0,2.06e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,293.0,2.02e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,294.0,1.84e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,295.0,1.92e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,296.0,2.45e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,297.0,1.86e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,298.0,2.1e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,299.0,2.33e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,300.0,9.12e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,301.0,4.42e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,302.0,1.49e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,303.0,2.48e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,304.0,1.53e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,305.0,2.19e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,306.0,1.88e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,307.0,1.86e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,308.0,2.57e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,309.0,3.29e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,310.0,4.33e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,311.0,6.77e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,312.0,9.15e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,313.0,8.46e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,314.0,5.79e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,315.0,4.29e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,316.0,3.54e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,317.0,1.81e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,318.0,1.02e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,319.0,2.69e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,320.0,4.29e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,321.0,3.31e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,322.0,1.63e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,323.0,9.04e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,324.0,1.95e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,325.0,3.48e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,326.0,1.74e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,327.0,3.28e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,328.0,4.82e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,329.0,1.28e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,330.0,6.36e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,331.0,4.84e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,332.0,8.91e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,333.0,3.95e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,334.0,7.74e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,335.0,0.000105
+diameter,diameter__0.5mm__base,0.5mm,,Base,336.0,0.000103
+diameter,diameter__0.5mm__base,0.5mm,,Base,337.0,7.94e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,338.0,5.83e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,339.0,4.24e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,340.0,2.36e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,341.0,6.83e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,342.0,9.03e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,343.0,6.94e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,344.0,3e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,345.0,8.81e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,346.0,1.05e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,347.0,7.01e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,348.0,1.78e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,349.0,2.86e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,350.0,1.04e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,351.0,5.21e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,352.0,2.98e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,353.0,5.45e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,354.0,2.53e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,355.0,3.8e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,356.0,3.62e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,357.0,2.59e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,358.0,1.34e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,359.0,4.55e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,360.0,5.98e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,361.0,2.98e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,362.0,6.13e-09
+diameter,diameter__0.5mm__base,0.5mm,,Base,363.0,2e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,364.0,1.01e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,365.0,6.51e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,366.0,8.55e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,367.0,6.86e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,368.0,8.47e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,369.0,1.63e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,370.0,4.62e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,371.0,1.71e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,372.0,2.91e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,373.0,1.71e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,374.0,2.09e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,375.0,1e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,376.0,9.8e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,377.0,3.55e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,378.0,8.46e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,379.0,1.25e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,380.0,9.64e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,381.0,2.24e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,382.0,1.1e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,383.0,5.89e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,384.0,9.49e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,385.0,1.33e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,386.0,2.55e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,387.0,1.61e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,388.0,4.68e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,389.0,7.92e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,390.0,9.37e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,391.0,9.04e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,392.0,7.34e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,393.0,4.86e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,394.0,2.27e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,395.0,5.01e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,396.0,2.61e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,397.0,1.85e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,398.0,1.98e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,399.0,1.49e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,400.0,2.38e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,401.0,7.07e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,402.0,6.58e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,403.0,5.46e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,404.0,5.7e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,405.0,6.01e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,406.0,5.97e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,407.0,5.94e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,408.0,5.99e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,409.0,6.04e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,410.0,6.07e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,411.0,6.12e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,412.0,6.14e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,413.0,6.09e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,414.0,6.19e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,415.0,6.53e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,416.0,6.17e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,417.0,5.09e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,418.0,7.02e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,419.0,1.09e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,420.0,2.26e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,421.0,1.49e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,422.0,2.77e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,423.0,6.91e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,424.0,3.47e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,425.0,2.7e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,426.0,5.06e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,427.0,1.73e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,428.0,1.96e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,429.0,1.16e-05
+diameter,diameter__0.5mm__base,0.5mm,,Base,430.0,3.97e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,431.0,4.75e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,432.0,2.37e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,433.0,2.05e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,434.0,1.74e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,435.0,7.44e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,436.0,3.65e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,437.0,6.41e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,438.0,7.13e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,439.0,6.34e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,440.0,6.18e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,441.0,6.34e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,442.0,6.32e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,443.0,6.22e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,444.0,6.18e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,445.0,6.16e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,446.0,6.1e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,447.0,6.05e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,448.0,6.01e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,449.0,5.95e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,450.0,5.9e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,451.0,5.89e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,452.0,5.85e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,453.0,5.64e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,454.0,5.59e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,455.0,6.15e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,456.0,5.92e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,457.0,3.57e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,458.0,4.76e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,459.0,1.32e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,460.0,6.15e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,461.0,8.38e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,462.0,1.06e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,463.0,1.62e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,464.0,2.63e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,465.0,1.96e-06
+diameter,diameter__0.5mm__base,0.5mm,,Base,466.0,8.12e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,467.0,2.09e-07
+diameter,diameter__0.5mm__base,0.5mm,,Base,468.0,2.27e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,469.0,2.39e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,470.0,5.81e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,471.0,5.52e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,472.0,4.65e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,473.0,4.73e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,474.0,4.91e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,475.0,4.84e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,476.0,4.76e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,477.0,4.75e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,478.0,4.73e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,479.0,4.71e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,480.0,4.68e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,481.0,4.67e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,482.0,4.67e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,483.0,4.67e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,484.0,4.66e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,485.0,4.66e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,486.0,4.67e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,487.0,4.68e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,488.0,4.7e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,489.0,4.71e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,490.0,4.72e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,491.0,4.76e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,492.0,4.79e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,493.0,4.82e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,494.0,4.86e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,495.0,4.89e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,496.0,4.92e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,497.0,4.95e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,498.0,4.99e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,499.0,5.02e-08
+diameter,diameter__0.5mm__base,0.5mm,,Base,500.0,5.05e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,200.0,3.16e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,201.0,2.65e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,202.0,2.28e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,203.0,2e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,204.0,1.78e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,205.0,1.6e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,206.0,1.45e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,207.0,1.32e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,208.0,1.22e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,209.0,1.13e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,210.0,1.05e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,211.0,9.37e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,212.0,8.44e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,213.0,7.68e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,214.0,7.05e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,215.0,6.51e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,216.0,5.64e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,217.0,4.97e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,218.0,4.44e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,219.0,4.02e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,220.0,3.67e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,221.0,3.29e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,222.0,2.98e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,223.0,2.73e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,224.0,2.51e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,225.0,2.33e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,226.0,2.24e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,227.0,2.15e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,228.0,2.08e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,229.0,2e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,230.0,1.94e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,231.0,1.84e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,232.0,1.76e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,233.0,1.68e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,234.0,1.61e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,235.0,1.55e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,236.0,1.4e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,237.0,1.28e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,238.0,1.18e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,239.0,1.1e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,240.0,1.02e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,241.0,9.15e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,242.0,8.28e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,243.0,7.56e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,244.0,6.96e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,245.0,6.45e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,246.0,6.07e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,247.0,5.73e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,248.0,5.43e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,249.0,5.16e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,250.0,4.92e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,251.0,4.92e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,252.0,4.93e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,253.0,4.94e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,254.0,4.95e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,255.0,4.96e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,256.0,5.01e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,257.0,5.07e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,258.0,5.12e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,259.0,5.17e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,260.0,5.23e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,261.0,5.16e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,262.0,5.08e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,263.0,5.02e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,264.0,4.95e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,265.0,4.88e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,266.0,4.65e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,267.0,4.44e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,268.0,4.25e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,269.0,4.08e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,270.0,3.92e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,271.0,3.72e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,272.0,3.54e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,273.0,3.38e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,274.0,3.23e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,275.0,3.1e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,276.0,2.93e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,277.0,2.77e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,278.0,2.63e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,279.0,2.51e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,280.0,2.39e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,281.0,2.32e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,282.0,2.26e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,283.0,2.2e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,284.0,2.14e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,285.0,2.08e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,286.0,2.08e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,287.0,2.08e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,288.0,2.08e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,289.0,2.07e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,290.0,2.07e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,291.0,2.04e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,292.0,2.04e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,293.0,2.01e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,294.0,1.9e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,295.0,1.94e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,296.0,2.21e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,297.0,1.86e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,298.0,7.05e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,299.0,2.08e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,300.0,5.83e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,301.0,2.83e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,302.0,8.85e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,303.0,1.45e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,304.0,9.49e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,305.0,1.74e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,306.0,2.12e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,307.0,1.86e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,308.0,1.5e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,309.0,2.29e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,310.0,4.33e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,311.0,6.58e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,312.0,8.93e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,313.0,0.000118
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,314.0,0.000136
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,315.0,0.000119
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,316.0,8.05e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,317.0,4.6e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,318.0,2.22e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,319.0,7.32e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,320.0,1.66e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,321.0,1.64e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,322.0,1.62e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,323.0,3.36e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,324.0,8.49e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,325.0,1.37e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,326.0,3.3e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,327.0,2.74e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,328.0,5.15e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,329.0,1.41e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,330.0,7.03e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,331.0,1.38e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,332.0,2.65e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,333.0,8.1e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,334.0,0.000139
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,335.0,0.000178
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,336.0,0.000184
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,337.0,0.000157
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,338.0,0.000117
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,339.0,7.23e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,340.0,3.04e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,341.0,1.97e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,342.0,9.96e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,343.0,1.17e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,344.0,1.35e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,345.0,4e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,346.0,9.18e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,347.0,1.43e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,348.0,2.9e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,349.0,1.45e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,350.0,4e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,351.0,6.56e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,352.0,8.38e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,353.0,3.43e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,354.0,7.37e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,355.0,9.96e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,356.0,0.000101
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,357.0,8.64e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,358.0,6.27e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,359.0,3.21e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,360.0,5.04e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,361.0,2.49e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,362.0,1.85e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,363.0,1.23e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,364.0,2.28e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,365.0,1.45e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,366.0,6.28e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,367.0,4.24e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,368.0,4.98e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,369.0,2.69e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,370.0,4.79e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,371.0,5.59e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,372.0,9.59e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,373.0,9.78e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,374.0,9.74e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,375.0,1.21e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,376.0,1.67e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,377.0,2.39e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,378.0,3.5e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,379.0,4.5e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,380.0,4.35e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,381.0,3.05e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,382.0,1.48e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,383.0,3.22e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,384.0,3.31e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,385.0,3.39e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,386.0,1.13e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,387.0,3.85e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,388.0,9.98e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,389.0,0.000165
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,390.0,0.000194
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,391.0,0.000191
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,392.0,0.000166
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,393.0,0.00012
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,394.0,6.06e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,395.0,1.52e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,396.0,1.22e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,397.0,5.18e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,398.0,1.2e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,399.0,1.16e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,400.0,3.29e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,401.0,1.03e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,402.0,4.49e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,403.0,4.94e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,404.0,6.8e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,405.0,1.8e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,406.0,6.97e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,407.0,6.32e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,408.0,1.07e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,409.0,5.36e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,410.0,4.5e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,411.0,3.62e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,412.0,8.28e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,413.0,7.25e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,414.0,6.21e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,415.0,7.78e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,416.0,6.25e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,417.0,7.66e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,418.0,5.28e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,419.0,9.05e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,420.0,1.29e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,421.0,3.34e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,422.0,1.67e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,423.0,1.01e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,424.0,1.85e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,425.0,1.08e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,426.0,2.71e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,427.0,4.56e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,428.0,5.51e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,429.0,5.01e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,430.0,3.1e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,431.0,8.69e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,432.0,4.34e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,433.0,2.49e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,434.0,6.3e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,435.0,1.14e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,436.0,8.8e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,437.0,6.26e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,438.0,1.01e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,439.0,6.17e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,440.0,5.43e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,441.0,6.43e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,442.0,6.5e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,443.0,6.19e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,444.0,6.14e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,445.0,6.17e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,446.0,6.13e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,447.0,6.03e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,448.0,5.97e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,449.0,6.03e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,450.0,6.03e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,451.0,5.57e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,452.0,5.43e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,453.0,6.97e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,454.0,6.87e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,455.0,6.83e-09
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,456.0,2.36e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,457.0,2.55e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,458.0,1.29e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,459.0,6.39e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,460.0,2.01e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,461.0,3.91e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,462.0,6.33e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,463.0,3.39e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,464.0,1.68e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,465.0,9.01e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,466.0,1.38e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,467.0,5.37e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,468.0,1.83e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,469.0,5.85e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,470.0,2.9e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,471.0,2.19e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,472.0,4.07e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,473.0,1.39e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,474.0,1.32e-05
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,475.0,3.13e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,476.0,1.56e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,477.0,1.07e-06
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,478.0,6e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,479.0,1.57e-07
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,480.0,9.29e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,481.0,2.98e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,482.0,8.48e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,483.0,4.82e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,484.0,3.68e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,485.0,4.69e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,486.0,4.92e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,487.0,4.66e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,488.0,4.64e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,489.0,4.72e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,490.0,4.74e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,491.0,4.75e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,492.0,4.79e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,493.0,4.82e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,494.0,4.85e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,495.0,4.91e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,496.0,4.96e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,497.0,4.86e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,498.0,4.85e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,499.0,5.43e-08
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,500.0,5.5e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,200.0,3.16e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,201.0,2.65e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,202.0,2.28e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,203.0,2e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,204.0,1.78e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,205.0,1.6e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,206.0,1.45e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,207.0,1.32e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,208.0,1.22e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,209.0,1.13e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,210.0,1.05e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,211.0,9.37e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,212.0,8.44e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,213.0,7.68e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,214.0,7.05e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,215.0,6.51e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,216.0,5.64e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,217.0,4.97e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,218.0,4.44e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,219.0,4.02e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,220.0,3.67e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,221.0,3.29e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,222.0,2.98e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,223.0,2.73e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,224.0,2.51e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,225.0,2.33e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,226.0,2.24e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,227.0,2.15e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,228.0,2.08e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,229.0,2e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,230.0,1.94e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,231.0,1.84e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,232.0,1.76e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,233.0,1.68e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,234.0,1.61e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,235.0,1.55e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,236.0,1.4e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,237.0,1.28e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,238.0,1.18e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,239.0,1.1e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,240.0,1.02e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,241.0,9.15e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,242.0,8.28e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,243.0,7.56e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,244.0,6.96e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,245.0,6.45e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,246.0,6.07e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,247.0,5.73e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,248.0,5.43e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,249.0,5.16e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,250.0,4.92e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,251.0,4.92e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,252.0,4.93e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,253.0,4.94e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,254.0,4.95e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,255.0,4.96e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,256.0,5.01e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,257.0,5.07e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,258.0,5.12e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,259.0,5.17e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,260.0,5.23e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,261.0,5.16e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,262.0,5.08e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,263.0,5.02e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,264.0,4.95e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,265.0,4.88e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,266.0,4.65e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,267.0,4.44e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,268.0,4.25e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,269.0,4.08e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,270.0,3.92e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,271.0,3.72e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,272.0,3.54e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,273.0,3.38e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,274.0,3.23e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,275.0,3.1e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,276.0,2.93e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,277.0,2.77e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,278.0,2.63e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,279.0,2.51e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,280.0,2.39e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,281.0,2.32e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,282.0,2.26e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,283.0,2.2e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,284.0,2.14e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,285.0,2.08e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,286.0,2.08e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,287.0,2.08e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,288.0,2.07e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,289.0,2.07e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,290.0,2.07e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,291.0,2.05e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,292.0,2.02e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,293.0,2e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,294.0,1.98e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,295.0,1.96e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,296.0,1.91e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,297.0,1.86e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,298.0,1.82e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,299.0,1.77e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,300.0,1.72e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,301.0,1.69e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,302.0,1.7e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,303.0,1.53e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,304.0,1.31e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,305.0,1.78e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,306.0,2.29e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,307.0,1.61e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,308.0,3.67e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,309.0,7.06e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,310.0,1.06e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,311.0,5.18e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,312.0,5.86e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,313.0,1.1e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,314.0,2.71e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,315.0,2.36e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,316.0,8.2e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,317.0,4.6e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,318.0,5.2e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,319.0,2.89e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,320.0,1.11e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,321.0,6.83e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,322.0,1.07e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,323.0,9.29e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,324.0,1.13e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,325.0,1.81e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,326.0,3.43e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,327.0,2.44e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,328.0,4.52e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,329.0,1.21e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,330.0,6.02e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,331.0,4.46e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,332.0,8.2e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,333.0,3.01e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,334.0,4.05e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,335.0,3.76e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,336.0,3.52e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,337.0,3.19e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,338.0,1.85e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,339.0,2.2e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,340.0,1.1e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,341.0,9.92e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,342.0,8.86e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,343.0,1.15e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,344.0,1.1e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,345.0,1.05e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,346.0,1.75e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,347.0,7.6e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,348.0,1.27e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,349.0,1.77e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,350.0,4.92e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,351.0,2.46e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,352.0,1.28e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,353.0,2.32e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,354.0,1.06e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,355.0,1.58e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,356.0,1.46e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,357.0,8.65e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,358.0,1.82e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,359.0,9.07e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,360.0,6.52e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,361.0,3.94e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,362.0,1.51e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,363.0,1.17e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,364.0,7.96e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,365.0,1.08e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,366.0,8.66e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,367.0,7.91e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,368.0,8.24e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,369.0,8.19e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,370.0,7.9e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,371.0,7.71e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,372.0,7.61e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,373.0,7.5e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,374.0,7.25e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,375.0,6.99e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,376.0,7.21e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,377.0,7.4e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,378.0,5.62e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,379.0,4.52e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,380.0,1.07e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,381.0,1.27e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,382.0,6.23e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,383.0,4.44e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,384.0,8.13e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,385.0,6.38e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,386.0,3.16e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,387.0,7.94e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,388.0,1.54e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,389.0,3.63e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,390.0,4.53e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,391.0,4.29e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,392.0,3.37e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,393.0,2.23e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,394.0,1.26e-05
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,395.0,5.61e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,396.0,1.5e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,397.0,7.57e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,398.0,4.48e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,399.0,1.35e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,400.0,1.19e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,401.0,3.39e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,402.0,4.38e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,403.0,6.53e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,404.0,6.18e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,405.0,5.7e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,406.0,5.87e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,407.0,6.02e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,408.0,6.01e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,409.0,6.02e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,410.0,6.07e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,411.0,6.11e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,412.0,6.13e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,413.0,6.14e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,414.0,6.19e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,415.0,6.33e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,416.0,6.23e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,417.0,5.9e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,418.0,6.55e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,419.0,7.84e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,420.0,5.04e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,421.0,8.39e-09
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,422.0,1.33e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,423.0,2.68e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,424.0,1.34e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,425.0,9.03e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,426.0,1.67e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,427.0,5.3e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,428.0,4.89e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,429.0,1.11e-06
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,430.0,5.57e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,431.0,4.17e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,432.0,2.77e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,433.0,1e-07
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,434.0,8.89e-09
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,435.0,6.02e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,436.0,7.92e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,437.0,6.46e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,438.0,6.04e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,439.0,6.4e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,440.0,6.45e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,441.0,6.3e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,442.0,6.25e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,443.0,6.24e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,444.0,6.2e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,445.0,6.15e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,446.0,6.1e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,447.0,6.05e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,448.0,6.01e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,449.0,5.96e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,450.0,5.91e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,451.0,5.86e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,452.0,5.81e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,453.0,5.76e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,454.0,5.71e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,455.0,5.66e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,456.0,5.6e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,457.0,5.55e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,458.0,5.49e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,459.0,5.43e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,460.0,5.38e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,461.0,5.33e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,462.0,5.28e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,463.0,5.24e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,464.0,5.19e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,465.0,5.15e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,466.0,5.11e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,467.0,5.07e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,468.0,5.03e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,469.0,4.99e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,470.0,4.96e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,471.0,4.93e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,472.0,4.9e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,473.0,4.87e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,474.0,4.84e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,475.0,4.81e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,476.0,4.78e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,477.0,4.75e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,478.0,4.73e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,479.0,4.7e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,480.0,4.68e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,481.0,4.67e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,482.0,4.67e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,483.0,4.67e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,484.0,4.66e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,485.0,4.66e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,486.0,4.67e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,487.0,4.68e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,488.0,4.7e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,489.0,4.71e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,490.0,4.72e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,491.0,4.76e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,492.0,4.79e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,493.0,4.82e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,494.0,4.84e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,495.0,4.92e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,496.0,4.98e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,497.0,4.81e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,498.0,4.78e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,499.0,5.64e-08
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,500.0,5.73e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,200.0,3.16e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,201.0,2.65e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,202.0,2.28e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,203.0,2e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,204.0,1.78e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,205.0,1.6e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,206.0,1.45e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,207.0,1.32e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,208.0,1.22e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,209.0,1.13e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,210.0,1.05e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,211.0,9.37e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,212.0,8.44e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,213.0,7.68e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,214.0,7.05e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,215.0,6.51e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,216.0,5.64e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,217.0,4.97e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,218.0,4.44e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,219.0,4.02e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,220.0,3.67e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,221.0,3.29e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,222.0,2.98e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,223.0,2.73e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,224.0,2.51e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,225.0,2.33e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,226.0,2.24e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,227.0,2.15e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,228.0,2.08e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,229.0,2e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,230.0,1.94e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,231.0,1.84e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,232.0,1.76e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,233.0,1.68e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,234.0,1.61e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,235.0,1.55e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,236.0,1.4e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,237.0,1.28e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,238.0,1.18e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,239.0,1.1e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,240.0,1.02e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,241.0,9.15e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,242.0,8.28e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,243.0,7.56e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,244.0,6.96e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,245.0,6.45e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,246.0,6.07e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,247.0,5.73e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,248.0,5.43e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,249.0,5.16e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,250.0,4.92e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,251.0,4.92e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,252.0,4.93e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,253.0,4.94e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,254.0,4.95e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,255.0,4.96e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,256.0,5.01e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,257.0,5.07e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,258.0,5.12e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,259.0,5.17e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,260.0,5.23e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,261.0,5.16e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,262.0,5.08e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,263.0,5.02e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,264.0,4.95e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,265.0,4.88e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,266.0,4.65e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,267.0,4.44e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,268.0,4.25e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,269.0,4.08e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,270.0,3.92e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,271.0,3.72e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,272.0,3.54e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,273.0,3.38e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,274.0,3.23e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,275.0,3.1e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,276.0,2.93e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,277.0,2.77e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,278.0,2.63e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,279.0,2.51e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,280.0,2.39e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,281.0,2.32e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,282.0,2.26e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,283.0,2.2e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,284.0,2.14e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,285.0,2.08e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,286.0,2.08e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,287.0,2.08e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,288.0,2.07e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,289.0,2.07e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,290.0,2.07e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,291.0,2.05e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,292.0,2.02e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,293.0,2e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,294.0,1.98e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,295.0,1.96e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,296.0,1.91e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,297.0,1.86e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,298.0,1.82e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,299.0,1.77e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,300.0,1.73e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,301.0,1.68e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,302.0,1.64e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,303.0,1.58e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,304.0,1.51e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,305.0,1.54e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,306.0,1.59e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,307.0,1.28e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,308.0,1.05e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,309.0,2.16e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,310.0,2.62e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,311.0,1.28e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,312.0,8.68e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,313.0,1.57e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,314.0,3.61e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,315.0,2.75e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,316.0,4.18e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,317.0,2.42e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,318.0,7.42e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,319.0,2.24e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,320.0,1.1e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,321.0,7.87e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,322.0,1.07e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,323.0,1.12e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,324.0,1.01e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,325.0,9.56e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,326.0,1.05e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,327.0,1.17e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,328.0,8.23e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,329.0,4.28e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,330.0,1.88e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,331.0,3e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,332.0,1.38e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,333.0,2.43e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,334.0,1.53e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,335.0,2.94e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,336.0,2.51e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,337.0,8.31e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,338.0,3.4e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,339.0,1.49e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,340.0,1.72e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,341.0,2.26e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,342.0,1.55e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,343.0,8.32e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,344.0,1.86e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,345.0,9.05e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,346.0,6.34e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,347.0,1.01e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,348.0,1.32e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,349.0,6.9e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,350.0,1.47e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,351.0,2.25e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,352.0,5.34e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,353.0,2.67e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,354.0,1.75e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,355.0,3.23e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,356.0,1.1e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,357.0,1.05e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,358.0,2.55e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,359.0,1.27e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,360.0,9.03e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,361.0,5.29e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,362.0,1.78e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,363.0,1.26e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,364.0,7.56e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,365.0,1.16e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,366.0,8.7e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,367.0,7.75e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,368.0,8.24e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,369.0,8e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,370.0,7.99e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,371.0,8.6e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,372.0,6.98e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,373.0,4.23e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,374.0,1.05e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,375.0,1.86e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,376.0,9.06e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,377.0,1.01e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,378.0,1.89e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,379.0,5.27e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,380.0,6.91e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,381.0,5.88e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,382.0,3.2e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,383.0,5.53e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,384.0,3.01e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,385.0,5.77e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,386.0,2.86e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,387.0,1.3e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,388.0,2.54e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,389.0,6.54e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,390.0,9.64e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,391.0,1.12e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,392.0,1.08e-05
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,393.0,7.95e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,394.0,3.16e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,395.0,1.58e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,396.0,8.88e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,397.0,1.87e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,398.0,1.89e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,399.0,3.41e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,400.0,8.09e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,401.0,4.07e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,402.0,2.91e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,403.0,5.45e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,404.0,1.61e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,405.0,1.47e-06
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,406.0,3.54e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,407.0,1.8e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,408.0,3.85e-09
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,409.0,1.24e-07
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,410.0,7.04e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,411.0,4.39e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,412.0,6.01e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,413.0,6.61e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,414.0,6.19e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,415.0,6.11e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,416.0,6.26e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,417.0,6.32e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,418.0,6.31e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,419.0,6.34e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,420.0,6.38e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,421.0,6.4e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,422.0,6.42e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,423.0,6.43e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,424.0,6.45e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,425.0,6.47e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,426.0,6.48e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,427.0,6.49e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,428.0,6.5e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,429.0,6.51e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,430.0,6.52e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,431.0,6.52e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,432.0,6.51e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,433.0,6.51e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,434.0,6.5e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,435.0,6.5e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,436.0,6.47e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,437.0,6.44e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,438.0,6.41e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,439.0,6.38e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,440.0,6.36e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,441.0,6.31e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,442.0,6.27e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,443.0,6.23e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,444.0,6.19e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,445.0,6.15e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,446.0,6.1e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,447.0,6.05e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,448.0,6.01e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,449.0,5.96e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,450.0,5.91e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,451.0,5.86e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,452.0,5.81e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,453.0,5.76e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,454.0,5.71e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,455.0,5.66e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,456.0,5.6e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,457.0,5.55e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,458.0,5.49e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,459.0,5.43e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,460.0,5.38e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,461.0,5.33e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,462.0,5.28e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,463.0,5.24e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,464.0,5.19e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,465.0,5.15e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,466.0,5.11e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,467.0,5.07e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,468.0,5.03e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,469.0,4.99e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,470.0,4.96e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,471.0,4.93e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,472.0,4.9e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,473.0,4.87e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,474.0,4.84e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,475.0,4.81e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,476.0,4.78e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,477.0,4.75e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,478.0,4.73e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,479.0,4.7e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,480.0,4.68e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,481.0,4.67e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,482.0,4.67e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,483.0,4.67e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,484.0,4.66e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,485.0,4.66e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,486.0,4.67e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,487.0,4.68e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,488.0,4.7e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,489.0,4.71e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,490.0,4.72e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,491.0,4.76e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,492.0,4.79e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,493.0,4.82e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,494.0,4.86e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,495.0,4.89e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,496.0,4.92e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,497.0,4.95e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,498.0,4.98e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,499.0,5.02e-08
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,500.0,5.06e-08
+diameter,diameter__1mm__base,1mm,,Base,200.0,3.16e-05
+diameter,diameter__1mm__base,1mm,,Base,201.0,2.65e-05
+diameter,diameter__1mm__base,1mm,,Base,202.0,2.28e-05
+diameter,diameter__1mm__base,1mm,,Base,203.0,2e-05
+diameter,diameter__1mm__base,1mm,,Base,204.0,1.78e-05
+diameter,diameter__1mm__base,1mm,,Base,205.0,1.6e-05
+diameter,diameter__1mm__base,1mm,,Base,206.0,1.45e-05
+diameter,diameter__1mm__base,1mm,,Base,207.0,1.32e-05
+diameter,diameter__1mm__base,1mm,,Base,208.0,1.22e-05
+diameter,diameter__1mm__base,1mm,,Base,209.0,1.13e-05
+diameter,diameter__1mm__base,1mm,,Base,210.0,1.05e-05
+diameter,diameter__1mm__base,1mm,,Base,211.0,9.37e-06
+diameter,diameter__1mm__base,1mm,,Base,212.0,8.44e-06
+diameter,diameter__1mm__base,1mm,,Base,213.0,7.68e-06
+diameter,diameter__1mm__base,1mm,,Base,214.0,7.05e-06
+diameter,diameter__1mm__base,1mm,,Base,215.0,6.51e-06
+diameter,diameter__1mm__base,1mm,,Base,216.0,5.64e-06
+diameter,diameter__1mm__base,1mm,,Base,217.0,4.97e-06
+diameter,diameter__1mm__base,1mm,,Base,218.0,4.44e-06
+diameter,diameter__1mm__base,1mm,,Base,219.0,4.02e-06
+diameter,diameter__1mm__base,1mm,,Base,220.0,3.67e-06
+diameter,diameter__1mm__base,1mm,,Base,221.0,3.29e-06
+diameter,diameter__1mm__base,1mm,,Base,222.0,2.98e-06
+diameter,diameter__1mm__base,1mm,,Base,223.0,2.73e-06
+diameter,diameter__1mm__base,1mm,,Base,224.0,2.51e-06
+diameter,diameter__1mm__base,1mm,,Base,225.0,2.33e-06
+diameter,diameter__1mm__base,1mm,,Base,226.0,2.24e-06
+diameter,diameter__1mm__base,1mm,,Base,227.0,2.15e-06
+diameter,diameter__1mm__base,1mm,,Base,228.0,2.08e-06
+diameter,diameter__1mm__base,1mm,,Base,229.0,2e-06
+diameter,diameter__1mm__base,1mm,,Base,230.0,1.94e-06
+diameter,diameter__1mm__base,1mm,,Base,231.0,1.84e-06
+diameter,diameter__1mm__base,1mm,,Base,232.0,1.76e-06
+diameter,diameter__1mm__base,1mm,,Base,233.0,1.68e-06
+diameter,diameter__1mm__base,1mm,,Base,234.0,1.61e-06
+diameter,diameter__1mm__base,1mm,,Base,235.0,1.55e-06
+diameter,diameter__1mm__base,1mm,,Base,236.0,1.4e-06
+diameter,diameter__1mm__base,1mm,,Base,237.0,1.28e-06
+diameter,diameter__1mm__base,1mm,,Base,238.0,1.18e-06
+diameter,diameter__1mm__base,1mm,,Base,239.0,1.1e-06
+diameter,diameter__1mm__base,1mm,,Base,240.0,1.02e-06
+diameter,diameter__1mm__base,1mm,,Base,241.0,9.15e-07
+diameter,diameter__1mm__base,1mm,,Base,242.0,8.28e-07
+diameter,diameter__1mm__base,1mm,,Base,243.0,7.56e-07
+diameter,diameter__1mm__base,1mm,,Base,244.0,6.96e-07
+diameter,diameter__1mm__base,1mm,,Base,245.0,6.45e-07
+diameter,diameter__1mm__base,1mm,,Base,246.0,6.07e-07
+diameter,diameter__1mm__base,1mm,,Base,247.0,5.73e-07
+diameter,diameter__1mm__base,1mm,,Base,248.0,5.43e-07
+diameter,diameter__1mm__base,1mm,,Base,249.0,5.16e-07
+diameter,diameter__1mm__base,1mm,,Base,250.0,4.92e-07
+diameter,diameter__1mm__base,1mm,,Base,251.0,4.92e-07
+diameter,diameter__1mm__base,1mm,,Base,252.0,4.93e-07
+diameter,diameter__1mm__base,1mm,,Base,253.0,4.94e-07
+diameter,diameter__1mm__base,1mm,,Base,254.0,4.95e-07
+diameter,diameter__1mm__base,1mm,,Base,255.0,4.96e-07
+diameter,diameter__1mm__base,1mm,,Base,256.0,5.01e-07
+diameter,diameter__1mm__base,1mm,,Base,257.0,5.07e-07
+diameter,diameter__1mm__base,1mm,,Base,258.0,5.12e-07
+diameter,diameter__1mm__base,1mm,,Base,259.0,5.17e-07
+diameter,diameter__1mm__base,1mm,,Base,260.0,5.23e-07
+diameter,diameter__1mm__base,1mm,,Base,261.0,5.16e-07
+diameter,diameter__1mm__base,1mm,,Base,262.0,5.08e-07
+diameter,diameter__1mm__base,1mm,,Base,263.0,5.02e-07
+diameter,diameter__1mm__base,1mm,,Base,264.0,4.95e-07
+diameter,diameter__1mm__base,1mm,,Base,265.0,4.88e-07
+diameter,diameter__1mm__base,1mm,,Base,266.0,4.65e-07
+diameter,diameter__1mm__base,1mm,,Base,267.0,4.44e-07
+diameter,diameter__1mm__base,1mm,,Base,268.0,4.25e-07
+diameter,diameter__1mm__base,1mm,,Base,269.0,4.08e-07
+diameter,diameter__1mm__base,1mm,,Base,270.0,3.92e-07
+diameter,diameter__1mm__base,1mm,,Base,271.0,3.72e-07
+diameter,diameter__1mm__base,1mm,,Base,272.0,3.54e-07
+diameter,diameter__1mm__base,1mm,,Base,273.0,3.38e-07
+diameter,diameter__1mm__base,1mm,,Base,274.0,3.23e-07
+diameter,diameter__1mm__base,1mm,,Base,275.0,3.1e-07
+diameter,diameter__1mm__base,1mm,,Base,276.0,2.93e-07
+diameter,diameter__1mm__base,1mm,,Base,277.0,2.77e-07
+diameter,diameter__1mm__base,1mm,,Base,278.0,2.63e-07
+diameter,diameter__1mm__base,1mm,,Base,279.0,2.51e-07
+diameter,diameter__1mm__base,1mm,,Base,280.0,2.39e-07
+diameter,diameter__1mm__base,1mm,,Base,281.0,2.32e-07
+diameter,diameter__1mm__base,1mm,,Base,282.0,2.26e-07
+diameter,diameter__1mm__base,1mm,,Base,283.0,2.2e-07
+diameter,diameter__1mm__base,1mm,,Base,284.0,2.14e-07
+diameter,diameter__1mm__base,1mm,,Base,285.0,2.08e-07
+diameter,diameter__1mm__base,1mm,,Base,286.0,2.08e-07
+diameter,diameter__1mm__base,1mm,,Base,287.0,2.08e-07
+diameter,diameter__1mm__base,1mm,,Base,288.0,2.07e-07
+diameter,diameter__1mm__base,1mm,,Base,289.0,2.07e-07
+diameter,diameter__1mm__base,1mm,,Base,290.0,2.07e-07
+diameter,diameter__1mm__base,1mm,,Base,291.0,2.05e-07
+diameter,diameter__1mm__base,1mm,,Base,292.0,2.02e-07
+diameter,diameter__1mm__base,1mm,,Base,293.0,2e-07
+diameter,diameter__1mm__base,1mm,,Base,294.0,1.98e-07
+diameter,diameter__1mm__base,1mm,,Base,295.0,1.96e-07
+diameter,diameter__1mm__base,1mm,,Base,296.0,1.91e-07
+diameter,diameter__1mm__base,1mm,,Base,297.0,1.86e-07
+diameter,diameter__1mm__base,1mm,,Base,298.0,1.79e-07
+diameter,diameter__1mm__base,1mm,,Base,299.0,1.78e-07
+diameter,diameter__1mm__base,1mm,,Base,300.0,1.82e-07
+diameter,diameter__1mm__base,1mm,,Base,301.0,1.64e-07
+diameter,diameter__1mm__base,1mm,,Base,302.0,1.33e-07
+diameter,diameter__1mm__base,1mm,,Base,303.0,1.85e-07
+diameter,diameter__1mm__base,1mm,,Base,304.0,2.62e-07
+diameter,diameter__1mm__base,1mm,,Base,305.0,2.18e-08
+diameter,diameter__1mm__base,1mm,,Base,306.0,3.86e-07
+diameter,diameter__1mm__base,1mm,,Base,307.0,7.37e-07
+diameter,diameter__1mm__base,1mm,,Base,308.0,1.42e-06
+diameter,diameter__1mm__base,1mm,,Base,309.0,6.99e-07
+diameter,diameter__1mm__base,1mm,,Base,310.0,6.66e-06
+diameter,diameter__1mm__base,1mm,,Base,311.0,1.23e-05
+diameter,diameter__1mm__base,1mm,,Base,312.0,3.87e-05
+diameter,diameter__1mm__base,1mm,,Base,313.0,5.12e-05
+diameter,diameter__1mm__base,1mm,,Base,314.0,4.79e-05
+diameter,diameter__1mm__base,1mm,,Base,315.0,3.97e-05
+diameter,diameter__1mm__base,1mm,,Base,316.0,2.85e-05
+diameter,diameter__1mm__base,1mm,,Base,317.0,1.34e-05
+diameter,diameter__1mm__base,1mm,,Base,318.0,8.48e-07
+diameter,diameter__1mm__base,1mm,,Base,319.0,4.55e-07
+diameter,diameter__1mm__base,1mm,,Base,320.0,7.96e-08
+diameter,diameter__1mm__base,1mm,,Base,321.0,6.33e-07
+diameter,diameter__1mm__base,1mm,,Base,322.0,7.57e-08
+diameter,diameter__1mm__base,1mm,,Base,323.0,1.02e-07
+diameter,diameter__1mm__base,1mm,,Base,324.0,1.28e-07
+diameter,diameter__1mm__base,1mm,,Base,325.0,2.03e-07
+diameter,diameter__1mm__base,1mm,,Base,326.0,3.74e-08
+diameter,diameter__1mm__base,1mm,,Base,327.0,2.22e-07
+diameter,diameter__1mm__base,1mm,,Base,328.0,4.05e-07
+diameter,diameter__1mm__base,1mm,,Base,329.0,1.05e-06
+diameter,diameter__1mm__base,1mm,,Base,330.0,5.25e-07
+diameter,diameter__1mm__base,1mm,,Base,331.0,4.09e-06
+diameter,diameter__1mm__base,1mm,,Base,332.0,7.54e-06
+diameter,diameter__1mm__base,1mm,,Base,333.0,4e-05
+diameter,diameter__1mm__base,1mm,,Base,334.0,9.82e-05
+diameter,diameter__1mm__base,1mm,,Base,335.0,0.000157
+diameter,diameter__1mm__base,1mm,,Base,336.0,0.000174
+diameter,diameter__1mm__base,1mm,,Base,337.0,0.000143
+diameter,diameter__1mm__base,1mm,,Base,338.0,8.64e-05
+diameter,diameter__1mm__base,1mm,,Base,339.0,3.24e-05
+diameter,diameter__1mm__base,1mm,,Base,340.0,5.44e-06
+diameter,diameter__1mm__base,1mm,,Base,341.0,1.57e-07
+diameter,diameter__1mm__base,1mm,,Base,342.0,1.23e-07
+diameter,diameter__1mm__base,1mm,,Base,343.0,8.91e-08
+diameter,diameter__1mm__base,1mm,,Base,344.0,1.14e-07
+diameter,diameter__1mm__base,1mm,,Base,345.0,9.64e-08
+diameter,diameter__1mm__base,1mm,,Base,346.0,1.64e-07
+diameter,diameter__1mm__base,1mm,,Base,347.0,5.93e-08
+diameter,diameter__1mm__base,1mm,,Base,348.0,1.92e-07
+diameter,diameter__1mm__base,1mm,,Base,349.0,3.24e-07
+diameter,diameter__1mm__base,1mm,,Base,350.0,1.22e-06
+diameter,diameter__1mm__base,1mm,,Base,351.0,6.12e-07
+diameter,diameter__1mm__base,1mm,,Base,352.0,3.56e-06
+diameter,diameter__1mm__base,1mm,,Base,353.0,6.52e-06
+diameter,diameter__1mm__base,1mm,,Base,354.0,3.29e-05
+diameter,diameter__1mm__base,1mm,,Base,355.0,5.96e-05
+diameter,diameter__1mm__base,1mm,,Base,356.0,6.96e-05
+diameter,diameter__1mm__base,1mm,,Base,357.0,4.85e-05
+diameter,diameter__1mm__base,1mm,,Base,358.0,1.05e-05
+diameter,diameter__1mm__base,1mm,,Base,359.0,5.25e-06
+diameter,diameter__1mm__base,1mm,,Base,360.0,3.6e-06
+diameter,diameter__1mm__base,1mm,,Base,361.0,1.93e-06
+diameter,diameter__1mm__base,1mm,,Base,362.0,4.57e-07
+diameter,diameter__1mm__base,1mm,,Base,363.0,2.42e-07
+diameter,diameter__1mm__base,1mm,,Base,364.0,3.3e-08
+diameter,diameter__1mm__base,1mm,,Base,365.0,2.1e-07
+diameter,diameter__1mm__base,1mm,,Base,366.0,9.09e-08
+diameter,diameter__1mm__base,1mm,,Base,367.0,5.27e-08
+diameter,diameter__1mm__base,1mm,,Base,368.0,8.33e-08
+diameter,diameter__1mm__base,1mm,,Base,369.0,9.26e-08
+diameter,diameter__1mm__base,1mm,,Base,370.0,7.66e-08
+diameter,diameter__1mm__base,1mm,,Base,371.0,5.86e-08
+diameter,diameter__1mm__base,1mm,,Base,372.0,8.8e-08
+diameter,diameter__1mm__base,1mm,,Base,373.0,1.37e-07
+diameter,diameter__1mm__base,1mm,,Base,374.0,1.08e-08
+diameter,diameter__1mm__base,1mm,,Base,375.0,2.04e-07
+diameter,diameter__1mm__base,1mm,,Base,376.0,3.88e-07
+diameter,diameter__1mm__base,1mm,,Base,377.0,2.01e-06
+diameter,diameter__1mm__base,1mm,,Base,378.0,4.6e-06
+diameter,diameter__1mm__base,1mm,,Base,379.0,6.58e-06
+diameter,diameter__1mm__base,1mm,,Base,380.0,5.11e-06
+diameter,diameter__1mm__base,1mm,,Base,381.0,1.27e-06
+diameter,diameter__1mm__base,1mm,,Base,382.0,6.24e-07
+diameter,diameter__1mm__base,1mm,,Base,383.0,7.94e-07
+diameter,diameter__1mm__base,1mm,,Base,384.0,9.59e-07
+diameter,diameter__1mm__base,1mm,,Base,385.0,6.48e-07
+diameter,diameter__1mm__base,1mm,,Base,386.0,3.21e-07
+diameter,diameter__1mm__base,1mm,,Base,387.0,7.7e-06
+diameter,diameter__1mm__base,1mm,,Base,388.0,1.5e-05
+diameter,diameter__1mm__base,1mm,,Base,389.0,3.76e-05
+diameter,diameter__1mm__base,1mm,,Base,390.0,5.28e-05
+diameter,diameter__1mm__base,1mm,,Base,391.0,5.18e-05
+diameter,diameter__1mm__base,1mm,,Base,392.0,3.19e-05
+diameter,diameter__1mm__base,1mm,,Base,393.0,1e-05
+diameter,diameter__1mm__base,1mm,,Base,394.0,1.18e-06
+diameter,diameter__1mm__base,1mm,,Base,395.0,2.15e-08
+diameter,diameter__1mm__base,1mm,,Base,396.0,2.9e-10
+diameter,diameter__1mm__base,1mm,,Base,397.0,6.86e-08
+diameter,diameter__1mm__base,1mm,,Base,398.0,7.02e-08
+diameter,diameter__1mm__base,1mm,,Base,399.0,5.3e-08
+diameter,diameter__1mm__base,1mm,,Base,400.0,5.42e-08
+diameter,diameter__1mm__base,1mm,,Base,401.0,5.9e-08
+diameter,diameter__1mm__base,1mm,,Base,402.0,5.88e-08
+diameter,diameter__1mm__base,1mm,,Base,403.0,5.8e-08
+diameter,diameter__1mm__base,1mm,,Base,404.0,5.85e-08
+diameter,diameter__1mm__base,1mm,,Base,405.0,5.91e-08
+diameter,diameter__1mm__base,1mm,,Base,406.0,5.94e-08
+diameter,diameter__1mm__base,1mm,,Base,407.0,5.96e-08
+diameter,diameter__1mm__base,1mm,,Base,408.0,6e-08
+diameter,diameter__1mm__base,1mm,,Base,409.0,6.04e-08
+diameter,diameter__1mm__base,1mm,,Base,410.0,6.07e-08
+diameter,diameter__1mm__base,1mm,,Base,411.0,6.1e-08
+diameter,diameter__1mm__base,1mm,,Base,412.0,6.13e-08
+diameter,diameter__1mm__base,1mm,,Base,413.0,6.16e-08
+diameter,diameter__1mm__base,1mm,,Base,414.0,6.19e-08
+diameter,diameter__1mm__base,1mm,,Base,415.0,6.23e-08
+diameter,diameter__1mm__base,1mm,,Base,416.0,6.26e-08
+diameter,diameter__1mm__base,1mm,,Base,417.0,6.29e-08
+diameter,diameter__1mm__base,1mm,,Base,418.0,6.32e-08
+diameter,diameter__1mm__base,1mm,,Base,419.0,6.35e-08
+diameter,diameter__1mm__base,1mm,,Base,420.0,6.38e-08
+diameter,diameter__1mm__base,1mm,,Base,421.0,6.4e-08
+diameter,diameter__1mm__base,1mm,,Base,422.0,6.42e-08
+diameter,diameter__1mm__base,1mm,,Base,423.0,6.43e-08
+diameter,diameter__1mm__base,1mm,,Base,424.0,6.45e-08
+diameter,diameter__1mm__base,1mm,,Base,425.0,6.47e-08
+diameter,diameter__1mm__base,1mm,,Base,426.0,6.48e-08
+diameter,diameter__1mm__base,1mm,,Base,427.0,6.49e-08
+diameter,diameter__1mm__base,1mm,,Base,428.0,6.5e-08
+diameter,diameter__1mm__base,1mm,,Base,429.0,6.51e-08
+diameter,diameter__1mm__base,1mm,,Base,430.0,6.52e-08
+diameter,diameter__1mm__base,1mm,,Base,431.0,6.52e-08
+diameter,diameter__1mm__base,1mm,,Base,432.0,6.51e-08
+diameter,diameter__1mm__base,1mm,,Base,433.0,6.51e-08
+diameter,diameter__1mm__base,1mm,,Base,434.0,6.5e-08
+diameter,diameter__1mm__base,1mm,,Base,435.0,6.5e-08
+diameter,diameter__1mm__base,1mm,,Base,436.0,6.47e-08
+diameter,diameter__1mm__base,1mm,,Base,437.0,6.44e-08
+diameter,diameter__1mm__base,1mm,,Base,438.0,6.41e-08
+diameter,diameter__1mm__base,1mm,,Base,439.0,6.38e-08
+diameter,diameter__1mm__base,1mm,,Base,440.0,6.36e-08
+diameter,diameter__1mm__base,1mm,,Base,441.0,6.31e-08
+diameter,diameter__1mm__base,1mm,,Base,442.0,6.27e-08
+diameter,diameter__1mm__base,1mm,,Base,443.0,6.23e-08
+diameter,diameter__1mm__base,1mm,,Base,444.0,6.19e-08
+diameter,diameter__1mm__base,1mm,,Base,445.0,6.15e-08
+diameter,diameter__1mm__base,1mm,,Base,446.0,6.1e-08
+diameter,diameter__1mm__base,1mm,,Base,447.0,6.05e-08
+diameter,diameter__1mm__base,1mm,,Base,448.0,6.01e-08
+diameter,diameter__1mm__base,1mm,,Base,449.0,5.96e-08
+diameter,diameter__1mm__base,1mm,,Base,450.0,5.91e-08
+diameter,diameter__1mm__base,1mm,,Base,451.0,5.86e-08
+diameter,diameter__1mm__base,1mm,,Base,452.0,5.81e-08
+diameter,diameter__1mm__base,1mm,,Base,453.0,5.76e-08
+diameter,diameter__1mm__base,1mm,,Base,454.0,5.71e-08
+diameter,diameter__1mm__base,1mm,,Base,455.0,5.66e-08
+diameter,diameter__1mm__base,1mm,,Base,456.0,5.6e-08
+diameter,diameter__1mm__base,1mm,,Base,457.0,5.55e-08
+diameter,diameter__1mm__base,1mm,,Base,458.0,5.49e-08
+diameter,diameter__1mm__base,1mm,,Base,459.0,5.43e-08
+diameter,diameter__1mm__base,1mm,,Base,460.0,5.38e-08
+diameter,diameter__1mm__base,1mm,,Base,461.0,5.33e-08
+diameter,diameter__1mm__base,1mm,,Base,462.0,5.28e-08
+diameter,diameter__1mm__base,1mm,,Base,463.0,5.24e-08
+diameter,diameter__1mm__base,1mm,,Base,464.0,5.19e-08
+diameter,diameter__1mm__base,1mm,,Base,465.0,5.15e-08
+diameter,diameter__1mm__base,1mm,,Base,466.0,5.11e-08
+diameter,diameter__1mm__base,1mm,,Base,467.0,5.07e-08
+diameter,diameter__1mm__base,1mm,,Base,468.0,5.03e-08
+diameter,diameter__1mm__base,1mm,,Base,469.0,4.99e-08
+diameter,diameter__1mm__base,1mm,,Base,470.0,4.96e-08
+diameter,diameter__1mm__base,1mm,,Base,471.0,4.93e-08
+diameter,diameter__1mm__base,1mm,,Base,472.0,4.9e-08
+diameter,diameter__1mm__base,1mm,,Base,473.0,4.87e-08
+diameter,diameter__1mm__base,1mm,,Base,474.0,4.84e-08
+diameter,diameter__1mm__base,1mm,,Base,475.0,4.81e-08
+diameter,diameter__1mm__base,1mm,,Base,476.0,4.78e-08
+diameter,diameter__1mm__base,1mm,,Base,477.0,4.75e-08
+diameter,diameter__1mm__base,1mm,,Base,478.0,4.73e-08
+diameter,diameter__1mm__base,1mm,,Base,479.0,4.7e-08
+diameter,diameter__1mm__base,1mm,,Base,480.0,4.68e-08
+diameter,diameter__1mm__base,1mm,,Base,481.0,4.67e-08
+diameter,diameter__1mm__base,1mm,,Base,482.0,4.67e-08
+diameter,diameter__1mm__base,1mm,,Base,483.0,4.67e-08
+diameter,diameter__1mm__base,1mm,,Base,484.0,4.66e-08
+diameter,diameter__1mm__base,1mm,,Base,485.0,4.66e-08
+diameter,diameter__1mm__base,1mm,,Base,486.0,4.67e-08
+diameter,diameter__1mm__base,1mm,,Base,487.0,4.68e-08
+diameter,diameter__1mm__base,1mm,,Base,488.0,4.7e-08
+diameter,diameter__1mm__base,1mm,,Base,489.0,4.71e-08
+diameter,diameter__1mm__base,1mm,,Base,490.0,4.72e-08
+diameter,diameter__1mm__base,1mm,,Base,491.0,4.76e-08
+diameter,diameter__1mm__base,1mm,,Base,492.0,4.79e-08
+diameter,diameter__1mm__base,1mm,,Base,493.0,4.82e-08
+diameter,diameter__1mm__base,1mm,,Base,494.0,4.85e-08
+diameter,diameter__1mm__base,1mm,,Base,495.0,4.91e-08
+diameter,diameter__1mm__base,1mm,,Base,496.0,4.96e-08
+diameter,diameter__1mm__base,1mm,,Base,497.0,4.86e-08
+diameter,diameter__1mm__base,1mm,,Base,498.0,4.85e-08
+diameter,diameter__1mm__base,1mm,,Base,499.0,5.43e-08
+diameter,diameter__1mm__base,1mm,,Base,500.0,5.51e-08
+diameter,diameter__1mm__middle,1mm,,Middle,200.0,3.16e-05
+diameter,diameter__1mm__middle,1mm,,Middle,201.0,2.65e-05
+diameter,diameter__1mm__middle,1mm,,Middle,202.0,2.28e-05
+diameter,diameter__1mm__middle,1mm,,Middle,203.0,2e-05
+diameter,diameter__1mm__middle,1mm,,Middle,204.0,1.78e-05
+diameter,diameter__1mm__middle,1mm,,Middle,205.0,1.6e-05
+diameter,diameter__1mm__middle,1mm,,Middle,206.0,1.45e-05
+diameter,diameter__1mm__middle,1mm,,Middle,207.0,1.32e-05
+diameter,diameter__1mm__middle,1mm,,Middle,208.0,1.22e-05
+diameter,diameter__1mm__middle,1mm,,Middle,209.0,1.13e-05
+diameter,diameter__1mm__middle,1mm,,Middle,210.0,1.05e-05
+diameter,diameter__1mm__middle,1mm,,Middle,211.0,9.37e-06
+diameter,diameter__1mm__middle,1mm,,Middle,212.0,8.44e-06
+diameter,diameter__1mm__middle,1mm,,Middle,213.0,7.68e-06
+diameter,diameter__1mm__middle,1mm,,Middle,214.0,7.05e-06
+diameter,diameter__1mm__middle,1mm,,Middle,215.0,6.51e-06
+diameter,diameter__1mm__middle,1mm,,Middle,216.0,5.64e-06
+diameter,diameter__1mm__middle,1mm,,Middle,217.0,4.97e-06
+diameter,diameter__1mm__middle,1mm,,Middle,218.0,4.44e-06
+diameter,diameter__1mm__middle,1mm,,Middle,219.0,4.02e-06
+diameter,diameter__1mm__middle,1mm,,Middle,220.0,3.67e-06
+diameter,diameter__1mm__middle,1mm,,Middle,221.0,3.29e-06
+diameter,diameter__1mm__middle,1mm,,Middle,222.0,2.98e-06
+diameter,diameter__1mm__middle,1mm,,Middle,223.0,2.73e-06
+diameter,diameter__1mm__middle,1mm,,Middle,224.0,2.51e-06
+diameter,diameter__1mm__middle,1mm,,Middle,225.0,2.33e-06
+diameter,diameter__1mm__middle,1mm,,Middle,226.0,2.24e-06
+diameter,diameter__1mm__middle,1mm,,Middle,227.0,2.15e-06
+diameter,diameter__1mm__middle,1mm,,Middle,228.0,2.08e-06
+diameter,diameter__1mm__middle,1mm,,Middle,229.0,2e-06
+diameter,diameter__1mm__middle,1mm,,Middle,230.0,1.94e-06
+diameter,diameter__1mm__middle,1mm,,Middle,231.0,1.84e-06
+diameter,diameter__1mm__middle,1mm,,Middle,232.0,1.76e-06
+diameter,diameter__1mm__middle,1mm,,Middle,233.0,1.68e-06
+diameter,diameter__1mm__middle,1mm,,Middle,234.0,1.61e-06
+diameter,diameter__1mm__middle,1mm,,Middle,235.0,1.55e-06
+diameter,diameter__1mm__middle,1mm,,Middle,236.0,1.4e-06
+diameter,diameter__1mm__middle,1mm,,Middle,237.0,1.28e-06
+diameter,diameter__1mm__middle,1mm,,Middle,238.0,1.18e-06
+diameter,diameter__1mm__middle,1mm,,Middle,239.0,1.1e-06
+diameter,diameter__1mm__middle,1mm,,Middle,240.0,1.02e-06
+diameter,diameter__1mm__middle,1mm,,Middle,241.0,9.15e-07
+diameter,diameter__1mm__middle,1mm,,Middle,242.0,8.28e-07
+diameter,diameter__1mm__middle,1mm,,Middle,243.0,7.56e-07
+diameter,diameter__1mm__middle,1mm,,Middle,244.0,6.96e-07
+diameter,diameter__1mm__middle,1mm,,Middle,245.0,6.45e-07
+diameter,diameter__1mm__middle,1mm,,Middle,246.0,6.07e-07
+diameter,diameter__1mm__middle,1mm,,Middle,247.0,5.73e-07
+diameter,diameter__1mm__middle,1mm,,Middle,248.0,5.43e-07
+diameter,diameter__1mm__middle,1mm,,Middle,249.0,5.16e-07
+diameter,diameter__1mm__middle,1mm,,Middle,250.0,4.92e-07
+diameter,diameter__1mm__middle,1mm,,Middle,251.0,4.92e-07
+diameter,diameter__1mm__middle,1mm,,Middle,252.0,4.93e-07
+diameter,diameter__1mm__middle,1mm,,Middle,253.0,4.94e-07
+diameter,diameter__1mm__middle,1mm,,Middle,254.0,4.95e-07
+diameter,diameter__1mm__middle,1mm,,Middle,255.0,4.96e-07
+diameter,diameter__1mm__middle,1mm,,Middle,256.0,5.01e-07
+diameter,diameter__1mm__middle,1mm,,Middle,257.0,5.07e-07
+diameter,diameter__1mm__middle,1mm,,Middle,258.0,5.12e-07
+diameter,diameter__1mm__middle,1mm,,Middle,259.0,5.17e-07
+diameter,diameter__1mm__middle,1mm,,Middle,260.0,5.23e-07
+diameter,diameter__1mm__middle,1mm,,Middle,261.0,5.16e-07
+diameter,diameter__1mm__middle,1mm,,Middle,262.0,5.08e-07
+diameter,diameter__1mm__middle,1mm,,Middle,263.0,5.02e-07
+diameter,diameter__1mm__middle,1mm,,Middle,264.0,4.95e-07
+diameter,diameter__1mm__middle,1mm,,Middle,265.0,4.88e-07
+diameter,diameter__1mm__middle,1mm,,Middle,266.0,4.65e-07
+diameter,diameter__1mm__middle,1mm,,Middle,267.0,4.44e-07
+diameter,diameter__1mm__middle,1mm,,Middle,268.0,4.25e-07
+diameter,diameter__1mm__middle,1mm,,Middle,269.0,4.08e-07
+diameter,diameter__1mm__middle,1mm,,Middle,270.0,3.92e-07
+diameter,diameter__1mm__middle,1mm,,Middle,271.0,3.72e-07
+diameter,diameter__1mm__middle,1mm,,Middle,272.0,3.54e-07
+diameter,diameter__1mm__middle,1mm,,Middle,273.0,3.38e-07
+diameter,diameter__1mm__middle,1mm,,Middle,274.0,3.23e-07
+diameter,diameter__1mm__middle,1mm,,Middle,275.0,3.1e-07
+diameter,diameter__1mm__middle,1mm,,Middle,276.0,2.93e-07
+diameter,diameter__1mm__middle,1mm,,Middle,277.0,2.77e-07
+diameter,diameter__1mm__middle,1mm,,Middle,278.0,2.63e-07
+diameter,diameter__1mm__middle,1mm,,Middle,279.0,2.51e-07
+diameter,diameter__1mm__middle,1mm,,Middle,280.0,2.39e-07
+diameter,diameter__1mm__middle,1mm,,Middle,281.0,2.32e-07
+diameter,diameter__1mm__middle,1mm,,Middle,282.0,2.26e-07
+diameter,diameter__1mm__middle,1mm,,Middle,283.0,2.2e-07
+diameter,diameter__1mm__middle,1mm,,Middle,284.0,2.14e-07
+diameter,diameter__1mm__middle,1mm,,Middle,285.0,2.08e-07
+diameter,diameter__1mm__middle,1mm,,Middle,286.0,2.08e-07
+diameter,diameter__1mm__middle,1mm,,Middle,287.0,2.08e-07
+diameter,diameter__1mm__middle,1mm,,Middle,288.0,2.07e-07
+diameter,diameter__1mm__middle,1mm,,Middle,289.0,2.07e-07
+diameter,diameter__1mm__middle,1mm,,Middle,290.0,2.07e-07
+diameter,diameter__1mm__middle,1mm,,Middle,291.0,2.05e-07
+diameter,diameter__1mm__middle,1mm,,Middle,292.0,2.02e-07
+diameter,diameter__1mm__middle,1mm,,Middle,293.0,2e-07
+diameter,diameter__1mm__middle,1mm,,Middle,294.0,1.99e-07
+diameter,diameter__1mm__middle,1mm,,Middle,295.0,1.96e-07
+diameter,diameter__1mm__middle,1mm,,Middle,296.0,1.88e-07
+diameter,diameter__1mm__middle,1mm,,Middle,297.0,1.86e-07
+diameter,diameter__1mm__middle,1mm,,Middle,298.0,1.92e-07
+diameter,diameter__1mm__middle,1mm,,Middle,299.0,1.75e-07
+diameter,diameter__1mm__middle,1mm,,Middle,300.0,1.35e-07
+diameter,diameter__1mm__middle,1mm,,Middle,301.0,1.9e-07
+diameter,diameter__1mm__middle,1mm,,Middle,302.0,3e-07
+diameter,diameter__1mm__middle,1mm,,Middle,303.0,4.08e-08
+diameter,diameter__1mm__middle,1mm,,Middle,304.0,4.04e-07
+diameter,diameter__1mm__middle,1mm,,Middle,305.0,7.47e-07
+diameter,diameter__1mm__middle,1mm,,Middle,306.0,3.24e-06
+diameter,diameter__1mm__middle,1mm,,Middle,307.0,4.74e-06
+diameter,diameter__1mm__middle,1mm,,Middle,308.0,5.08e-06
+diameter,diameter__1mm__middle,1mm,,Middle,309.0,7.14e-06
+diameter,diameter__1mm__middle,1mm,,Middle,310.0,1.96e-05
+diameter,diameter__1mm__middle,1mm,,Middle,311.0,5.49e-05
+diameter,diameter__1mm__middle,1mm,,Middle,312.0,0.000113
+diameter,diameter__1mm__middle,1mm,,Middle,313.0,0.000182
+diameter,diameter__1mm__middle,1mm,,Middle,314.0,0.000231
+diameter,diameter__1mm__middle,1mm,,Middle,315.0,0.000225
+diameter,diameter__1mm__middle,1mm,,Middle,316.0,0.000176
+diameter,diameter__1mm__middle,1mm,,Middle,317.0,0.000114
+diameter,diameter__1mm__middle,1mm,,Middle,318.0,5.89e-05
+diameter,diameter__1mm__middle,1mm,,Middle,319.0,2.07e-05
+diameter,diameter__1mm__middle,1mm,,Middle,320.0,1.25e-06
+diameter,diameter__1mm__middle,1mm,,Middle,321.0,7.37e-07
+diameter,diameter__1mm__middle,1mm,,Middle,322.0,2.4e-07
+diameter,diameter__1mm__middle,1mm,,Middle,323.0,6.4e-07
+diameter,diameter__1mm__middle,1mm,,Middle,324.0,7.28e-08
+diameter,diameter__1mm__middle,1mm,,Middle,325.0,2.84e-07
+diameter,diameter__1mm__middle,1mm,,Middle,326.0,1.42e-07
+diameter,diameter__1mm__middle,1mm,,Middle,327.0,8.34e-07
+diameter,diameter__1mm__middle,1mm,,Middle,328.0,1.52e-06
+diameter,diameter__1mm__middle,1mm,,Middle,329.0,4.59e-06
+diameter,diameter__1mm__middle,1mm,,Middle,330.0,2.29e-06
+diameter,diameter__1mm__middle,1mm,,Middle,331.0,2.57e-05
+diameter,diameter__1mm__middle,1mm,,Middle,332.0,4.85e-05
+diameter,diameter__1mm__middle,1mm,,Middle,333.0,0.000179
+diameter,diameter__1mm__middle,1mm,,Middle,334.0,0.000318
+diameter,diameter__1mm__middle,1mm,,Middle,335.0,0.000409
+diameter,diameter__1mm__middle,1mm,,Middle,336.0,0.000412
+diameter,diameter__1mm__middle,1mm,,Middle,337.0,0.00034
+diameter,diameter__1mm__middle,1mm,,Middle,338.0,0.000247
+diameter,diameter__1mm__middle,1mm,,Middle,339.0,0.000156
+diameter,diameter__1mm__middle,1mm,,Middle,340.0,6.82e-05
+diameter,diameter__1mm__middle,1mm,,Middle,341.0,6.04e-06
+diameter,diameter__1mm__middle,1mm,,Middle,342.0,3.05e-06
+diameter,diameter__1mm__middle,1mm,,Middle,343.0,2.89e-06
+diameter,diameter__1mm__middle,1mm,,Middle,344.0,2.72e-06
+diameter,diameter__1mm__middle,1mm,,Middle,345.0,1.37e-06
+diameter,diameter__1mm__middle,1mm,,Middle,346.0,8.1e-07
+diameter,diameter__1mm__middle,1mm,,Middle,347.0,2.48e-07
+diameter,diameter__1mm__middle,1mm,,Middle,348.0,9.34e-07
+diameter,diameter__1mm__middle,1mm,,Middle,349.0,4.67e-07
+diameter,diameter__1mm__middle,1mm,,Middle,350.0,1.77e-06
+diameter,diameter__1mm__middle,1mm,,Middle,351.0,3.09e-06
+diameter,diameter__1mm__middle,1mm,,Middle,352.0,2.75e-05
+diameter,diameter__1mm__middle,1mm,,Middle,353.0,8.5e-05
+diameter,diameter__1mm__middle,1mm,,Middle,354.0,0.000167
+diameter,diameter__1mm__middle,1mm,,Middle,355.0,0.000232
+diameter,diameter__1mm__middle,1mm,,Middle,356.0,0.000252
+diameter,diameter__1mm__middle,1mm,,Middle,357.0,0.000219
+diameter,diameter__1mm__middle,1mm,,Middle,358.0,0.000148
+diameter,diameter__1mm__middle,1mm,,Middle,359.0,7.56e-05
+diameter,diameter__1mm__middle,1mm,,Middle,360.0,2.3e-05
+diameter,diameter__1mm__middle,1mm,,Middle,361.0,7.6e-07
+diameter,diameter__1mm__middle,1mm,,Middle,362.0,7.64e-07
+diameter,diameter__1mm__middle,1mm,,Middle,363.0,7.67e-07
+diameter,diameter__1mm__middle,1mm,,Middle,364.0,1.71e-07
+diameter,diameter__1mm__middle,1mm,,Middle,365.0,1.22e-07
+diameter,diameter__1mm__middle,1mm,,Middle,366.0,7.35e-08
+diameter,diameter__1mm__middle,1mm,,Middle,367.0,2.52e-07
+diameter,diameter__1mm__middle,1mm,,Middle,368.0,6.69e-08
+diameter,diameter__1mm__middle,1mm,,Middle,369.0,1.69e-07
+diameter,diameter__1mm__middle,1mm,,Middle,370.0,2.68e-07
+diameter,diameter__1mm__middle,1mm,,Middle,371.0,4.08e-06
+diameter,diameter__1mm__middle,1mm,,Middle,372.0,1.4e-05
+diameter,diameter__1mm__middle,1mm,,Middle,373.0,2.88e-05
+diameter,diameter__1mm__middle,1mm,,Middle,374.0,3.82e-05
+diameter,diameter__1mm__middle,1mm,,Middle,375.0,4.02e-05
+diameter,diameter__1mm__middle,1mm,,Middle,376.0,4.8e-05
+diameter,diameter__1mm__middle,1mm,,Middle,377.0,6.46e-05
+diameter,diameter__1mm__middle,1mm,,Middle,378.0,7.66e-05
+diameter,diameter__1mm__middle,1mm,,Middle,379.0,7.89e-05
+diameter,diameter__1mm__middle,1mm,,Middle,380.0,7.53e-05
+diameter,diameter__1mm__middle,1mm,,Middle,381.0,6.38e-05
+diameter,diameter__1mm__middle,1mm,,Middle,382.0,3.69e-05
+diameter,diameter__1mm__middle,1mm,,Middle,383.0,6.38e-06
+diameter,diameter__1mm__middle,1mm,,Middle,384.0,3.14e-06
+diameter,diameter__1mm__middle,1mm,,Middle,385.0,4.56e-06
+diameter,diameter__1mm__middle,1mm,,Middle,386.0,5.97e-06
+diameter,diameter__1mm__middle,1mm,,Middle,387.0,3.9e-05
+diameter,diameter__1mm__middle,1mm,,Middle,388.0,0.000125
+diameter,diameter__1mm__middle,1mm,,Middle,389.0,0.000222
+diameter,diameter__1mm__middle,1mm,,Middle,390.0,0.000272
+diameter,diameter__1mm__middle,1mm,,Middle,391.0,0.000265
+diameter,diameter__1mm__middle,1mm,,Middle,392.0,0.000204
+diameter,diameter__1mm__middle,1mm,,Middle,393.0,0.000123
+diameter,diameter__1mm__middle,1mm,,Middle,394.0,5.4e-05
+diameter,diameter__1mm__middle,1mm,,Middle,395.0,1.37e-05
+diameter,diameter__1mm__middle,1mm,,Middle,396.0,4.99e-06
+diameter,diameter__1mm__middle,1mm,,Middle,397.0,7.94e-06
+diameter,diameter__1mm__middle,1mm,,Middle,398.0,8.33e-06
+diameter,diameter__1mm__middle,1mm,,Middle,399.0,9.14e-06
+diameter,diameter__1mm__middle,1mm,,Middle,400.0,1.12e-05
+diameter,diameter__1mm__middle,1mm,,Middle,401.0,9.32e-06
+diameter,diameter__1mm__middle,1mm,,Middle,402.0,2.96e-06
+diameter,diameter__1mm__middle,1mm,,Middle,403.0,1.49e-06
+diameter,diameter__1mm__middle,1mm,,Middle,404.0,2.66e-06
+diameter,diameter__1mm__middle,1mm,,Middle,405.0,3.84e-06
+diameter,diameter__1mm__middle,1mm,,Middle,406.0,9.62e-06
+diameter,diameter__1mm__middle,1mm,,Middle,407.0,7.84e-06
+diameter,diameter__1mm__middle,1mm,,Middle,408.0,1.28e-06
+diameter,diameter__1mm__middle,1mm,,Middle,409.0,6.43e-07
+diameter,diameter__1mm__middle,1mm,,Middle,410.0,5.35e-07
+diameter,diameter__1mm__middle,1mm,,Middle,411.0,4.26e-07
+diameter,diameter__1mm__middle,1mm,,Middle,412.0,8.75e-08
+diameter,diameter__1mm__middle,1mm,,Middle,413.0,7.49e-08
+diameter,diameter__1mm__middle,1mm,,Middle,414.0,6.21e-08
+diameter,diameter__1mm__middle,1mm,,Middle,415.0,9.19e-08
+diameter,diameter__1mm__middle,1mm,,Middle,416.0,5.94e-08
+diameter,diameter__1mm__middle,1mm,,Middle,417.0,3.7e-08
+diameter,diameter__1mm__middle,1mm,,Middle,418.0,7.55e-08
+diameter,diameter__1mm__middle,1mm,,Middle,419.0,1.4e-07
+diameter,diameter__1mm__middle,1mm,,Middle,420.0,7.04e-08
+diameter,diameter__1mm__middle,1mm,,Middle,421.0,2.41e-07
+diameter,diameter__1mm__middle,1mm,,Middle,422.0,4.13e-07
+diameter,diameter__1mm__middle,1mm,,Middle,423.0,1.09e-06
+diameter,diameter__1mm__middle,1mm,,Middle,424.0,5.47e-07
+diameter,diameter__1mm__middle,1mm,,Middle,425.0,7.54e-06
+diameter,diameter__1mm__middle,1mm,,Middle,426.0,1.46e-05
+diameter,diameter__1mm__middle,1mm,,Middle,427.0,4.58e-05
+diameter,diameter__1mm__middle,1mm,,Middle,428.0,6.87e-05
+diameter,diameter__1mm__middle,1mm,,Middle,429.0,6.89e-05
+diameter,diameter__1mm__middle,1mm,,Middle,430.0,4.17e-05
+diameter,diameter__1mm__middle,1mm,,Middle,431.0,6.31e-06
+diameter,diameter__1mm__middle,1mm,,Middle,432.0,3.15e-06
+diameter,diameter__1mm__middle,1mm,,Middle,433.0,2.46e-06
+diameter,diameter__1mm__middle,1mm,,Middle,434.0,1.77e-06
+diameter,diameter__1mm__middle,1mm,,Middle,435.0,2.12e-07
+diameter,diameter__1mm__middle,1mm,,Middle,436.0,1.35e-07
+diameter,diameter__1mm__middle,1mm,,Middle,437.0,5.91e-08
+diameter,diameter__1mm__middle,1mm,,Middle,438.0,1.76e-07
+diameter,diameter__1mm__middle,1mm,,Middle,439.0,5.75e-08
+diameter,diameter__1mm__middle,1mm,,Middle,440.0,3.57e-08
+diameter,diameter__1mm__middle,1mm,,Middle,441.0,6.66e-08
+diameter,diameter__1mm__middle,1mm,,Middle,442.0,6.95e-08
+diameter,diameter__1mm__middle,1mm,,Middle,443.0,6.1e-08
+diameter,diameter__1mm__middle,1mm,,Middle,444.0,6.03e-08
+diameter,diameter__1mm__middle,1mm,,Middle,445.0,6.2e-08
+diameter,diameter__1mm__middle,1mm,,Middle,446.0,6.14e-08
+diameter,diameter__1mm__middle,1mm,,Middle,447.0,6.04e-08
+diameter,diameter__1mm__middle,1mm,,Middle,448.0,6e-08
+diameter,diameter__1mm__middle,1mm,,Middle,449.0,5.96e-08
+diameter,diameter__1mm__middle,1mm,,Middle,450.0,5.91e-08
+diameter,diameter__1mm__middle,1mm,,Middle,451.0,5.86e-08
+diameter,diameter__1mm__middle,1mm,,Middle,452.0,5.81e-08
+diameter,diameter__1mm__middle,1mm,,Middle,453.0,5.76e-08
+diameter,diameter__1mm__middle,1mm,,Middle,454.0,5.71e-08
+diameter,diameter__1mm__middle,1mm,,Middle,455.0,5.66e-08
+diameter,diameter__1mm__middle,1mm,,Middle,456.0,5.6e-08
+diameter,diameter__1mm__middle,1mm,,Middle,457.0,5.55e-08
+diameter,diameter__1mm__middle,1mm,,Middle,458.0,5.49e-08
+diameter,diameter__1mm__middle,1mm,,Middle,459.0,5.43e-08
+diameter,diameter__1mm__middle,1mm,,Middle,460.0,5.38e-08
+diameter,diameter__1mm__middle,1mm,,Middle,461.0,5.33e-08
+diameter,diameter__1mm__middle,1mm,,Middle,462.0,5.28e-08
+diameter,diameter__1mm__middle,1mm,,Middle,463.0,5.24e-08
+diameter,diameter__1mm__middle,1mm,,Middle,464.0,5.19e-08
+diameter,diameter__1mm__middle,1mm,,Middle,465.0,5.15e-08
+diameter,diameter__1mm__middle,1mm,,Middle,466.0,5.11e-08
+diameter,diameter__1mm__middle,1mm,,Middle,467.0,5.07e-08
+diameter,diameter__1mm__middle,1mm,,Middle,468.0,5.03e-08
+diameter,diameter__1mm__middle,1mm,,Middle,469.0,4.99e-08
+diameter,diameter__1mm__middle,1mm,,Middle,470.0,4.96e-08
+diameter,diameter__1mm__middle,1mm,,Middle,471.0,4.93e-08
+diameter,diameter__1mm__middle,1mm,,Middle,472.0,4.9e-08
+diameter,diameter__1mm__middle,1mm,,Middle,473.0,4.87e-08
+diameter,diameter__1mm__middle,1mm,,Middle,474.0,4.84e-08
+diameter,diameter__1mm__middle,1mm,,Middle,475.0,4.81e-08
+diameter,diameter__1mm__middle,1mm,,Middle,476.0,4.78e-08
+diameter,diameter__1mm__middle,1mm,,Middle,477.0,4.75e-08
+diameter,diameter__1mm__middle,1mm,,Middle,478.0,4.73e-08
+diameter,diameter__1mm__middle,1mm,,Middle,479.0,4.7e-08
+diameter,diameter__1mm__middle,1mm,,Middle,480.0,4.68e-08
+diameter,diameter__1mm__middle,1mm,,Middle,481.0,4.67e-08
+diameter,diameter__1mm__middle,1mm,,Middle,482.0,4.67e-08
+diameter,diameter__1mm__middle,1mm,,Middle,483.0,4.67e-08
+diameter,diameter__1mm__middle,1mm,,Middle,484.0,4.66e-08
+diameter,diameter__1mm__middle,1mm,,Middle,485.0,4.66e-08
+diameter,diameter__1mm__middle,1mm,,Middle,486.0,4.67e-08
+diameter,diameter__1mm__middle,1mm,,Middle,487.0,4.68e-08
+diameter,diameter__1mm__middle,1mm,,Middle,488.0,4.7e-08
+diameter,diameter__1mm__middle,1mm,,Middle,489.0,4.71e-08
+diameter,diameter__1mm__middle,1mm,,Middle,490.0,4.72e-08
+diameter,diameter__1mm__middle,1mm,,Middle,491.0,4.76e-08
+diameter,diameter__1mm__middle,1mm,,Middle,492.0,4.79e-08
+diameter,diameter__1mm__middle,1mm,,Middle,493.0,4.82e-08
+diameter,diameter__1mm__middle,1mm,,Middle,494.0,4.85e-08
+diameter,diameter__1mm__middle,1mm,,Middle,495.0,4.91e-08
+diameter,diameter__1mm__middle,1mm,,Middle,496.0,4.96e-08
+diameter,diameter__1mm__middle,1mm,,Middle,497.0,4.88e-08
+diameter,diameter__1mm__middle,1mm,,Middle,498.0,4.87e-08
+diameter,diameter__1mm__middle,1mm,,Middle,499.0,5.35e-08
+diameter,diameter__1mm__middle,1mm,,Middle,500.0,5.42e-08
+diameter,diameter__1mm__tip,1mm,,Tip,200.0,3.16e-05
+diameter,diameter__1mm__tip,1mm,,Tip,201.0,2.65e-05
+diameter,diameter__1mm__tip,1mm,,Tip,202.0,2.28e-05
+diameter,diameter__1mm__tip,1mm,,Tip,203.0,2e-05
+diameter,diameter__1mm__tip,1mm,,Tip,204.0,1.78e-05
+diameter,diameter__1mm__tip,1mm,,Tip,205.0,1.6e-05
+diameter,diameter__1mm__tip,1mm,,Tip,206.0,1.45e-05
+diameter,diameter__1mm__tip,1mm,,Tip,207.0,1.32e-05
+diameter,diameter__1mm__tip,1mm,,Tip,208.0,1.22e-05
+diameter,diameter__1mm__tip,1mm,,Tip,209.0,1.13e-05
+diameter,diameter__1mm__tip,1mm,,Tip,210.0,1.05e-05
+diameter,diameter__1mm__tip,1mm,,Tip,211.0,9.37e-06
+diameter,diameter__1mm__tip,1mm,,Tip,212.0,8.44e-06
+diameter,diameter__1mm__tip,1mm,,Tip,213.0,7.68e-06
+diameter,diameter__1mm__tip,1mm,,Tip,214.0,7.05e-06
+diameter,diameter__1mm__tip,1mm,,Tip,215.0,6.51e-06
+diameter,diameter__1mm__tip,1mm,,Tip,216.0,5.64e-06
+diameter,diameter__1mm__tip,1mm,,Tip,217.0,4.97e-06
+diameter,diameter__1mm__tip,1mm,,Tip,218.0,4.44e-06
+diameter,diameter__1mm__tip,1mm,,Tip,219.0,4.02e-06
+diameter,diameter__1mm__tip,1mm,,Tip,220.0,3.67e-06
+diameter,diameter__1mm__tip,1mm,,Tip,221.0,3.29e-06
+diameter,diameter__1mm__tip,1mm,,Tip,222.0,2.98e-06
+diameter,diameter__1mm__tip,1mm,,Tip,223.0,2.73e-06
+diameter,diameter__1mm__tip,1mm,,Tip,224.0,2.51e-06
+diameter,diameter__1mm__tip,1mm,,Tip,225.0,2.33e-06
+diameter,diameter__1mm__tip,1mm,,Tip,226.0,2.24e-06
+diameter,diameter__1mm__tip,1mm,,Tip,227.0,2.15e-06
+diameter,diameter__1mm__tip,1mm,,Tip,228.0,2.08e-06
+diameter,diameter__1mm__tip,1mm,,Tip,229.0,2e-06
+diameter,diameter__1mm__tip,1mm,,Tip,230.0,1.94e-06
+diameter,diameter__1mm__tip,1mm,,Tip,231.0,1.84e-06
+diameter,diameter__1mm__tip,1mm,,Tip,232.0,1.76e-06
+diameter,diameter__1mm__tip,1mm,,Tip,233.0,1.68e-06
+diameter,diameter__1mm__tip,1mm,,Tip,234.0,1.61e-06
+diameter,diameter__1mm__tip,1mm,,Tip,235.0,1.55e-06
+diameter,diameter__1mm__tip,1mm,,Tip,236.0,1.4e-06
+diameter,diameter__1mm__tip,1mm,,Tip,237.0,1.28e-06
+diameter,diameter__1mm__tip,1mm,,Tip,238.0,1.18e-06
+diameter,diameter__1mm__tip,1mm,,Tip,239.0,1.1e-06
+diameter,diameter__1mm__tip,1mm,,Tip,240.0,1.02e-06
+diameter,diameter__1mm__tip,1mm,,Tip,241.0,9.15e-07
+diameter,diameter__1mm__tip,1mm,,Tip,242.0,8.28e-07
+diameter,diameter__1mm__tip,1mm,,Tip,243.0,7.56e-07
+diameter,diameter__1mm__tip,1mm,,Tip,244.0,6.96e-07
+diameter,diameter__1mm__tip,1mm,,Tip,245.0,6.45e-07
+diameter,diameter__1mm__tip,1mm,,Tip,246.0,6.07e-07
+diameter,diameter__1mm__tip,1mm,,Tip,247.0,5.73e-07
+diameter,diameter__1mm__tip,1mm,,Tip,248.0,5.43e-07
+diameter,diameter__1mm__tip,1mm,,Tip,249.0,5.16e-07
+diameter,diameter__1mm__tip,1mm,,Tip,250.0,4.92e-07
+diameter,diameter__1mm__tip,1mm,,Tip,251.0,4.92e-07
+diameter,diameter__1mm__tip,1mm,,Tip,252.0,4.93e-07
+diameter,diameter__1mm__tip,1mm,,Tip,253.0,4.94e-07
+diameter,diameter__1mm__tip,1mm,,Tip,254.0,4.95e-07
+diameter,diameter__1mm__tip,1mm,,Tip,255.0,4.96e-07
+diameter,diameter__1mm__tip,1mm,,Tip,256.0,5.01e-07
+diameter,diameter__1mm__tip,1mm,,Tip,257.0,5.07e-07
+diameter,diameter__1mm__tip,1mm,,Tip,258.0,5.12e-07
+diameter,diameter__1mm__tip,1mm,,Tip,259.0,5.17e-07
+diameter,diameter__1mm__tip,1mm,,Tip,260.0,5.23e-07
+diameter,diameter__1mm__tip,1mm,,Tip,261.0,5.16e-07
+diameter,diameter__1mm__tip,1mm,,Tip,262.0,5.08e-07
+diameter,diameter__1mm__tip,1mm,,Tip,263.0,5.02e-07
+diameter,diameter__1mm__tip,1mm,,Tip,264.0,4.95e-07
+diameter,diameter__1mm__tip,1mm,,Tip,265.0,4.88e-07
+diameter,diameter__1mm__tip,1mm,,Tip,266.0,4.65e-07
+diameter,diameter__1mm__tip,1mm,,Tip,267.0,4.44e-07
+diameter,diameter__1mm__tip,1mm,,Tip,268.0,4.25e-07
+diameter,diameter__1mm__tip,1mm,,Tip,269.0,4.08e-07
+diameter,diameter__1mm__tip,1mm,,Tip,270.0,3.92e-07
+diameter,diameter__1mm__tip,1mm,,Tip,271.0,3.72e-07
+diameter,diameter__1mm__tip,1mm,,Tip,272.0,3.54e-07
+diameter,diameter__1mm__tip,1mm,,Tip,273.0,3.38e-07
+diameter,diameter__1mm__tip,1mm,,Tip,274.0,3.23e-07
+diameter,diameter__1mm__tip,1mm,,Tip,275.0,3.1e-07
+diameter,diameter__1mm__tip,1mm,,Tip,276.0,2.93e-07
+diameter,diameter__1mm__tip,1mm,,Tip,277.0,2.77e-07
+diameter,diameter__1mm__tip,1mm,,Tip,278.0,2.63e-07
+diameter,diameter__1mm__tip,1mm,,Tip,279.0,2.51e-07
+diameter,diameter__1mm__tip,1mm,,Tip,280.0,2.39e-07
+diameter,diameter__1mm__tip,1mm,,Tip,281.0,2.32e-07
+diameter,diameter__1mm__tip,1mm,,Tip,282.0,2.26e-07
+diameter,diameter__1mm__tip,1mm,,Tip,283.0,2.2e-07
+diameter,diameter__1mm__tip,1mm,,Tip,284.0,2.14e-07
+diameter,diameter__1mm__tip,1mm,,Tip,285.0,2.08e-07
+diameter,diameter__1mm__tip,1mm,,Tip,286.0,2.08e-07
+diameter,diameter__1mm__tip,1mm,,Tip,287.0,2.08e-07
+diameter,diameter__1mm__tip,1mm,,Tip,288.0,2.07e-07
+diameter,diameter__1mm__tip,1mm,,Tip,289.0,2.07e-07
+diameter,diameter__1mm__tip,1mm,,Tip,290.0,2.07e-07
+diameter,diameter__1mm__tip,1mm,,Tip,291.0,2.05e-07
+diameter,diameter__1mm__tip,1mm,,Tip,292.0,2.02e-07
+diameter,diameter__1mm__tip,1mm,,Tip,293.0,2e-07
+diameter,diameter__1mm__tip,1mm,,Tip,294.0,1.98e-07
+diameter,diameter__1mm__tip,1mm,,Tip,295.0,1.96e-07
+diameter,diameter__1mm__tip,1mm,,Tip,296.0,1.91e-07
+diameter,diameter__1mm__tip,1mm,,Tip,297.0,1.86e-07
+diameter,diameter__1mm__tip,1mm,,Tip,298.0,1.82e-07
+diameter,diameter__1mm__tip,1mm,,Tip,299.0,1.77e-07
+diameter,diameter__1mm__tip,1mm,,Tip,300.0,1.71e-07
+diameter,diameter__1mm__tip,1mm,,Tip,301.0,1.7e-07
+diameter,diameter__1mm__tip,1mm,,Tip,302.0,1.71e-07
+diameter,diameter__1mm__tip,1mm,,Tip,303.0,1.52e-07
+diameter,diameter__1mm__tip,1mm,,Tip,304.0,1.26e-07
+diameter,diameter__1mm__tip,1mm,,Tip,305.0,1.84e-07
+diameter,diameter__1mm__tip,1mm,,Tip,306.0,2.45e-07
+diameter,diameter__1mm__tip,1mm,,Tip,307.0,1.2e-07
+diameter,diameter__1mm__tip,1mm,,Tip,308.0,4.76e-07
+diameter,diameter__1mm__tip,1mm,,Tip,309.0,8.19e-07
+diameter,diameter__1mm__tip,1mm,,Tip,310.0,1.25e-06
+diameter,diameter__1mm__tip,1mm,,Tip,311.0,6.08e-07
+diameter,diameter__1mm__tip,1mm,,Tip,312.0,6.97e-06
+diameter,diameter__1mm__tip,1mm,,Tip,313.0,1.3e-05
+diameter,diameter__1mm__tip,1mm,,Tip,314.0,3.12e-05
+diameter,diameter__1mm__tip,1mm,,Tip,315.0,2.36e-05
+diameter,diameter__1mm__tip,1mm,,Tip,316.0,2.79e-06
+diameter,diameter__1mm__tip,1mm,,Tip,317.0,1.36e-06
+diameter,diameter__1mm__tip,1mm,,Tip,318.0,1.24e-06
+diameter,diameter__1mm__tip,1mm,,Tip,319.0,1.12e-06
+diameter,diameter__1mm__tip,1mm,,Tip,320.0,1.22e-07
+diameter,diameter__1mm__tip,1mm,,Tip,321.0,1.21e-07
+diameter,diameter__1mm__tip,1mm,,Tip,322.0,1.19e-07
+diameter,diameter__1mm__tip,1mm,,Tip,323.0,1.69e-07
+diameter,diameter__1mm__tip,1mm,,Tip,324.0,9.34e-08
+diameter,diameter__1mm__tip,1mm,,Tip,325.0,7.24e-08
+diameter,diameter__1mm__tip,1mm,,Tip,326.0,1.16e-07
+diameter,diameter__1mm__tip,1mm,,Tip,327.0,1.58e-07
+diameter,diameter__1mm__tip,1mm,,Tip,328.0,3.79e-08
+diameter,diameter__1mm__tip,1mm,,Tip,329.0,2.18e-07
+diameter,diameter__1mm__tip,1mm,,Tip,330.0,3.98e-07
+diameter,diameter__1mm__tip,1mm,,Tip,331.0,7.8e-07
+diameter,diameter__1mm__tip,1mm,,Tip,332.0,3.46e-06
+diameter,diameter__1mm__tip,1mm,,Tip,333.0,6.05e-06
+diameter,diameter__1mm__tip,1mm,,Tip,334.0,4.32e-05
+diameter,diameter__1mm__tip,1mm,,Tip,335.0,9.15e-05
+diameter,diameter__1mm__tip,1mm,,Tip,336.0,0.000104
+diameter,diameter__1mm__tip,1mm,,Tip,337.0,7.76e-05
+diameter,diameter__1mm__tip,1mm,,Tip,338.0,3.91e-05
+diameter,diameter__1mm__tip,1mm,,Tip,339.0,8.36e-06
+diameter,diameter__1mm__tip,1mm,,Tip,340.0,4.16e-06
+diameter,diameter__1mm__tip,1mm,,Tip,341.0,2.57e-06
+diameter,diameter__1mm__tip,1mm,,Tip,342.0,9.57e-07
+diameter,diameter__1mm__tip,1mm,,Tip,343.0,1.17e-07
+diameter,diameter__1mm__tip,1mm,,Tip,344.0,1.11e-07
+diameter,diameter__1mm__tip,1mm,,Tip,345.0,1.04e-07
+diameter,diameter__1mm__tip,1mm,,Tip,346.0,1.51e-07
+diameter,diameter__1mm__tip,1mm,,Tip,347.0,8.86e-08
+diameter,diameter__1mm__tip,1mm,,Tip,348.0,8.31e-08
+diameter,diameter__1mm__tip,1mm,,Tip,349.0,9.47e-08
+diameter,diameter__1mm__tip,1mm,,Tip,350.0,8.69e-08
+diameter,diameter__1mm__tip,1mm,,Tip,351.0,1.05e-07
+diameter,diameter__1mm__tip,1mm,,Tip,352.0,1.34e-07
+diameter,diameter__1mm__tip,1mm,,Tip,353.0,1.08e-07
+diameter,diameter__1mm__tip,1mm,,Tip,354.0,3.43e-06
+diameter,diameter__1mm__tip,1mm,,Tip,355.0,1.77e-05
+diameter,diameter__1mm__tip,1mm,,Tip,356.0,3.49e-05
+diameter,diameter__1mm__tip,1mm,,Tip,357.0,3.1e-05
+diameter,diameter__1mm__tip,1mm,,Tip,358.0,9.54e-06
+diameter,diameter__1mm__tip,1mm,,Tip,359.0,4.76e-06
+diameter,diameter__1mm__tip,1mm,,Tip,360.0,2.86e-06
+diameter,diameter__1mm__tip,1mm,,Tip,361.0,9.53e-07
+diameter,diameter__1mm__tip,1mm,,Tip,362.0,2.63e-07
+diameter,diameter__1mm__tip,1mm,,Tip,363.0,1.61e-07
+diameter,diameter__1mm__tip,1mm,,Tip,364.0,6.27e-08
+diameter,diameter__1mm__tip,1mm,,Tip,365.0,1.44e-07
+diameter,diameter__1mm__tip,1mm,,Tip,366.0,8.81e-08
+diameter,diameter__1mm__tip,1mm,,Tip,367.0,7.14e-08
+diameter,diameter__1mm__tip,1mm,,Tip,368.0,8.25e-08
+diameter,diameter__1mm__tip,1mm,,Tip,369.0,7.87e-08
+diameter,diameter__1mm__tip,1mm,,Tip,370.0,8.09e-08
+diameter,diameter__1mm__tip,1mm,,Tip,371.0,9.64e-08
+diameter,diameter__1mm__tip,1mm,,Tip,372.0,6.24e-08
+diameter,diameter__1mm__tip,1mm,,Tip,373.0,3.25e-09
+diameter,diameter__1mm__tip,1mm,,Tip,374.0,1.45e-07
+diameter,diameter__1mm__tip,1mm,,Tip,375.0,3.25e-07
+diameter,diameter__1mm__tip,1mm,,Tip,376.0,1.58e-07
+diameter,diameter__1mm__tip,1mm,,Tip,377.0,2.1e-06
+diameter,diameter__1mm__tip,1mm,,Tip,378.0,3.96e-06
+diameter,diameter__1mm__tip,1mm,,Tip,379.0,1.01e-05
+diameter,diameter__1mm__tip,1mm,,Tip,380.0,9.15e-06
+diameter,diameter__1mm__tip,1mm,,Tip,381.0,2.27e-06
+diameter,diameter__1mm__tip,1mm,,Tip,382.0,1.12e-06
+diameter,diameter__1mm__tip,1mm,,Tip,383.0,9.82e-07
+diameter,diameter__1mm__tip,1mm,,Tip,384.0,8.5e-07
+diameter,diameter__1mm__tip,1mm,,Tip,385.0,4.69e-07
+diameter,diameter__1mm__tip,1mm,,Tip,386.0,2.33e-07
+diameter,diameter__1mm__tip,1mm,,Tip,387.0,4.75e-06
+diameter,diameter__1mm__tip,1mm,,Tip,388.0,9.19e-06
+diameter,diameter__1mm__tip,1mm,,Tip,389.0,2.34e-05
+diameter,diameter__1mm__tip,1mm,,Tip,390.0,3.38e-05
+diameter,diameter__1mm__tip,1mm,,Tip,391.0,3.51e-05
+diameter,diameter__1mm__tip,1mm,,Tip,392.0,2.5e-05
+diameter,diameter__1mm__tip,1mm,,Tip,393.0,1.16e-05
+diameter,diameter__1mm__tip,1mm,,Tip,394.0,3.2e-06
+diameter,diameter__1mm__tip,1mm,,Tip,395.0,1.6e-06
+diameter,diameter__1mm__tip,1mm,,Tip,396.0,8.91e-07
+diameter,diameter__1mm__tip,1mm,,Tip,397.0,1.74e-07
+diameter,diameter__1mm__tip,1mm,,Tip,398.0,1.86e-07
+diameter,diameter__1mm__tip,1mm,,Tip,399.0,1.85e-08
+diameter,diameter__1mm__tip,1mm,,Tip,400.0,2.67e-08
+diameter,diameter__1mm__tip,1mm,,Tip,401.0,6.95e-08
+diameter,diameter__1mm__tip,1mm,,Tip,402.0,6.51e-08
+diameter,diameter__1mm__tip,1mm,,Tip,403.0,5.49e-08
+diameter,diameter__1mm__tip,1mm,,Tip,404.0,5.71e-08
+diameter,diameter__1mm__tip,1mm,,Tip,405.0,6e-08
+diameter,diameter__1mm__tip,1mm,,Tip,406.0,5.97e-08
+diameter,diameter__1mm__tip,1mm,,Tip,407.0,5.94e-08
+diameter,diameter__1mm__tip,1mm,,Tip,408.0,5.99e-08
+diameter,diameter__1mm__tip,1mm,,Tip,409.0,6.04e-08
+diameter,diameter__1mm__tip,1mm,,Tip,410.0,6.07e-08
+diameter,diameter__1mm__tip,1mm,,Tip,411.0,6.1e-08
+diameter,diameter__1mm__tip,1mm,,Tip,412.0,6.13e-08
+diameter,diameter__1mm__tip,1mm,,Tip,413.0,6.16e-08
+diameter,diameter__1mm__tip,1mm,,Tip,414.0,6.19e-08
+diameter,diameter__1mm__tip,1mm,,Tip,415.0,6.23e-08
+diameter,diameter__1mm__tip,1mm,,Tip,416.0,6.26e-08
+diameter,diameter__1mm__tip,1mm,,Tip,417.0,6.29e-08
+diameter,diameter__1mm__tip,1mm,,Tip,418.0,6.32e-08
+diameter,diameter__1mm__tip,1mm,,Tip,419.0,6.35e-08
+diameter,diameter__1mm__tip,1mm,,Tip,420.0,6.38e-08
+diameter,diameter__1mm__tip,1mm,,Tip,421.0,6.4e-08
+diameter,diameter__1mm__tip,1mm,,Tip,422.0,6.42e-08
+diameter,diameter__1mm__tip,1mm,,Tip,423.0,6.43e-08
+diameter,diameter__1mm__tip,1mm,,Tip,424.0,6.45e-08
+diameter,diameter__1mm__tip,1mm,,Tip,425.0,6.47e-08
+diameter,diameter__1mm__tip,1mm,,Tip,426.0,6.48e-08
+diameter,diameter__1mm__tip,1mm,,Tip,427.0,6.49e-08
+diameter,diameter__1mm__tip,1mm,,Tip,428.0,6.5e-08
+diameter,diameter__1mm__tip,1mm,,Tip,429.0,6.51e-08
+diameter,diameter__1mm__tip,1mm,,Tip,430.0,6.52e-08
+diameter,diameter__1mm__tip,1mm,,Tip,431.0,6.52e-08
+diameter,diameter__1mm__tip,1mm,,Tip,432.0,6.51e-08
+diameter,diameter__1mm__tip,1mm,,Tip,433.0,6.51e-08
+diameter,diameter__1mm__tip,1mm,,Tip,434.0,6.5e-08
+diameter,diameter__1mm__tip,1mm,,Tip,435.0,6.5e-08
+diameter,diameter__1mm__tip,1mm,,Tip,436.0,6.47e-08
+diameter,diameter__1mm__tip,1mm,,Tip,437.0,6.44e-08
+diameter,diameter__1mm__tip,1mm,,Tip,438.0,6.41e-08
+diameter,diameter__1mm__tip,1mm,,Tip,439.0,6.38e-08
+diameter,diameter__1mm__tip,1mm,,Tip,440.0,6.36e-08
+diameter,diameter__1mm__tip,1mm,,Tip,441.0,6.31e-08
+diameter,diameter__1mm__tip,1mm,,Tip,442.0,6.27e-08
+diameter,diameter__1mm__tip,1mm,,Tip,443.0,6.23e-08
+diameter,diameter__1mm__tip,1mm,,Tip,444.0,6.19e-08
+diameter,diameter__1mm__tip,1mm,,Tip,445.0,6.15e-08
+diameter,diameter__1mm__tip,1mm,,Tip,446.0,6.1e-08
+diameter,diameter__1mm__tip,1mm,,Tip,447.0,6.05e-08
+diameter,diameter__1mm__tip,1mm,,Tip,448.0,6.01e-08
+diameter,diameter__1mm__tip,1mm,,Tip,449.0,5.96e-08
+diameter,diameter__1mm__tip,1mm,,Tip,450.0,5.91e-08
+diameter,diameter__1mm__tip,1mm,,Tip,451.0,5.86e-08
+diameter,diameter__1mm__tip,1mm,,Tip,452.0,5.81e-08
+diameter,diameter__1mm__tip,1mm,,Tip,453.0,5.76e-08
+diameter,diameter__1mm__tip,1mm,,Tip,454.0,5.71e-08
+diameter,diameter__1mm__tip,1mm,,Tip,455.0,5.66e-08
+diameter,diameter__1mm__tip,1mm,,Tip,456.0,5.6e-08
+diameter,diameter__1mm__tip,1mm,,Tip,457.0,5.55e-08
+diameter,diameter__1mm__tip,1mm,,Tip,458.0,5.49e-08
+diameter,diameter__1mm__tip,1mm,,Tip,459.0,5.43e-08
+diameter,diameter__1mm__tip,1mm,,Tip,460.0,5.38e-08
+diameter,diameter__1mm__tip,1mm,,Tip,461.0,5.33e-08
+diameter,diameter__1mm__tip,1mm,,Tip,462.0,5.28e-08
+diameter,diameter__1mm__tip,1mm,,Tip,463.0,5.24e-08
+diameter,diameter__1mm__tip,1mm,,Tip,464.0,5.19e-08
+diameter,diameter__1mm__tip,1mm,,Tip,465.0,5.15e-08
+diameter,diameter__1mm__tip,1mm,,Tip,466.0,5.11e-08
+diameter,diameter__1mm__tip,1mm,,Tip,467.0,5.07e-08
+diameter,diameter__1mm__tip,1mm,,Tip,468.0,5.03e-08
+diameter,diameter__1mm__tip,1mm,,Tip,469.0,4.99e-08
+diameter,diameter__1mm__tip,1mm,,Tip,470.0,4.96e-08
+diameter,diameter__1mm__tip,1mm,,Tip,471.0,4.93e-08
+diameter,diameter__1mm__tip,1mm,,Tip,472.0,4.9e-08
+diameter,diameter__1mm__tip,1mm,,Tip,473.0,4.87e-08
+diameter,diameter__1mm__tip,1mm,,Tip,474.0,4.84e-08
+diameter,diameter__1mm__tip,1mm,,Tip,475.0,4.81e-08
+diameter,diameter__1mm__tip,1mm,,Tip,476.0,4.78e-08
+diameter,diameter__1mm__tip,1mm,,Tip,477.0,4.75e-08
+diameter,diameter__1mm__tip,1mm,,Tip,478.0,4.73e-08
+diameter,diameter__1mm__tip,1mm,,Tip,479.0,4.7e-08
+diameter,diameter__1mm__tip,1mm,,Tip,480.0,4.68e-08
+diameter,diameter__1mm__tip,1mm,,Tip,481.0,4.67e-08
+diameter,diameter__1mm__tip,1mm,,Tip,482.0,4.67e-08
+diameter,diameter__1mm__tip,1mm,,Tip,483.0,4.67e-08
+diameter,diameter__1mm__tip,1mm,,Tip,484.0,4.66e-08
+diameter,diameter__1mm__tip,1mm,,Tip,485.0,4.66e-08
+diameter,diameter__1mm__tip,1mm,,Tip,486.0,4.67e-08
+diameter,diameter__1mm__tip,1mm,,Tip,487.0,4.68e-08
+diameter,diameter__1mm__tip,1mm,,Tip,488.0,4.7e-08
+diameter,diameter__1mm__tip,1mm,,Tip,489.0,4.71e-08
+diameter,diameter__1mm__tip,1mm,,Tip,490.0,4.72e-08
+diameter,diameter__1mm__tip,1mm,,Tip,491.0,4.76e-08
+diameter,diameter__1mm__tip,1mm,,Tip,492.0,4.79e-08
+diameter,diameter__1mm__tip,1mm,,Tip,493.0,4.82e-08
+diameter,diameter__1mm__tip,1mm,,Tip,494.0,4.86e-08
+diameter,diameter__1mm__tip,1mm,,Tip,495.0,4.89e-08
+diameter,diameter__1mm__tip,1mm,,Tip,496.0,4.92e-08
+diameter,diameter__1mm__tip,1mm,,Tip,497.0,4.95e-08
+diameter,diameter__1mm__tip,1mm,,Tip,498.0,4.99e-08
+diameter,diameter__1mm__tip,1mm,,Tip,499.0,5.02e-08
+diameter,diameter__1mm__tip,1mm,,Tip,500.0,5.05e-08

@@ -1,0 +1,8 @@
+dataset,sample_id,param_set,trial,channel,source_file,﻿name,date,time,irradiance total,irradiance uva,irradiance uvb,irradiance uvc,irradiance @253.7nm,irradiance @365nm,irradiance wl range,spectral centroid
+diameter,diameter__0.5mm__base,0.5mm,,Base,data/diameter/0.5mm.csv,,,,,,,,,,,
+diameter,diameter__0.5mm__middle,0.5mm,,Middle,data/diameter/0.5mm.csv,,,,,,,,,,,
+diameter,diameter__0.5mm__tip,0.5mm,,Tip,data/diameter/0.5mm.csv,,,,,,,,,,,
+diameter,diameter__1mm__0_5_cm_below,1mm,,0.5 cm below,data/diameter/1mm.csv,,,,,,,,,,,
+diameter,diameter__1mm__base,1mm,,Base,data/diameter/1mm.csv,,,,,,,,,,,
+diameter,diameter__1mm__middle,1mm,,Middle,data/diameter/1mm.csv,,,,,,,,,,,
+diameter,diameter__1mm__tip,1mm,,Tip,data/diameter/1mm.csv,,,,,,,,,,,

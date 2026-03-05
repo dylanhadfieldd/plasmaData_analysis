@@ -1,0 +1,4 @@
+PC1,PC2,PC3,sample_id,dataset,param_set,trial,channel,normalize
+-36.78137950600339,-0.18432976002979717,-5.527714332790876e-15,diameter__0.5mm__base,diameter,0.5mm,,Base,none
+18.137449330717434,20.171609928970497,-5.527714332790879e-15,diameter__0.5mm__middle,diameter,0.5mm,,Middle,none
+18.64393017528588,-19.987280168940643,-5.5277143327908945e-15,diameter__0.5mm__tip,diameter,0.5mm,,Tip,none
