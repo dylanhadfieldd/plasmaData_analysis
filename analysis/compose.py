@@ -2,16 +2,15 @@
 from __future__ import annotations
 
 import re
-from pathlib import Path
 from typing import List
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
+from analysis.output_paths import ensure_all_scope_layouts, metadata_csv_path, spectral_composed_dir
 
-INPUT_LONG = Path("output/spectra_long.csv")
-OUTPUT_ROOT = Path("output")
+INPUT_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 LOG_Y = False
 NORMALIZE_Y = True
 DPI = 200
@@ -85,6 +84,7 @@ def plot_group(dataset: str, param_set: str, group: pd.DataFrame, out_path: Path
 
 def main() -> int:
     apply_publication_style()
+    ensure_all_scope_layouts()
 
     if not INPUT_LONG.exists():
         print(f"Missing {INPUT_LONG}. Run preprocess.py first.")
@@ -102,7 +102,7 @@ def main() -> int:
     for (dataset, param_set), g in grouped:
         dataset = str(dataset)
         param_set = str(param_set)
-        out_path = OUTPUT_ROOT / dataset / "spectral" / "base" / "charts" / "composed" / f"{safe_name(param_set)}.png"
+        out_path = spectral_composed_dir(dataset) / f"{safe_name(param_set)}.png"
         try:
             plot_group(dataset, param_set, g, out_path)
             print(f"[OK] {dataset}/{param_set} ({g['sample_id'].nunique()} curves) -> {out_path}")

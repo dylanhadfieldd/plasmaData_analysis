@@ -6,7 +6,9 @@ from typing import Callable, List, Tuple
 
 from analysis import (
     air_reactive_auc,
+    chemical_modeling,
     chem_species_analysis,
+    cleanup_outputs,
     compare,
     compose,
     executive_reports,
@@ -33,7 +35,9 @@ RUN_STEPS: List[Step] = [
     ("chem_species_analysis", chem_species_analysis.main),
     ("air_reactive_auc", air_reactive_auc.main),
     ("pca", pca.main),
+    ("chemical_modeling", chemical_modeling.main),
     ("executive_reports", executive_reports.main),
+    ("cleanup_outputs", cleanup_outputs.main),
 ]
 
 

@@ -7,6 +7,7 @@ from typing import List
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_section_dir, spectral_diagnostics_dir
 
 try:
     from analysis.plot_style import (
@@ -19,14 +20,13 @@ try:
 except ModuleNotFoundError:
     from plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes, to_species_label
 
-RAW_DIR = Path("output/meta/spectral/base/raw")
-OUTPUT_ROOT = Path("output")
+RAW_DIR = metadata_section_dir("meta", "spectral")
 AVERAGED_CURVES_CSV = RAW_DIR / "averaged_curves_long.csv"
 AVERAGED_PEAKS_CSV = RAW_DIR / "averaged_peaks_top10.csv"
 TRIAL_PEAKS_CSV = RAW_DIR / "trial_peaks_top10.csv"
 NIST_MATCHES_CSV = RAW_DIR / "nist_matches_top3.csv"
 TARGET_MATCHES_CSV = RAW_DIR / "target_species_peak_matches.csv"
-OUT_DIR = OUTPUT_ROOT / "meta" / "spectral" / "base" / "charts" / "diagnostics"
+OUT_DIR = spectral_diagnostics_dir("meta")
 DPI = 220
 
 
@@ -335,6 +335,7 @@ def plot_nist_top1_species(nist_matches: pd.DataFrame, target_matches: pd.DataFr
 
 def main() -> int:
     apply_publication_style()
+    ensure_all_scope_layouts()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     averaged_curves = load_csv(AVERAGED_CURVES_CSV)
@@ -356,15 +357,13 @@ def main() -> int:
         print(f"  {p}")
 
     try:
-        from analysis.output_layout import write_labeled_assets
+        from analysis.labeled_spectra import write_labeled_assets
     except ModuleNotFoundError:
-        from output_layout import write_labeled_assets
+        from labeled_spectra import write_labeled_assets
 
-    for scope in ("air", "diameter", "meta"):
-        scope_dir = OUTPUT_ROOT / scope
-        if scope_dir.exists():
-            write_labeled_assets(scope, scope_dir)
-    print("Wrote labeled spectral assets under output/*/spectral/labels")
+    for scope in SCOPES:
+        write_labeled_assets(scope)
+    print("Wrote labeled spectral assets under output/*/spectral/labels with metadata traceability CSVs")
     return 0
 
 

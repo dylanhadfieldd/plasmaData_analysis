@@ -12,35 +12,38 @@ try:
     from analysis.plot_style import apply_publication_style, style_axes
 except ModuleNotFoundError:
     from plot_style import apply_publication_style, style_axes
+from analysis.output_paths import chemspecies_figures_dir, ensure_all_scope_layouts, metadata_csv_path
 
 
-OUTPUT_ROOT = Path("output") / "air" / "chemspecies"
-CSV_OUT = OUTPUT_ROOT / "csv" / "air_species_auc_normalized.csv"
-FIG_ROOT = OUTPUT_ROOT / "figures" / "air_reactive_auc"
+CSV_OUT = metadata_csv_path("air", "chemspecies", "air_species_auc_normalized.csv")
+FIG_ROOT = chemspecies_figures_dir("air") / "air_reactive_auc"
 FIG_GROUP1_DIR = FIG_ROOT / "group1_auc_vs_species"
 FIG_GROUP2_DIR = FIG_ROOT / "group2_auc_vs_air_input"
 
-AIR_LONG_CSV = Path("output") / "air" / "spectral" / "base" / "raw" / "spectra_long.csv"
+AIR_LONG_CSV = metadata_csv_path("air", "spectral", "spectra_long.csv")
 AIR_RAW_DIR = Path("data") / "air"
 
 AIR_LEVEL_MAP: Dict[str, str] = {
     "100H": "none",
+    "100H.cont.trial": "none",
     "5H..01A": "low",
     "5H..5A": "medium",
     "5H..9A": "high",
+    "1H.1A-CONT": "medium",
+    "1H.9A": "high",
 }
 AIR_LEVEL_ORDER = ["none", "low", "medium", "high"]
 AIR_LEVEL_DISPLAY: Dict[str, str] = {
-    "none": "100H",
-    "low": "0.01A",
-    "medium": "0.5A",
-    "high": "0.9A",
+    "none": "No Air (100H)",
+    "low": "Low Air",
+    "medium": "Medium Air",
+    "high": "High Air",
 }
 AIR_LEVEL_FILE_TAG: Dict[str, str] = {
-    "none": "100H",
-    "low": "0p01A",
-    "medium": "0p5A",
-    "high": "0p9A",
+    "none": "no_air",
+    "low": "low_air",
+    "medium": "medium_air",
+    "high": "high_air",
 }
 
 # Fixed integration windows [nm] for predefined target reactive species.
@@ -123,8 +126,8 @@ def load_air_long() -> pd.DataFrame:
     for path in sorted(AIR_RAW_DIR.glob("*.csv")):
         stem = path.stem
         parts = stem.split(".")
-        base = ".".join(parts[:-1]) if len(parts) > 1 else stem
         trial = parts[-1] if len(parts) > 1 else "1"
+        base = stem if stem in AIR_LEVEL_MAP else (".".join(parts[:-1]) if len(parts) > 1 else stem)
         if base not in AIR_LEVEL_MAP:
             continue
         spec = parse_air_file(path)
@@ -216,7 +219,8 @@ def aggregate_condition_table(per_spec: pd.DataFrame) -> pd.DataFrame:
 
 def save_group1_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
     written: List[Path] = []
-    for idx, level in enumerate(AIR_LEVEL_ORDER, start=1):
+    levels_present = [lvl for lvl in AIR_LEVEL_ORDER if (df["air_input_level"] == lvl).any()]
+    for idx, level in enumerate(levels_present, start=1):
         d = df[df["air_input_level"] == level].copy()
         if d.empty:
             continue
@@ -258,13 +262,15 @@ def save_group1_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
 
 def save_group2_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
     written: List[Path] = []
-    x = np.arange(len(AIR_LEVEL_ORDER), dtype=float)
-    x_labels = [AIR_LEVEL_DISPLAY[level] for level in AIR_LEVEL_ORDER]
+    levels_present = [lvl for lvl in AIR_LEVEL_ORDER if (df["air_input_level"] == lvl).any()]
+    x = np.arange(len(levels_present), dtype=float)
+    x_labels = [AIR_LEVEL_DISPLAY[level] for level in levels_present]
     for idx, species in enumerate(GROUP2_SPECIES_ORDER, start=1):
         d = df[df["species"] == species].copy()
         if d.empty:
             continue
-        d["air_input_level"] = pd.Categorical(d["air_input_level"], categories=AIR_LEVEL_ORDER, ordered=True)
+        d = d[d["air_input_level"].isin(levels_present)].copy()
+        d["air_input_level"] = pd.Categorical(d["air_input_level"], categories=levels_present, ordered=True)
         d = d.sort_values("air_input_level")
         y = d["auc_normalized"].to_numpy(dtype=float)
 
@@ -280,7 +286,7 @@ def save_group2_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
             markeredgewidth=0.5,
             zorder=3,
         )
-        ax.set_xlim(-0.2, len(AIR_LEVEL_ORDER) - 0.8)
+        ax.set_xlim(-0.2, len(levels_present) - 0.8)
         ax.set_ylim(0.0, y_max)
         ax.set_xticks(x)
         ax.set_xticklabels(x_labels)
@@ -299,7 +305,8 @@ def save_group2_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
 
 
 def validate_complete(table: pd.DataFrame) -> None:
-    expected = {(lvl, sp) for lvl in AIR_LEVEL_ORDER for sp in SPECIES_ORDER}
+    levels_present = [lvl for lvl in AIR_LEVEL_ORDER if (table["air_input_level"] == lvl).any()]
+    expected = {(lvl, sp) for lvl in levels_present for sp in SPECIES_ORDER}
     got = {(str(r["air_input_level"]), str(r["species"])) for _, r in table.iterrows()}
     missing = sorted(expected - got)
     if missing:
@@ -308,6 +315,7 @@ def validate_complete(table: pd.DataFrame) -> None:
 
 def main() -> int:
     apply_publication_style()
+    ensure_all_scope_layouts()
     np.random.seed(0)
 
     df = load_air_long()

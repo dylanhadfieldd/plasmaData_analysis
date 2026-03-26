@@ -12,20 +12,20 @@ try:
     from analysis.plot_style import apply_publication_style, get_palette, style_axes, to_species_label
 except ModuleNotFoundError:
     from plot_style import apply_publication_style, get_palette, style_axes, to_species_label
+from analysis.output_paths import chemspecies_figures_dir, ensure_all_scope_layouts, metadata_csv_path, metadata_section_dir
 
-OUTPUT_ROOT = Path("output")
-TARGET_MATCHES_CSV = OUTPUT_ROOT / "meta" / "spectral" / "base" / "raw" / "target_species_peak_matches.csv"
+TARGET_MATCHES_CSV = metadata_csv_path("meta", "spectral", "target_species_peak_matches.csv")
 SCOPES = ("air", "diameter", "meta")
 DPI = 220
 TOP_SPECIES = 8
 
 
 def scope_csv_dir(scope: str) -> Path:
-    return OUTPUT_ROOT / scope / "chemspecies" / "csv"
+    return metadata_section_dir(scope, "chemspecies")
 
 
 def scope_fig_dir(scope: str) -> Path:
-    return OUTPUT_ROOT / scope / "chemspecies" / "figures"
+    return chemspecies_figures_dir(scope)
 
 
 def safe_ratio(a: pd.Series, b: pd.Series) -> pd.Series:
@@ -610,6 +610,7 @@ def scope_csv_slice(df: pd.DataFrame, scope: str, allow_global: bool = False) ->
 
 def main() -> int:
     apply_publication_style()
+    ensure_all_scope_layouts()
     for scope in SCOPES:
         scope_csv_dir(scope).mkdir(parents=True, exist_ok=True)
         scope_fig_dir(scope).mkdir(parents=True, exist_ok=True)

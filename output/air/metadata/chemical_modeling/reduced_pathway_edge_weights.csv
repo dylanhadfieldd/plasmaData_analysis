@@ -1,0 +1,10 @@
+reaction,weight,reaction_latex
+e + N2 -> e + N2(C),0.5,$e + N_2 \rightarrow e + N_2(C)$
+e + N2 -> 2e + N2+,0.33333333333333304,$e + N_2 \rightarrow 2e + N_2^{+}$
+e + N2 -> e + N + N,0.1666666666666664,$e + N_2 \rightarrow e + N + N$
+e + N2+ -> e + N2+(B),0.33333333333333304,$e + N_2^{+} \rightarrow e + N_2^{+}(B)$
+Ar* + N2 -> Ar + N2(C),0.25,$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$
+e + O2 -> e + O + O,0.25,$e + O_2 \rightarrow e + O + O$
+e + O2 -> O2-,0.3333333333333336,$e + O_2 \rightarrow O_2^{-}$
+N + O2 -> NO + O,0.0,$N + O_2 \rightarrow NO + O$
+O + H2O_trace -> 2OH,0.18640228657539878,$O + H_2O_{trace} \rightarrow 2OH$

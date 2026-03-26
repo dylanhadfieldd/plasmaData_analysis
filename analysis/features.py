@@ -6,9 +6,9 @@ from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
+from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_csv_path
 
-LONG_CSV = Path("output/spectra_long.csv")
-OUT_CSV = Path("output/features.csv")
+LONG_CSV = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 BANDS_CSV = Path("configs/wavelengths.csv")
 NORMALIZE = "none"
 DEFAULT_BANDS: List[Tuple[str, float, float]] = [
@@ -78,14 +78,23 @@ def normalize_curve(wl: np.ndarray, y: np.ndarray) -> np.ndarray:
     raise ValueError(f"Unknown NORMALIZE mode: {NORMALIZE}")
 
 
-def write_dataset_features(features_df: pd.DataFrame, out_root: Path) -> None:
-    for dataset, g in features_df.groupby("dataset", dropna=False):
-        ds_dir = out_root / str(dataset)
-        ds_dir.mkdir(parents=True, exist_ok=True)
-        g.to_csv(ds_dir / "features.csv", index=False)
+def write_scoped_features(features_df: pd.DataFrame) -> List[Path]:
+    written: List[Path] = []
+    for scope in SCOPES:
+        if scope == "meta":
+            part = features_df.copy()
+        else:
+            part = features_df[features_df["dataset"].astype(str).str.lower() == scope].copy()
+        out_path = metadata_csv_path(scope, "features", "features.csv")
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        part.to_csv(out_path, index=False)
+        written.append(out_path)
+    return written
 
 
 def main() -> int:
+    ensure_all_scope_layouts()
+
     if not LONG_CSV.exists():
         print(f"Missing {LONG_CSV}. Run preprocess.py first.")
         return 1
@@ -146,13 +155,11 @@ def main() -> int:
         rows.append(out)
 
     out_df = pd.DataFrame(rows).sort_values(["dataset", "sample_id"], ignore_index=True)
-    OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
-    out_df.to_csv(OUT_CSV, index=False)
-    write_dataset_features(out_df, OUT_CSV.parent)
+    written = write_scoped_features(out_df)
 
-    print(f"Wrote {OUT_CSV} ({len(out_df)} rows)")
-    for dataset in sorted(out_df["dataset"].astype(str).unique()):
-        print(f"Wrote {OUT_CSV.parent / dataset / 'features.csv'}")
+    print(f"Wrote {metadata_csv_path('meta', 'features', 'features.csv')} ({len(out_df)} rows)")
+    for path in sorted(written):
+        print(f"Wrote {path}")
     return 0
 
 

@@ -1,0 +1,4 @@
+PC1,PC2,PC3,sample_id,dataset,param_set,trial,channel,normalize
+45.99615355000942,-0.6591282894509621,1.1380574832483071e-14,air__100H.cont.trial__bulk,air,100H.cont.trial,,bulk,none
+47.37024559082804,0.6526928444526613,1.1380574832483648e-14,air__1H.1A-CONT__bulk,air,1H.1A-CONT,,bulk,none
+-93.36639914083756,0.006435444998267505,1.1380574832483349e-14,air__1H.9A__bulk,air,1H.9A,,bulk,none

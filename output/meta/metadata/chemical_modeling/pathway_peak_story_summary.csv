@@ -1,0 +1,18 @@
+reaction,reaction_latex,line_name,line_label,wavelength_nm,mean_link_weight,sum_link_weight,mean_line_strength_norm,n_groups
+Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,N2_337,$N_2$ (337.0 nm),337.0,0.09447888329113163,0.6613521830379214,0.9389553178099433,7
+Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,Ar_750,$Ar$ (750.4 nm),750.4,0.0,0.0,0.0,7
+Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0,7
+O + H2O_trace -> 2OH,$O + H_2O_{trace} \rightarrow 2OH$,OH_308,$OH$ (308.0 nm),308.0,0.12073921395857141,0.6036960697928571,0.23190844102290725,5
+O + H2O_trace -> 2OH,$O + H_2O_{trace} \rightarrow 2OH$,O_777,$O$ (777.2 nm),777.2,0.0,0.0,0.0,5
+e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,0.1827605449837614,1.827605449837614,0.49668053176896887,10
+e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,0.035237485336917465,0.3523748533691746,0.053258329869082,10
+e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0,10
+e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,N2CB_370.9,$N_2(C \rightarrow B)$ (370.9 nm),370.9,0.11563251894782481,1.156325189478248,0.02711705748604329,10
+e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,N2_337,$N_2$ (337.0 nm),337.0,0.06486484571960158,0.6486484571960158,0.6572687224669603,10
+e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0,10
+e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,N2CB_357.6,$N_2(C \rightarrow B)$ (357.6 nm),357.6,0.0,0.0,0.0,10
+e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,0.12771151585028073,1.2771151585028073,0.053258329869082,10
+e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,0.09028651447039815,0.9028651447039815,0.10345873397253572,10
+e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0,10
+e + O2 -> e + O + O,$e + O_2 \rightarrow e + O + O$,OH_308,$OH$ (308.0 nm),308.0,0.03954252271242606,0.1977126135621303,0.23190844102290725,5
+e + O2 -> e + O + O,$e + O_2 \rightarrow e + O + O$,O_777,$O$ (777.2 nm),777.2,0.0,0.0,0.0,5

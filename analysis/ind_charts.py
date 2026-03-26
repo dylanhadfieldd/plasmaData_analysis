@@ -2,15 +2,14 @@
 from __future__ import annotations
 
 import re
-from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
+from analysis.output_paths import ensure_all_scope_layouts, metadata_csv_path, spectral_individual_dir
 
-INPUT_LONG = Path("output/spectra_long.csv")
-OUTPUT_ROOT = Path("output")
+INPUT_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 LOG_Y = False
 NORMALIZE_Y = True
 DPI = 200
@@ -39,6 +38,7 @@ def make_title(row: pd.Series) -> str:
 
 def main() -> int:
     apply_publication_style()
+    ensure_all_scope_layouts()
 
     if not INPUT_LONG.exists():
         print(f"Missing {INPUT_LONG}. Run preprocess.py first.")
@@ -57,7 +57,7 @@ def main() -> int:
         row = g.iloc[0]
         dataset = str(row["dataset"])
         plot_name = safe_name(str(sample_id)) + ".png"
-        out_path = OUTPUT_ROOT / dataset / "spectral" / "base" / "charts" / "individual" / plot_name
+        out_path = spectral_individual_dir(dataset) / plot_name
 
         try:
             fig, ax = plt.subplots(figsize=(10, 5.5))

@@ -130,10 +130,10 @@ def build_scope_workbook(scope: str) -> Path:
     if not scope_dir.exists():
         raise FileNotFoundError(f"Missing scope directory: {scope_dir}")
 
-    raw_long = read_csv_or_note(scope_dir / "spectral" / "base" / "raw" / "spectra_long.csv")
-    pca_var = read_csv_or_note(scope_dir / "pca" / "pca_explained_variance.csv")
-    pca_scores = read_csv_or_note(scope_dir / "pca" / "pca_scores.csv")
-    pca_loadings = read_csv_or_note(scope_dir / "pca" / "pca_loadings.csv")
+    raw_long = read_csv_or_note(scope_dir / "metadata" / "spectral" / "spectra_long.csv")
+    pca_var = read_csv_or_note(scope_dir / "metadata" / "pca" / "pca_explained_variance.csv")
+    pca_scores = read_csv_or_note(scope_dir / "metadata" / "pca" / "pca_scores.csv")
+    pca_loadings = read_csv_or_note(scope_dir / "metadata" / "pca" / "pca_loadings.csv")
 
     wb = Workbook()
     add_page_one_figures(wb.active, scope, scope_dir)

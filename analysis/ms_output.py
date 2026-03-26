@@ -11,13 +11,12 @@ from urllib.request import Request, urlopen
 
 import numpy as np
 import pandas as pd
+from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_csv_path, metadata_section_dir
 
-IN_LONG = Path("output/spectra_long.csv")
+IN_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 NIST_CSV = Path("configs/nist_lines.csv")
 NIST_FETCH_SPECIES_CSV = Path("configs/nist_fetch_species.csv")
 TARGET_SPECIES_CSV = Path("configs/target_species_lines.csv")
-OUTPUT_ROOT = Path("output")
-SCOPES = ("air", "diameter", "meta")
 NIST_ENDPOINT = "https://physics.nist.gov/cgi-bin/ASD/lines1.pl"
 NIST_TIMEOUT_S = 45
 
@@ -86,7 +85,7 @@ def require_columns(df: pd.DataFrame, cols: Sequence[str], source_name: str) -> 
 
 
 def scope_raw_dir(scope: str) -> Path:
-    return OUTPUT_ROOT / scope / "spectral" / "base" / "raw"
+    return metadata_section_dir(scope, "spectral")
 
 
 def write_scoped_csv(df: pd.DataFrame, file_name: str, allow_global: bool = False) -> List[Path]:
@@ -794,6 +793,8 @@ def write_excel(
 
 
 def main() -> int:
+    ensure_all_scope_layouts()
+
     if not IN_LONG.exists():
         print(f"Missing {IN_LONG}. Run preprocess.py first.")
         return 1

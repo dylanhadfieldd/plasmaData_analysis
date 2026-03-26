@@ -6,13 +6,12 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_section_dir
 
 TRIAL_SUFFIX_RE = re.compile(r"^(?P<base>.+)\.(?P<trial>\d+)$")
 SAFE_TEXT_RE = re.compile(r"[^a-z0-9]+")
 INPUT_DIRS = [Path("data/air"), Path("data/diameter")]
-OUTPUT_DIR = Path("output")
 WAVELENGTH_ROUND = 3
-SCOPES = ("air", "diameter", "meta")
 
 
 def split_base_and_trial(stem: str) -> Tuple[str, Optional[int]]:
@@ -137,9 +136,9 @@ def write_outputs(metadata_df: pd.DataFrame, spectra_long_df: pd.DataFrame, out_
     wide.to_csv(out_dir / "spectra_wide.csv", index=False)
 
 
-def write_scoped_base_raw(metadata_df: pd.DataFrame, spectra_long_df: pd.DataFrame, out_root: Path) -> None:
+def write_scoped_base_raw(metadata_df: pd.DataFrame, spectra_long_df: pd.DataFrame) -> None:
     for scope in SCOPES:
-        raw_dir = out_root / scope / "spectral" / "base" / "raw"
+        raw_dir = metadata_section_dir(scope, "spectral")
         raw_dir.mkdir(parents=True, exist_ok=True)
         if scope == "meta":
             m_part = metadata_df.copy()
@@ -152,6 +151,8 @@ def write_scoped_base_raw(metadata_df: pd.DataFrame, spectra_long_df: pd.DataFra
 
 
 def main() -> int:
+    ensure_all_scope_layouts()
+
     in_files = find_input_files()
     if not in_files:
         print(f"No files found under: {', '.join(str(p) for p in INPUT_DIRS)}")
@@ -218,23 +219,11 @@ def main() -> int:
         ["dataset", "sample_id", "wavelength_nm"], ignore_index=True
     )
 
-    write_outputs(metadata_df, spectra_long_df, OUTPUT_DIR)
-    for dataset in sorted(spectra_long_df["dataset"].dropna().astype(str).unique()):
-        ds_meta = metadata_df[metadata_df["dataset"] == dataset].reset_index(drop=True)
-        ds_long = spectra_long_df[spectra_long_df["dataset"] == dataset].reset_index(drop=True)
-        write_outputs(ds_meta, ds_long, OUTPUT_DIR / dataset)
-    write_scoped_base_raw(metadata_df, spectra_long_df, OUTPUT_DIR)
+    write_scoped_base_raw(metadata_df, spectra_long_df)
 
     print("\nWrote:")
-    print(f"  {OUTPUT_DIR / 'metadata.csv'}")
-    print(f"  {OUTPUT_DIR / 'spectra_long.csv'}")
-    print(f"  {OUTPUT_DIR / 'spectra_wide.csv'}")
-    for dataset in sorted(spectra_long_df["dataset"].dropna().astype(str).unique()):
-        print(f"  {OUTPUT_DIR / dataset / 'metadata.csv'}")
-        print(f"  {OUTPUT_DIR / dataset / 'spectra_long.csv'}")
-        print(f"  {OUTPUT_DIR / dataset / 'spectra_wide.csv'}")
     for scope in SCOPES:
-        raw_dir = OUTPUT_DIR / scope / "spectral" / "base" / "raw"
+        raw_dir = metadata_section_dir(scope, "spectral")
         print(f"  {raw_dir / 'metadata.csv'}")
         print(f"  {raw_dir / 'spectra_long.csv'}")
         print(f"  {raw_dir / 'spectra_wide.csv'}")

@@ -1,0 +1,16 @@
+dataset,param_set,channel,species,targets_total,targets_matched,match_rate,mean_delta_nm,mean_matched_peak_intensity
+air,100H.cont.trial,bulk,N2,7,4,0.5714285714285714,0.45000000000000284,5.144349441478761e-05
+air,100H.cont.trial,bulk,N2+,2,2,1.0,0.75,3.116119361999688e-05
+air,100H.cont.trial,bulk,O I,2,0,0.0,,
+air,100H.cont.trial,bulk,O II,2,0,0.0,,
+air,100H.cont.trial,bulk,OH,2,1,0.5,0.5,2.427266185956116e-05
+air,1H.1A-CONT,bulk,N2,7,4,0.5714285714285714,1.0500000000000114,5.332752971856432e-05
+air,1H.1A-CONT,bulk,N2+,2,1,0.5,0.5,5.367306342915215e-05
+air,1H.1A-CONT,bulk,O I,2,0,0.0,,
+air,1H.1A-CONT,bulk,O II,2,0,0.0,,
+air,1H.1A-CONT,bulk,OH,2,0,0.0,,
+air,1H.9A,bulk,N2,7,5,0.7142857142857143,0.37999999999999545,0.0001688961319978829
+air,1H.9A,bulk,N2+,2,1,0.5,0.30000000000001137,6.715211254321032e-05
+air,1H.9A,bulk,O I,2,1,0.5,0.39999999999997726,3.3149731576002154e-05
+air,1H.9A,bulk,O II,2,1,0.5,1.6000000000000227,4.027186133675721e-05
+air,1H.9A,bulk,OH,2,0,0.0,,

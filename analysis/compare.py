@@ -2,16 +2,15 @@
 from __future__ import annotations
 
 import re
-from pathlib import Path
 from typing import List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes
+from analysis.output_paths import ensure_all_scope_layouts, metadata_csv_path, spectral_compared_dir
 
-INPUT_LONG = Path("output/spectra_long.csv")
-OUTPUT_ROOT = Path("output")
+INPUT_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 WAVELENGTH_ROUND = 3
 DPI = 200
 SHOW_STD_BAND = True
@@ -132,6 +131,7 @@ def plot_air_pairwise_tables(air_tables: List[pd.DataFrame], out_dir: Path) -> L
 
 def main() -> int:
     apply_publication_style()
+    ensure_all_scope_layouts()
 
     if not INPUT_LONG.exists():
         print(f"Missing {INPUT_LONG}. Run preprocess.py first.")
@@ -161,22 +161,18 @@ def main() -> int:
         print("No groups successfully averaged.")
         return 2
 
-    meta_compared_dir = OUTPUT_ROOT / "meta" / "spectral" / "base" / "charts" / "compared"
+    meta_compared_dir = spectral_compared_dir("meta")
     meta_compared_dir.mkdir(parents=True, exist_ok=True)
-    output_csv = meta_compared_dir / "combined_averages_long.csv"
     output_png = meta_compared_dir / "combined.png"
 
     combined_long = pd.concat(avg_tables, ignore_index=True)
-    combined_long.to_csv(output_csv, index=False)
     plot_tables(avg_tables, output_png, "Averaged Spectra by Dataset / Parameter Set / Channel")
 
-    for dataset, ds_table in combined_long.groupby("dataset", dropna=False):
+    for dataset, _ in combined_long.groupby("dataset", dropna=False):
         ds_tables = [t for t in avg_tables if str(t.iloc[0]["dataset"]) == str(dataset)]
-        ds_dir = OUTPUT_ROOT / safe_name(str(dataset)) / "spectral" / "base" / "charts" / "compared"
+        ds_dir = spectral_compared_dir(safe_name(str(dataset)))
         ds_dir.mkdir(parents=True, exist_ok=True)
-        ds_csv = ds_dir / "averages_long.csv"
         ds_png = ds_dir / f"{safe_name(str(dataset))}.png"
-        ds_table.to_csv(ds_csv, index=False)
         plot_tables(ds_tables, ds_png, f"Averaged Spectra - {dataset}")
         if str(dataset).lower() == "air":
             pair_paths = plot_air_pairwise_tables(ds_tables, ds_dir)
@@ -184,11 +180,9 @@ def main() -> int:
                 print(f"  {p}")
 
     print("\nWrote:")
-    print(f"  {output_csv}")
     print(f"  {output_png}")
     for dataset in sorted(combined_long["dataset"].astype(str).unique()):
-        ds_dir = OUTPUT_ROOT / safe_name(dataset) / "spectral" / "base" / "charts" / "compared"
-        print(f"  {ds_dir / 'averages_long.csv'}")
+        ds_dir = spectral_compared_dir(safe_name(dataset))
         print(f"  {ds_dir / (safe_name(dataset) + '.png')}")
     print(f"\nDone. Groups OK={ok} FAIL={bad}")
     return 0 if bad == 0 else 2

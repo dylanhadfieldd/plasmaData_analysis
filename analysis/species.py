@@ -7,11 +7,10 @@ from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
+from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_csv_path
 
-IN_LONG = Path("output/spectra_long.csv")
+IN_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 WINDOWS_CSV = Path("configs/species_windows.csv")
-OUT_CSV = Path("output/species_features.csv")
-OUT_SUMMARY_CSV = Path("output/species_summary.csv")
 SAFE_TEXT_RE = re.compile(r"[^a-z0-9]+")
 
 REQUIRED_COLS = {"sample_id", "wavelength_nm", "irradiance_W_m2_nm"}
@@ -126,14 +125,27 @@ def add_grouped_species_features(row: Dict[str, object]) -> None:
     row["balmer_to_n2plus_ratio"] = safe_ratio(balmer, n2_plus)
 
 
-def write_dataset_csvs(df: pd.DataFrame, out_path: Path) -> None:
-    for dataset, g in df.groupby("dataset", dropna=False):
-        ds_dir = out_path.parent / str(dataset)
-        ds_dir.mkdir(parents=True, exist_ok=True)
-        g.to_csv(ds_dir / out_path.name, index=False)
+def write_scoped_csvs(df: pd.DataFrame, section: str, filename: str, allow_global: bool = False) -> List[Path]:
+    written: List[Path] = []
+    for scope in SCOPES:
+        if scope == "meta":
+            part = df.copy()
+        elif "dataset" in df.columns:
+            part = df[df["dataset"].astype(str).str.lower() == scope].copy()
+        elif allow_global:
+            part = df.copy()
+        else:
+            part = pd.DataFrame(columns=df.columns)
+        out_path = metadata_csv_path(scope, section, filename)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        part.to_csv(out_path, index=False)
+        written.append(out_path)
+    return written
 
 
 def main() -> int:
+    ensure_all_scope_layouts()
+
     if not IN_LONG.exists():
         print(f"Missing {IN_LONG}. Run preprocess.py first.")
         return 1
@@ -179,9 +191,7 @@ def main() -> int:
         return 2
 
     features_df = pd.DataFrame(rows).sort_values(["dataset", "sample_id"], ignore_index=True)
-    OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
-    features_df.to_csv(OUT_CSV, index=False)
-    write_dataset_csvs(features_df, OUT_CSV)
+    features_written = write_scoped_csvs(features_df, "species", "species_features.csv")
 
     summary_cols = [c for c in features_df.columns if c.endswith("_area") or c.endswith("_ratio")]
     summary = (
@@ -190,14 +200,12 @@ def main() -> int:
         .reset_index()
     )
     summary.columns = ["__".join([str(x) for x in col if str(x) != ""]).strip("__") for col in summary.columns]
-    summary.to_csv(OUT_SUMMARY_CSV, index=False)
-    write_dataset_csvs(summary, OUT_SUMMARY_CSV)
+    summary_written = write_scoped_csvs(summary, "species", "species_summary.csv")
 
-    print(f"Wrote {OUT_CSV} ({len(features_df)} rows)")
-    print(f"Wrote {OUT_SUMMARY_CSV}")
-    for dataset in sorted(features_df["dataset"].astype(str).unique()):
-        print(f"Wrote {OUT_CSV.parent / dataset / OUT_CSV.name}")
-        print(f"Wrote {OUT_SUMMARY_CSV.parent / dataset / OUT_SUMMARY_CSV.name}")
+    print(f"Wrote {metadata_csv_path('meta', 'species', 'species_features.csv')} ({len(features_df)} rows)")
+    print(f"Wrote {metadata_csv_path('meta', 'species', 'species_summary.csv')}")
+    for path in sorted(set(features_written + summary_written)):
+        print(f"Wrote {path}")
     return 0
 
 

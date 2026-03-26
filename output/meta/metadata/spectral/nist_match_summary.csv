@@ -1,0 +1,53 @@
+dataset,param_set,channel,candidate_label,candidate_rows,matched_peak_count,score
+air,100H.cont.trial,bulk,Ar II,16,10,8.750989326420349
+air,100H.cont.trial,bulk,O II,8,6,4.101327480228575
+air,100H.cont.trial,bulk,N II,2,1,1.284352747436527
+air,100H.cont.trial,bulk,He I,1,1,0.9474094887607519
+air,100H.cont.trial,bulk,C I,1,1,0.3943839722353791
+air,1H.1A-CONT,bulk,Ar II,16,9,8.177026163562633
+air,1H.1A-CONT,bulk,O II,11,6,7.4044230661662525
+air,1H.1A-CONT,bulk,N II,1,1,0.28720776609798415
+air,1H.9A,bulk,Ar II,17,8,9.549409212493607
+air,1H.9A,bulk,O II,7,6,3.9568059375243734
+air,1H.9A,bulk,He I,2,2,1.171408771963041
+air,1H.9A,bulk,C I,3,2,1.0712825908595047
+air,1H.9A,bulk,N I,1,1,0.39015254964690027
+diameter,0.5mm,Base,O II,11,7,6.529567079270325
+diameter,0.5mm,Base,Ar II,9,6,4.971881260652762
+diameter,0.5mm,Base,Ar I,3,3,1.8896293816186622
+diameter,0.5mm,Base,He I,3,2,1.747537509243997
+diameter,0.5mm,Base,C I,1,1,0.3943839722353791
+diameter,0.5mm,Base,N I,1,1,0.39015254964690027
+diameter,0.5mm,Base,He II,1,1,0.27901191724071334
+diameter,0.5mm,Base,N II,1,1,0.27593818984548146
+diameter,0.5mm,Middle,O II,10,7,5.406537265361196
+diameter,0.5mm,Middle,Ar II,9,6,4.868304169252285
+diameter,0.5mm,Middle,He I,6,3,3.3490416326091714
+diameter,0.5mm,Middle,C I,5,3,2.9585339940799376
+diameter,0.5mm,Tip,Ar II,16,8,8.585068254419769
+diameter,0.5mm,Tip,O II,5,4,3.107456592977678
+diameter,0.5mm,Tip,N II,2,1,1.460157961236358
+diameter,0.5mm,Tip,Ar I,1,1,0.884486113568005
+diameter,0.5mm,Tip,N I,2,2,0.8565704600946602
+diameter,0.5mm,Tip,He I,2,1,0.7300335815447461
+diameter,1mm,0.5 cm below,Ar II,14,8,7.955911502020786
+diameter,1mm,0.5 cm below,O II,8,6,3.8986547829530016
+diameter,1mm,0.5 cm below,Ar I,2,2,1.4265518914223894
+diameter,1mm,0.5 cm below,N II,2,2,1.3956599500312448
+diameter,1mm,0.5 cm below,He I,2,2,1.1713481996942663
+diameter,1mm,Base,Ar II,17,9,8.371427571691017
+diameter,1mm,Base,O II,10,7,5.714967558363962
+diameter,1mm,Base,He I,1,1,0.9900867563520095
+diameter,1mm,Base,C I,1,1,0.3943839722353791
+diameter,1mm,Base,N II,1,1,0.3214400514304151
+diameter,1mm,Middle,Ar II,15,8,8.598878580385284
+diameter,1mm,Middle,O II,10,6,5.1213124478048915
+diameter,1mm,Middle,He I,1,1,0.9574048660293941
+diameter,1mm,Middle,O I,3,2,0.9561966008319746
+diameter,1mm,Middle,C I,1,1,0.47272383473574237
+diameter,1mm,Tip,Ar II,10,7,5.751078197993414
+diameter,1mm,Tip,O II,9,7,4.901104708751034
+diameter,1mm,Tip,He I,3,1,1.8267512120155627
+diameter,1mm,Tip,H I,3,1,1.8106218319359562
+diameter,1mm,Tip,C I,1,1,0.9688044952528684
+diameter,1mm,Tip,N II,1,1,0.29472443265547443

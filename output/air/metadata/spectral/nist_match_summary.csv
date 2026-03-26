@@ -1,0 +1,14 @@
+dataset,param_set,channel,candidate_label,candidate_rows,matched_peak_count,score
+air,100H.cont.trial,bulk,Ar II,16,10,8.750989326420349
+air,100H.cont.trial,bulk,O II,8,6,4.101327480228575
+air,100H.cont.trial,bulk,N II,2,1,1.284352747436527
+air,100H.cont.trial,bulk,He I,1,1,0.9474094887607519
+air,100H.cont.trial,bulk,C I,1,1,0.3943839722353791
+air,1H.1A-CONT,bulk,Ar II,16,9,8.177026163562633
+air,1H.1A-CONT,bulk,O II,11,6,7.4044230661662525
+air,1H.1A-CONT,bulk,N II,1,1,0.28720776609798415
+air,1H.9A,bulk,Ar II,17,8,9.549409212493607
+air,1H.9A,bulk,O II,7,6,3.9568059375243734
+air,1H.9A,bulk,He I,2,2,1.171408771963041
+air,1H.9A,bulk,C I,3,2,1.0712825908595047
+air,1H.9A,bulk,N I,1,1,0.39015254964690027
