@@ -18,7 +18,7 @@ The air scope currently writes 38 figures under `output/air`:
 - `chemspecies/figures/air_reactive_auc/.../*.png` (7): reactive-species AUC charts (4 condition-wise species mixes + 3 species-wise trends across air input), providing the direct intensity-based perspective behind the normalized species summaries.
 - `pca/pca_scores.png` (1): low-dimensional separation of air samples with dominant PC1 loading. Compared with diameter PCA (higher PC2 share), this supports the meta result that the combined dataset remains PC1-dominant with a secondary air-vs-diameter axis.
 
-### Inline air figures
+
 
 ![Air individual spectrum example](output/air/spectral/base/charts/individual/air_100h_1_bulk.png)
 ![Air composed spectrum example](output/air/spectral/base/charts/composed/100h.png)
