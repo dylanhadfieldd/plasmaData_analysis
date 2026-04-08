@@ -131,7 +131,7 @@ def run_pca_block(df: pd.DataFrame, scope: str, color_col: Optional[str] = None)
             ax.set_title(f"PCA scores ({scope})")
             style_axes(ax, grid_axis="both")
             fig.tight_layout()
-            fig.savefig(png_dir / "pca_scores.png", dpi=170)
+            fig.savefig(png_dir / "Fig1.png", dpi=170)
             plt.close(fig)
         except ImportError:
             print("matplotlib not available, skipping score scatter plot")

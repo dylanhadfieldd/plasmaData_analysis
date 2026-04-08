@@ -4,27 +4,33 @@ air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,O + H2O_trace -> 2OH,$O + 
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.0,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.0,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,1.14242e-06,0.1422782934127076,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.0,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,2.7863249999999996e-08,0.003470121022856414,0.0
-air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_370.9,$N_2(C \rightarrow B)$ (370.9 nm),370.9,2.309715e-08,0.0028765454777553955,0.5
+air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.0,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,0.0,0.0,0.0
+air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2_379,$N_2$ (379.0 nm),379.0,6.376749999999998e-07,0.0794167738239424,0.4825226063174726
+air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_370.9,$N_2(C \rightarrow B)$ (370.9 nm),370.9,2.309715e-08,0.0028765454777553955,0.017477393682527334
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2_337,$N_2$ (337.0 nm),337.0,0.0,0.0,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_357.6,$N_2(C \rightarrow B)$ (357.6 nm),357.6,0.0,0.0,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,2.7863249999999996e-08,0.003470121022856414,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,6.639999999999985e-10,8.269531943246585e-05,0.0
+air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,0.0,0.0,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + O2 -> e + O + O,$e + O_2 \rightarrow e + O + O$,0.25,OH_308,$OH$ (308.0 nm),308.0,8.029474999999998e-06,1.0,0.25
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,e + O2 -> e + O + O,$e + O_2 \rightarrow e + O + O$,0.25,O_777,$O$ (777.2 nm),777.2,,0.0,0.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.25,N2_337,$N_2$ (337.0 nm),337.0,8.909049999999996e-06,1.0,0.25
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.25,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.25,Ar_750,$Ar$ (750.4 nm),750.4,,0.0,0.0
-air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,1.0,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,2.083685e-06,0.23388408416161105,0.744176270723969
-air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,1.0,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,7.163035e-07,0.08040178245716438,0.2558237292760309
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,1.0,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,2.153309999999999e-06,0.2416991710676223,0.4347224379875349
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,1.0,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,2.083685e-06,0.23388408416161105,0.4206661480223734
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,1.0,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,7.163035e-07,0.08040178245716438,0.14461141399009167
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,1.0,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2_337,$N_2$ (337.0 nm),337.0,8.909049999999996e-06,1.0,0.4214111019845565
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_370.9,$N_2(C \rightarrow B)$ (370.9 nm),370.9,1.6614475000000007e-06,0.18648986143303736,0.07858889801544353
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_357.6,$N_2(C \rightarrow B)$ (357.6 nm),357.6,0.0,0.0,0.0
-air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,1.0,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,7.163035e-07,0.08040178245716438,0.9432082882887629
-air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,1.0,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,4.3129499999999976e-08,0.00484108855601888,0.056791711711237175
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2_379,$N_2$ (379.0 nm),379.0,0.0,0.0,0.0
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,1.0,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,2.153309999999999e-06,0.2416991710676223,0.7392722255276211
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,1.0,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,7.163035e-07,0.08040178245716438,0.24592059786943102
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,1.0,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,4.3129499999999976e-08,0.00484108855601888,0.014807176602947801
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,1.0,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.25,N2_337,$N_2$ (337.0 nm),337.0,9.280999999999981e-06,1.0,0.25
 air,1H.9A,bulk,air | 1H.9A | bulk,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.25,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
@@ -34,12 +40,15 @@ air,1H.9A,bulk,air | 1H.9A | bulk,O + H2O_trace -> 2OH,$O + H_2O_{trace} \righta
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.0,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.0,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,1.8222024999999994e-06,0.19633687102682934,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.0,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,1.720200000000001e-06,0.1853464066372163,0.0
-air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2_337,$N_2$ (337.0 nm),337.0,9.280999999999981e-06,1.0,0.5
+air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.0,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,2.8696349999999995e-06,0.30919459110009756,0.0
+air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2_337,$N_2$ (337.0 nm),337.0,9.280999999999981e-06,1.0,0.29276586616868144
+air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2_379,$N_2$ (379.0 nm),379.0,6.569550000000009e-06,0.7078493696799938,0.20723413383131858
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_357.6,$N_2(C \rightarrow B)$ (357.6 nm),357.6,0.0,0.0,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.5,N2CB_370.9,$N_2(C \rightarrow B)$ (370.9 nm),370.9,0.0,0.0,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,1.720200000000001e-06,0.1853464066372163,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,6.655749999999991e-07,0.07171371619437567,0.0
+air,1H.9A,bulk,air | 1H.9A | bulk,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,2.8696349999999995e-06,0.30919459110009756,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,e + O2 -> e + O + O,$e + O_2 \rightarrow e + O + O$,0.25,OH_308,$OH$ (308.0 nm),308.0,9.508000000000011e-07,0.10244585712746504,0.25
 air,1H.9A,bulk,air | 1H.9A | bulk,e + O2 -> e + O + O,$e + O_2 \rightarrow e + O + O$,0.25,O_777,$O$ (777.2 nm),777.2,,0.0,0.0

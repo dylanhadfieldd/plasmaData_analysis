@@ -85,7 +85,6 @@ def add_page_one_figures(ws, scope: str, scope_dir: Path) -> None:
         ws["A3"] = "No figures found."
         return
 
-    # Place all figures without captions in a two-column grid.
     for idx, fig_path in enumerate(figures):
         col = "A" if idx % 2 == 0 else "J"
         row = 3 + (idx // 2) * 20
@@ -121,7 +120,7 @@ def add_page_three_pca(
     ws.cell(row=row, column=1, value="PCA Loadings").font = Font(name="Calibri", size=10, bold=True)
     write_dataframe(ws, pca_loadings, start_row=row + 1, start_col=1)
 
-    embed_image(ws, scope_dir / "pca" / "pca_scores.png", "J3", max_w=430, max_h=240)
+    embed_image(ws, scope_dir / "pca" / "Fig1.png", "J3", max_w=430, max_h=240)
     ws.freeze_panes = "A4"
 
 

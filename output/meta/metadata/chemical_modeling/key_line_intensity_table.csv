@@ -6,11 +6,13 @@ air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2CB_353.6,353.6,0.0,0.0,2
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2CB_357.6,357.6,0.0,0.0,2.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2CB_370.9,370.9,2.309715e-08,2.309715e-08,1.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2CB_375.4,375.4,0.0,0.0,2.0
+air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2_379,379.0,6.376749999999998e-07,6.376749999999998e-07,1.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2CB_380.4,380.4,0.0,0.0,2.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2plus_391,391.44,0.0,0.0,2.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2CB_394.2,394.2,1.14242e-06,2.28484e-06,2.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2CB_399.7,399.7,2.7863249999999996e-08,5.572649999999999e-08,2.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2CB_405.8,405.8,6.639999999999985e-10,1.327999999999997e-09,2.0
+air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N2plus_428,428.0,0.0,0.0,1.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,Hbeta_486,486.1,0.0,0.0,1.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,N_672,672.0,,,0.0
 air,100H.cont.trial,bulk,air | 100H.cont.trial | bulk,Ar_750,750.4,,,0.0
@@ -22,11 +24,13 @@ air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2CB_353.6,353.6,0.0,0.0,2.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2CB_357.6,357.6,0.0,0.0,2.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2CB_370.9,370.9,1.6614475000000007e-06,1.6614475000000007e-06,1.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2CB_375.4,375.4,0.0,0.0,2.0
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2_379,379.0,0.0,0.0,1.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2CB_380.4,380.4,0.0,0.0,2.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2plus_391,391.44,0.0,0.0,2.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2CB_394.2,394.2,2.083685e-06,4.16737e-06,2.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2CB_399.7,399.7,7.163035e-07,1.432607e-06,2.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2CB_405.8,405.8,4.3129499999999976e-08,8.625899999999995e-08,2.0
+air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N2plus_428,428.0,2.153309999999999e-06,2.153309999999999e-06,1.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,Hbeta_486,486.1,0.0,0.0,1.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,N_672,672.0,,,0.0
 air,1H.1A-CONT,bulk,air | 1H.1A-CONT | bulk,Ar_750,750.4,,,0.0
@@ -38,11 +42,13 @@ air,1H.9A,bulk,air | 1H.9A | bulk,N2CB_353.6,353.6,0.0,0.0,2.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N2CB_357.6,357.6,0.0,0.0,2.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N2CB_370.9,370.9,0.0,0.0,1.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N2CB_375.4,375.4,0.0,0.0,2.0
+air,1H.9A,bulk,air | 1H.9A | bulk,N2_379,379.0,6.569550000000009e-06,6.569550000000009e-06,1.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N2CB_380.4,380.4,0.0,0.0,2.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N2plus_391,391.44,0.0,0.0,2.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N2CB_394.2,394.2,1.8222024999999994e-06,3.644404999999999e-06,2.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N2CB_399.7,399.7,1.720200000000001e-06,3.440400000000002e-06,2.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N2CB_405.8,405.8,6.655749999999991e-07,1.3311499999999983e-06,2.0
+air,1H.9A,bulk,air | 1H.9A | bulk,N2plus_428,428.0,2.8696349999999995e-06,2.8696349999999995e-06,1.0
 air,1H.9A,bulk,air | 1H.9A | bulk,Hbeta_486,486.1,0.0,0.0,1.0
 air,1H.9A,bulk,air | 1H.9A | bulk,N_672,672.0,,,0.0
 air,1H.9A,bulk,air | 1H.9A | bulk,Ar_750,750.4,,,0.0
@@ -54,11 +60,13 @@ diameter,0.5mm,Base,diameter | 0.5mm | Base,N2CB_353.6,353.6,0.0,0.0,2.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N2CB_357.6,357.6,0.0,0.0,2.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N2CB_370.9,370.9,2.4000000000000215e-09,2.4000000000000215e-09,1.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N2CB_375.4,375.4,0.0,0.0,2.0
+diameter,0.5mm,Base,diameter | 0.5mm | Base,N2_379,379.0,3.450000000000001e-06,3.450000000000001e-06,1.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N2CB_380.4,380.4,0.0,0.0,2.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N2plus_391,391.44,0.0,0.0,2.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N2CB_394.2,394.2,4.4225e-06,8.845e-06,2.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N2CB_399.7,399.7,2.225e-09,4.45e-09,2.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N2CB_405.8,405.8,1.000000000000009e-10,2.000000000000018e-10,2.0
+diameter,0.5mm,Base,diameter | 0.5mm | Base,N2plus_428,428.0,5.149999999999998e-06,5.149999999999998e-06,1.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,Hbeta_486,486.1,0.0,0.0,1.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,N_672,672.0,,,0.0
 diameter,0.5mm,Base,diameter | 0.5mm | Base,Ar_750,750.4,,,0.0
@@ -70,11 +78,13 @@ diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2CB_353.6,353.6,0.0,0.0,2.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2CB_357.6,357.6,0.0,0.0,2.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2CB_370.9,370.9,5.555e-07,5.555e-07,1.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2CB_375.4,375.4,0.0,0.0,2.0
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2_379,379.0,5.750000000000004e-06,5.750000000000004e-06,1.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2CB_380.4,380.4,0.0,0.0,2.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2plus_391,391.44,0.0,0.0,2.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2CB_394.2,394.2,1.1350000000000001e-05,2.2700000000000003e-05,2.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2CB_399.7,399.7,2.0775e-06,4.155e-06,2.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2CB_405.8,405.8,1.2925e-06,2.585e-06,2.0
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N2plus_428,428.0,7.25e-06,7.25e-06,1.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,Hbeta_486,486.1,2.449999999999992e-09,2.449999999999992e-09,1.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,N_672,672.0,,,0.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,Ar_750,750.4,,,0.0
@@ -86,11 +96,13 @@ diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2CB_353.6,353.6,0.0,0.0,2.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2CB_357.6,357.6,0.0,0.0,2.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2CB_370.9,370.9,0.0,0.0,1.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2CB_375.4,375.4,0.0,0.0,2.0
+diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2_379,379.0,0.0,0.0,1.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2CB_380.4,380.4,0.0,0.0,2.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2plus_391,391.44,0.0,0.0,2.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2CB_394.2,394.2,1.7474999999999998e-06,3.4949999999999996e-06,2.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2CB_399.7,399.7,3.999999999999996e-09,7.999999999999992e-09,2.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2CB_405.8,405.8,4.2499999999999884e-10,8.499999999999977e-10,2.0
+diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N2plus_428,428.0,1.685e-06,1.685e-06,1.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,Hbeta_486,486.1,0.0,0.0,1.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,N_672,672.0,,,0.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,Ar_750,750.4,,,0.0
@@ -102,11 +114,13 @@ diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2CB_353.6,353.6,0.0,0.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2CB_357.6,357.6,0.0,0.0,2.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2CB_370.9,370.9,1.1150000000000004e-08,1.1150000000000004e-08,1.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2CB_375.4,375.4,0.0,0.0,2.0
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2_379,379.0,8.700000000000001e-07,8.700000000000001e-07,1.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2CB_380.4,380.4,0.0,0.0,2.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2plus_391,391.44,0.0,0.0,2.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2CB_394.2,394.2,3.9500000000000003e-07,7.900000000000001e-07,2.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2CB_399.7,399.7,1.1699999999999999e-08,2.3399999999999998e-08,2.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2CB_405.8,405.8,2.79e-07,5.58e-07,2.0
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N2plus_428,428.0,0.0,0.0,1.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,Hbeta_486,486.1,0.0,0.0,1.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,N_672,672.0,,,0.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,Ar_750,750.4,,,0.0
@@ -118,11 +132,13 @@ diameter,1mm,Base,diameter | 1mm | Base,N2CB_353.6,353.6,0.0,0.0,2.0
 diameter,1mm,Base,diameter | 1mm | Base,N2CB_357.6,357.6,0.0,0.0,2.0
 diameter,1mm,Base,diameter | 1mm | Base,N2CB_370.9,370.9,0.0,0.0,1.0
 diameter,1mm,Base,diameter | 1mm | Base,N2CB_375.4,375.4,0.0,0.0,2.0
+diameter,1mm,Base,diameter | 1mm | Base,N2_379,379.0,1.7249999999999996e-06,1.7249999999999996e-06,1.0
 diameter,1mm,Base,diameter | 1mm | Base,N2CB_380.4,380.4,0.0,0.0,2.0
 diameter,1mm,Base,diameter | 1mm | Base,N2plus_391,391.44,0.0,0.0,2.0
 diameter,1mm,Base,diameter | 1mm | Base,N2CB_394.2,394.2,2.89625e-07,5.7925e-07,2.0
 diameter,1mm,Base,diameter | 1mm | Base,N2CB_399.7,399.7,2.999999999999994e-10,5.999999999999988e-10,2.0
 diameter,1mm,Base,diameter | 1mm | Base,N2CB_405.8,405.8,7.499999999999902e-11,1.4999999999999803e-10,2.0
+diameter,1mm,Base,diameter | 1mm | Base,N2plus_428,428.0,0.0,0.0,1.0
 diameter,1mm,Base,diameter | 1mm | Base,Hbeta_486,486.1,0.0,0.0,1.0
 diameter,1mm,Base,diameter | 1mm | Base,N_672,672.0,,,0.0
 diameter,1mm,Base,diameter | 1mm | Base,Ar_750,750.4,,,0.0
@@ -134,11 +150,13 @@ diameter,1mm,Middle,diameter | 1mm | Middle,N2CB_353.6,353.6,0.0,0.0,2.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N2CB_357.6,357.6,0.0,0.0,2.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N2CB_370.9,370.9,0.0,0.0,1.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N2CB_375.4,375.4,0.0,0.0,2.0
+diameter,1mm,Middle,diameter | 1mm | Middle,N2_379,379.0,2.9499999999999904e-06,2.9499999999999904e-06,1.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N2CB_380.4,380.4,0.0,0.0,2.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N2plus_391,391.44,0.0,0.0,2.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N2CB_394.2,394.2,1.0075000000000001e-05,2.0150000000000002e-05,2.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N2CB_399.7,399.7,5.150000000000002e-07,1.0300000000000003e-06,2.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N2CB_405.8,405.8,1.4449999999999997e-06,2.8899999999999994e-06,2.0
+diameter,1mm,Middle,diameter | 1mm | Middle,N2plus_428,428.0,1.1350000000000005e-05,1.1350000000000005e-05,1.0
 diameter,1mm,Middle,diameter | 1mm | Middle,Hbeta_486,486.1,0.0,0.0,1.0
 diameter,1mm,Middle,diameter | 1mm | Middle,N_672,672.0,,,0.0
 diameter,1mm,Middle,diameter | 1mm | Middle,Ar_750,750.4,,,0.0
@@ -150,11 +168,13 @@ diameter,1mm,Tip,diameter | 1mm | Tip,N2CB_353.6,353.6,0.0,0.0,2.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N2CB_357.6,357.6,0.0,0.0,2.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N2CB_370.9,370.9,2.4749999999999993e-08,2.4749999999999993e-08,1.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N2CB_375.4,375.4,0.0,0.0,2.0
+diameter,1mm,Tip,diameter | 1mm | Tip,N2_379,379.0,3.544999999999999e-06,3.544999999999999e-06,1.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N2CB_380.4,380.4,0.0,0.0,2.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N2plus_391,391.44,0.0,0.0,2.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N2CB_394.2,394.2,4e-07,8e-07,2.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N2CB_399.7,399.7,2.05e-09,4.1e-09,2.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N2CB_405.8,405.8,7.499999999999902e-11,1.4999999999999803e-10,2.0
+diameter,1mm,Tip,diameter | 1mm | Tip,N2plus_428,428.0,0.0,0.0,1.0
 diameter,1mm,Tip,diameter | 1mm | Tip,Hbeta_486,486.1,0.0,0.0,1.0
 diameter,1mm,Tip,diameter | 1mm | Tip,N_672,672.0,,,0.0
 diameter,1mm,Tip,diameter | 1mm | Tip,Ar_750,750.4,,,0.0

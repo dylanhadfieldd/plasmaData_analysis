@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
 from typing import Dict, List
 
@@ -8,17 +9,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-try:
-    from analysis.plot_style import apply_publication_style, style_axes
-except ModuleNotFoundError:
-    from plot_style import apply_publication_style, style_axes
+from analysis.plot_style import apply_publication_style, style_axes
 from analysis.output_paths import chemspecies_figures_dir, ensure_all_scope_layouts, metadata_csv_path
 
 
 CSV_OUT = metadata_csv_path("air", "chemspecies", "air_species_auc_normalized.csv")
 FIG_ROOT = chemspecies_figures_dir("air") / "air_reactive_auc"
-FIG_GROUP1_DIR = FIG_ROOT / "group1_auc_vs_species"
-FIG_GROUP2_DIR = FIG_ROOT / "group2_auc_vs_air_input"
 
 AIR_LONG_CSV = metadata_csv_path("air", "spectral", "spectra_long.csv")
 AIR_RAW_DIR = Path("data") / "air"
@@ -39,14 +35,7 @@ AIR_LEVEL_DISPLAY: Dict[str, str] = {
     "medium": "Medium Air",
     "high": "High Air",
 }
-AIR_LEVEL_FILE_TAG: Dict[str, str] = {
-    "none": "no_air",
-    "low": "low_air",
-    "medium": "medium_air",
-    "high": "high_air",
-}
 
-# Fixed integration windows [nm] for predefined target reactive species.
 SPECIES_WINDOWS: Dict[str, tuple[float, float]] = {
     "N2": (334.0, 340.0),
     "N2+": (388.0, 394.0),
@@ -68,13 +57,14 @@ def trapz(y: np.ndarray, x: np.ndarray) -> float:
 
 
 def prepare_output_dirs() -> None:
-    FIG_GROUP1_DIR.mkdir(parents=True, exist_ok=True)
-    FIG_GROUP2_DIR.mkdir(parents=True, exist_ok=True)
-    # Keep this chart set clean and deterministic.
-    for d in (FIG_GROUP1_DIR, FIG_GROUP2_DIR):
-        for old in d.glob("*"):
-            if old.is_file() and old.suffix.lower() in {".png", ".svg"}:
-                old.unlink()
+    FIG_ROOT.mkdir(parents=True, exist_ok=True)
+    for stale_dir in (FIG_ROOT / "group1_auc_vs_species", FIG_ROOT / "group2_auc_vs_air_input"):
+        if stale_dir.exists():
+            shutil.rmtree(stale_dir, ignore_errors=True)
+    for old in FIG_ROOT.glob("*.png"):
+        old.unlink()
+    for old in FIG_ROOT.glob("*.svg"):
+        old.unlink()
 
 
 def parse_air_file(path: Path) -> pd.DataFrame:
@@ -163,7 +153,6 @@ def per_spectrum_auc(df: pd.DataFrame) -> pd.DataFrame:
             continue
         air_level = AIR_LEVEL_MAP[level_key]
 
-        # Global background subtraction.
         bg = float(np.nanpercentile(y, 5))
         y_bg = np.clip(y - bg, 0.0, None)
         total_area = trapz(y_bg, wl)
@@ -217,10 +206,11 @@ def aggregate_condition_table(per_spec: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-def save_group1_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
+def save_group1_plots(df: pd.DataFrame, y_max: float, start_index: int) -> List[Path]:
     written: List[Path] = []
     levels_present = [lvl for lvl in AIR_LEVEL_ORDER if (df["air_input_level"] == lvl).any()]
-    for idx, level in enumerate(levels_present, start=1):
+    for offset, level in enumerate(levels_present):
+        fig_num = start_index + offset
         d = df[df["air_input_level"] == level].copy()
         if d.empty:
             continue
@@ -246,26 +236,27 @@ def save_group1_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
         ax.set_xticklabels(SPECIES_ORDER)
         ax.set_xlabel("Species")
         ax.set_ylabel("Normalized AUC (AUC_species / AUC_total) [a.u.]")
-        ax.set_title(f"Group 1 Chart {idx} - {AIR_LEVEL_DISPLAY[level]}: AUC vs Species")
+        ax.set_title(f"Fig{fig_num}. {AIR_LEVEL_DISPLAY[level]} AUC vs Species")
         style_axes(ax, grid_axis="y")
 
         handles = [plt.Rectangle((0, 0), 1, 1, color=SPECIES_COLORS[sp], label=sp) for sp in SPECIES_ORDER]
         ax.legend(handles=handles, title="Species", loc="upper right", fontsize=8.8, title_fontsize=9.0)
         fig.tight_layout()
 
-        png = FIG_GROUP1_DIR / f"group1_chart{idx}_{AIR_LEVEL_FILE_TAG[level]}_auc_vs_species.png"
+        png = FIG_ROOT / f"Fig{fig_num}.png"
         fig.savefig(png, dpi=PNG_DPI)
         plt.close(fig)
         written.append(png)
     return written
 
 
-def save_group2_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
+def save_group2_plots(df: pd.DataFrame, y_max: float, start_index: int) -> List[Path]:
     written: List[Path] = []
     levels_present = [lvl for lvl in AIR_LEVEL_ORDER if (df["air_input_level"] == lvl).any()]
     x = np.arange(len(levels_present), dtype=float)
     x_labels = [AIR_LEVEL_DISPLAY[level] for level in levels_present]
-    for idx, species in enumerate(GROUP2_SPECIES_ORDER, start=1):
+    for offset, species in enumerate(GROUP2_SPECIES_ORDER):
+        fig_num = start_index + offset
         d = df[df["species"] == species].copy()
         if d.empty:
             continue
@@ -292,12 +283,11 @@ def save_group2_plots(df: pd.DataFrame, y_max: float) -> List[Path]:
         ax.set_xticklabels(x_labels)
         ax.set_xlabel("Air Input Level")
         ax.set_ylabel("Normalized AUC (AUC_species / AUC_total) [a.u.]")
-        ax.set_title(f"Group 2 Chart {idx} - {species}: AUC vs Air Input")
+        ax.set_title(f"Fig{fig_num}. {species} AUC vs Air Input")
         style_axes(ax, grid_axis="y")
         fig.tight_layout()
 
-        species_tag = species.replace(" ", "_").replace("+", "plus")
-        png = FIG_GROUP2_DIR / f"group2_chart{idx}_{species_tag}_auc_vs_air_input.png"
+        png = FIG_ROOT / f"Fig{fig_num}.png"
         fig.savefig(png, dpi=PNG_DPI)
         plt.close(fig)
         written.append(png)
@@ -339,15 +329,17 @@ def main() -> int:
     y_max = max(1e-6, ymax_data * 1.12)
 
     written_figs: List[Path] = []
-    written_figs.extend(save_group1_plots(table, y_max=y_max))
-    written_figs.extend(save_group2_plots(table, y_max=y_max))
+    group1 = save_group1_plots(table, y_max=y_max, start_index=1)
+    group2 = save_group2_plots(table, y_max=y_max, start_index=1 + len(group1))
+    written_figs.extend(group1)
+    written_figs.extend(group2)
 
     print(f"Wrote {CSV_OUT}")
     for path in written_figs:
         print(f"Wrote {path}")
     print(
         f"Done. rows={len(table)} figures={len(written_figs)} "
-        f"group1_dir={FIG_GROUP1_DIR} group2_dir={FIG_GROUP2_DIR}"
+        f"figure_dir={FIG_ROOT}"
     )
     return 0
 

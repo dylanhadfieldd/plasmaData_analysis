@@ -13,14 +13,7 @@ LABELED_TOP_N = 8
 REACTIVE_NIST_SPECIES = {"N", "O", "HE"}
 
 
-def safe_name(text: str) -> str:
-    out = "".join(ch.lower() if ch.isalnum() else "_" for ch in str(text).strip())
-    out = "_".join([p for p in out.split("_") if p])
-    return out or "group"
-
-
 def nist_species_in_scope(value: object) -> bool:
-    # Keep only reactive species of interest regardless of ionization stage text.
     text = str(value).strip()
     if not text:
         return False
@@ -248,6 +241,8 @@ def write_labeled_assets(scope: str) -> None:
     trace_csv = metadata_csv_path(scope, "spectral", "labeled_peak_traceability.csv")
     labels_dir = spectral_labels_dir(scope)
     labels_dir.mkdir(parents=True, exist_ok=True)
+    for old in labels_dir.glob("*.png"):
+        old.unlink()
 
     trace = build_labeled_traceability(scope)
     if not trace.empty:
@@ -264,7 +259,7 @@ def write_labeled_assets(scope: str) -> None:
     if scope == "meta" and "dataset" in curves.columns:
         group_cols = ("dataset", "param_set", "channel")
 
-    for key, g in curves.groupby(list(group_cols), dropna=False):
+    for index, (key, g) in enumerate(curves.groupby(list(group_cols), dropna=False), start=1):
         if not isinstance(key, tuple):
             key = (key,)
         filt = np.ones(len(trace), dtype=bool)
@@ -302,7 +297,7 @@ def write_labeled_assets(scope: str) -> None:
         ax.set_ylabel("Normalized Irradiance (a.u.)")
         ax.set_ylim(0, 1.05)
         style_axes(ax, grid_axis="both")
-        out_name = "_".join(safe_name(v) for v in key) + "_labeled.png"
+        out_name = f"Fig{index}.png"
         fig.tight_layout()
         labels_dir.mkdir(parents=True, exist_ok=True)
         fig.savefig(labels_dir / out_name, dpi=220)

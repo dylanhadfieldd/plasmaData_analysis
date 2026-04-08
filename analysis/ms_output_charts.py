@@ -7,18 +7,9 @@ from typing import List
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_section_dir, spectral_diagnostics_dir
 
-try:
-    from analysis.plot_style import (
-        apply_publication_style,
-        get_palette,
-        spectral_interval_label,
-        style_axes,
-        to_species_label,
-    )
-except ModuleNotFoundError:
-    from plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes, to_species_label
+from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_section_dir, spectral_diagnostics_dir
+from analysis.plot_style import apply_publication_style, get_palette, spectral_interval_label, style_axes, to_species_label
 
 RAW_DIR = metadata_section_dir("meta", "spectral")
 AVERAGED_CURVES_CSV = RAW_DIR / "averaged_curves_long.csv"
@@ -46,6 +37,19 @@ def load_csv(path: Path) -> pd.DataFrame:
     return pd.read_csv(path)
 
 
+def fig_path(index: int) -> Path:
+    return OUT_DIR / f"Fig{index}.png"
+
+
+def write_note_figure(path: Path, message: str, size: tuple[float, float] = (8, 4)) -> Path:
+    fig, ax = plt.subplots(figsize=size)
+    ax.text(0.5, 0.5, message, ha="center", va="center")
+    ax.axis("off")
+    fig.savefig(path, dpi=DPI)
+    plt.close(fig)
+    return path
+
+
 def plot_averaged_spectra(curves: pd.DataFrame) -> Path:
     grouped = list(curves.groupby(["dataset", "param_set", "channel"], dropna=False))
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -57,22 +61,16 @@ def plot_averaged_spectra(curves: pd.DataFrame) -> Path:
         x = g["wavelength_nm"].to_numpy(dtype=float)
         x_all.append(x)
         label = f"{dataset}:{param_set}:{channel}"
-        ax.plot(
-            x,
-            g["irradiance_mean"].to_numpy(dtype=float),
-            color=color,
-            alpha=0.92,
-            label=label,
-        )
+        ax.plot(x, g["irradiance_mean"].to_numpy(dtype=float), color=color, alpha=0.92, label=label)
 
-    ax.set_title("Averaged Spectra Overview")
     x_full = np.concatenate(x_all) if x_all else np.array([], dtype=float)
+    ax.set_title("Averaged Spectra Overview")
     ax.set_xlabel(f"Wavelength {spectral_interval_label(x_full)}")
     ax.set_ylabel("Mean Irradiance (W m$^{-2}$ nm$^{-1}$)")
     style_axes(ax, grid_axis="both")
     ax.legend(loc="upper right", fontsize=7, ncol=2)
 
-    out_path = OUT_DIR / "fig1_averaged_spectra_overview.png"
+    out_path = fig_path(1)
     fig.tight_layout()
     fig.savefig(out_path, dpi=DPI)
     plt.close(fig)
@@ -80,14 +78,9 @@ def plot_averaged_spectra(curves: pd.DataFrame) -> Path:
 
 
 def plot_peak_map(peaks: pd.DataFrame) -> Path:
+    out_path = fig_path(2)
     if peaks.empty:
-        fig, ax = plt.subplots(figsize=(10, 4))
-        ax.text(0.5, 0.5, "No averaged peaks found.", ha="center", va="center")
-        ax.axis("off")
-        out_path = OUT_DIR / "fig2_peak_wavelength_map.png"
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
-        return out_path
+        return write_note_figure(out_path, "No averaged peaks found.", (10, 4))
 
     data = peaks.copy()
     data["group"] = group_label(data)
@@ -122,7 +115,6 @@ def plot_peak_map(peaks: pd.DataFrame) -> Path:
     cbar = fig.colorbar(sc, ax=ax, pad=0.01)
     cbar.set_label("Peak Rank (1 = strongest)")
 
-    out_path = OUT_DIR / "fig2_peak_wavelength_map.png"
     fig.tight_layout()
     fig.savefig(out_path, dpi=DPI)
     plt.close(fig)
@@ -130,14 +122,9 @@ def plot_peak_map(peaks: pd.DataFrame) -> Path:
 
 
 def plot_trial_repeatability(trial_peaks: pd.DataFrame) -> Path:
+    out_path = fig_path(3)
     if trial_peaks.empty:
-        fig, ax = plt.subplots(figsize=(9, 4))
-        ax.text(0.5, 0.5, "No trial peaks found.", ha="center", va="center")
-        ax.axis("off")
-        out_path = OUT_DIR / "fig3_trial_repeatability.png"
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
-        return out_path
+        return write_note_figure(out_path, "No trial peaks found.", (9, 4))
 
     data = trial_peaks.copy()
     data["group"] = group_label(data)
@@ -148,15 +135,8 @@ def plot_trial_repeatability(trial_peaks: pd.DataFrame) -> Path:
         .rename(columns={"count": "n_trials", "std": "wavelength_std_nm"})
     )
     spread = spread[spread["n_trials"] >= 2].copy()
-
     if spread.empty:
-        fig, ax = plt.subplots(figsize=(10, 4))
-        ax.text(0.5, 0.5, "No groups with >=2 trials for repeatability.", ha="center", va="center")
-        ax.axis("off")
-        out_path = OUT_DIR / "fig3_trial_repeatability.png"
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
-        return out_path
+        return write_note_figure(out_path, "No groups with >=2 trials for repeatability.", (10, 4))
 
     summary = (
         spread.groupby("group", dropna=False)["wavelength_std_nm"]
@@ -173,7 +153,6 @@ def plot_trial_repeatability(trial_peaks: pd.DataFrame) -> Path:
     ax.set_title("Trial-to-Trial Peak Wavelength Repeatability")
     style_axes(ax, grid_axis="x")
 
-    out_path = OUT_DIR / "fig3_trial_repeatability.png"
     fig.tight_layout()
     fig.savefig(out_path, dpi=DPI)
     plt.close(fig)
@@ -181,6 +160,7 @@ def plot_trial_repeatability(trial_peaks: pd.DataFrame) -> Path:
 
 
 def plot_nist_coverage(averaged_peaks: pd.DataFrame, nist_matches: pd.DataFrame, target_matches: pd.DataFrame) -> Path:
+    out_path = fig_path(4)
     if not target_matches.empty and {"dataset", "param_set", "channel", "matched"}.issubset(target_matches.columns):
         d = target_matches.copy()
         d["group"] = group_label(d)
@@ -208,21 +188,13 @@ def plot_nist_coverage(averaged_peaks: pd.DataFrame, nist_matches: pd.DataFrame,
         ax.set_title("Target-Species Match Coverage by Group")
         ax.legend(loc="lower right")
         style_axes(ax, grid_axis="x")
-
-        out_path = OUT_DIR / "fig4_nist_match_coverage.png"
         fig.tight_layout()
         fig.savefig(out_path, dpi=DPI)
         plt.close(fig)
         return out_path
 
     if averaged_peaks.empty:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.text(0.5, 0.5, "No averaged peaks found.", ha="center", va="center")
-        ax.axis("off")
-        out_path = OUT_DIR / "fig4_nist_match_coverage.png"
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
-        return out_path
+        return write_note_figure(out_path, "No averaged peaks found.", (8, 4))
 
     base = averaged_peaks.copy()
     base["group"] = group_label(base)
@@ -260,7 +232,6 @@ def plot_nist_coverage(averaged_peaks: pd.DataFrame, nist_matches: pd.DataFrame,
     ax.legend(loc="lower right")
     style_axes(ax, grid_axis="x")
 
-    out_path = OUT_DIR / "fig4_nist_match_coverage.png"
     fig.tight_layout()
     fig.savefig(out_path, dpi=DPI)
     plt.close(fig)
@@ -268,19 +239,14 @@ def plot_nist_coverage(averaged_peaks: pd.DataFrame, nist_matches: pd.DataFrame,
 
 
 def plot_nist_top1_species(nist_matches: pd.DataFrame, target_matches: pd.DataFrame) -> Path:
-    out_path = OUT_DIR / "fig5_nist_top1_species.png"
+    out_path = fig_path(5)
     if not target_matches.empty and "species" in target_matches.columns:
         d = target_matches.copy()
         if "matched" in d.columns:
             d = d[d["matched"].astype(bool)]
         counts = d["species"].astype(str).value_counts().head(12)
         if counts.empty:
-            fig, ax = plt.subplots(figsize=(8, 4))
-            ax.text(0.5, 0.5, "No target species matches found.", ha="center", va="center")
-            ax.axis("off")
-            fig.savefig(out_path, dpi=DPI)
-            plt.close(fig)
-            return out_path
+            return write_note_figure(out_path, "No target species matches found.", (8, 4))
 
         fig, ax = plt.subplots(figsize=(10, 5))
         palette = get_palette(len(counts))
@@ -298,12 +264,7 @@ def plot_nist_top1_species(nist_matches: pd.DataFrame, target_matches: pd.DataFr
         return out_path
 
     if nist_matches.empty or "candidate_rank" not in nist_matches.columns:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.text(0.5, 0.5, "No NIST matches found.", ha="center", va="center")
-        ax.axis("off")
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
-        return out_path
+        return write_note_figure(out_path, "No NIST matches found.", (8, 4))
 
     label_col = "nist_species" if "nist_species" in nist_matches.columns else None
     if label_col is None and "nist_spectra_query" in nist_matches.columns:
@@ -316,6 +277,8 @@ def plot_nist_top1_species(nist_matches: pd.DataFrame, target_matches: pd.DataFr
     top = nist_matches[nist_matches["candidate_rank"] == 1].copy()
     top["species_label"] = top[label_col].fillna("unknown").astype(str)
     counts = top["species_label"].value_counts().head(12)
+    if counts.empty:
+        return write_note_figure(out_path, "No top-1 NIST candidates found.", (8, 4))
 
     fig, ax = plt.subplots(figsize=(10, 5))
     palette = get_palette(len(counts))
@@ -337,6 +300,8 @@ def main() -> int:
     apply_publication_style()
     ensure_all_scope_layouts()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    for old in OUT_DIR.glob("*.png"):
+        old.unlink()
 
     averaged_curves = load_csv(AVERAGED_CURVES_CSV)
     averaged_peaks = load_csv(AVERAGED_PEAKS_CSV)
@@ -356,10 +321,7 @@ def main() -> int:
     for p in figure_paths:
         print(f"  {p}")
 
-    try:
-        from analysis.labeled_spectra import write_labeled_assets
-    except ModuleNotFoundError:
-        from labeled_spectra import write_labeled_assets
+    from analysis.labeled_spectra import write_labeled_assets
 
     for scope in SCOPES:
         write_labeled_assets(scope)

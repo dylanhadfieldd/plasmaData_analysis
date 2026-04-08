@@ -5,3 +5,4 @@ stats/
 __pycache__/
 analysis/__pycache__/
 *.pyc
+reaction wavelength narrative.md

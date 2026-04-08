@@ -41,9 +41,11 @@ GAS_CONDITIONS_CSV = Path("configs/gas_conditions.csv")
 DISSOCIATION_LINE_NM = {"N_672": 672.0, "Ar_750": 750.4, "O_777": 777.2}
 KEY_LINES_NM = {
     "N2plus_391": ROTATIONAL_CENTER_NM,
+    "N2plus_428": 428.0,
     "Hbeta_486": HBETA_CENTER_NM,
     "OH_308": 308.0,
     "N2_337": 337.0,
+    "N2_379": 379.0,
     "N_672": DISSOCIATION_LINE_NM["N_672"],
     "Ar_750": DISSOCIATION_LINE_NM["Ar_750"],
     "O_777": DISSOCIATION_LINE_NM["O_777"],
@@ -52,9 +54,11 @@ KEY_LINES_NM = {
 
 LINE_LABELS_LATEX = {
     "N2plus_391": r"$N_2^{+}$ (391.44 nm)",
+    "N2plus_428": r"$N_2^{+}$ (428.0 nm)",
     "Hbeta_486": r"$H_{\beta}$ (486.1 nm)",
     "OH_308": r"$OH$ (308.0 nm)",
     "N2_337": r"$N_2$ (337.0 nm)",
+    "N2_379": r"$N_2$ (379.0 nm)",
     "N_672": r"$N$ (672.0 nm)",
     "Ar_750": r"$Ar$ (750.4 nm)",
     "O_777": r"$O$ (777.2 nm)",
@@ -101,10 +105,10 @@ NODE_LABELS_LATEX = {
 }
 
 PATHWAY_PEAK_EVIDENCE = {
-    "e + N2 -> e + N2(C)": ["N2_337", "N2CB_353.6", "N2CB_357.6", "N2CB_370.9"],
-    "e + N2 -> 2e + N2+": ["N2plus_391", "N2CB_394.2", "N2CB_399.7"],
+    "e + N2 -> e + N2(C)": ["N2_379", "N2_337", "N2CB_353.6", "N2CB_357.6", "N2CB_370.9"],
+    "e + N2 -> 2e + N2+": ["N2plus_428", "N2plus_391", "N2CB_394.2", "N2CB_399.7"],
     "e + N2 -> e + N + N": ["N_672", "N2plus_391"],
-    "e + N2+ -> e + N2+(B)": ["N2plus_391", "N2CB_399.7", "N2CB_405.8"],
+    "e + N2+ -> e + N2+(B)": ["N2plus_428", "N2plus_391", "N2CB_399.7", "N2CB_405.8"],
     "Ar* + N2 -> Ar + N2(C)": ["Ar_750", "N2_337", "N2CB_353.6"],
     "e + O2 -> e + O + O": ["O_777", "OH_308"],
     "e + O2 -> O2-": ["O_777"],
@@ -260,7 +264,6 @@ def integrated_line_signal(
         if not np.isfinite(base):
             base = 0.0
         peak = max(y0 - base, 0.0)
-        # Low-resolution fallback: treat single-bin area as peak * 1 nm.
         return {"line_area": float(peak * 1.0), "line_peak": float(peak), "line_points": 1.0}
 
     wl_line = wl[mask]
@@ -1138,7 +1141,7 @@ def plot_reduced_pathways(estimates_df: pd.DataFrame, story_df: pd.DataFrame, ou
     ax.axis("off")
     ax.set_xlim(0.0, 1.0)
     ax.set_ylim(0.0, 1.0)
-    wv_map = reaction_wavelength_notes(story_df, max_per_reaction=4)
+    wv_map = reaction_wavelength_notes(story_df, max_per_reaction=5)
     nodes = {
         "e": (0.08, 0.84),
         "N2": (0.23, 0.84),
@@ -1396,7 +1399,13 @@ def summarize_peak_pathway_story(link_df: pd.DataFrame) -> pd.DataFrame:
     return out[cols].sort_values(["reaction", "sum_link_weight"], ascending=[True, False], ignore_index=True)
 
 
-def plot_peak_to_pathway_network(story_df: pd.DataFrame, out_path: Path) -> None:
+def plot_peak_to_pathway_network(
+    story_df: pd.DataFrame,
+    out_path: Path,
+    figure_label: str = "Fig2",
+    context_label: str = "",
+    footer_note: str = "IDs map to reaction equations in Fig3.",
+) -> None:
     if story_df.empty:
         fig, ax = plt.subplots(figsize=(8, 3))
         ax.text(0.5, 0.5, "No peak-to-pathway links available", ha="center", va="center")
@@ -1433,7 +1442,6 @@ def plot_peak_to_pathway_network(story_df: pd.DataFrame, out_path: Path) -> None
         plt.close(fig)
         return
 
-    # Order left nodes by mean connected right-node rank to reduce crossings.
     right_reactions = layout["reaction"].astype(str).tolist()
     right_rank = {reaction: i for i, reaction in enumerate(right_reactions)}
     lhs_rank: Dict[str, List[float]] = {}
@@ -1550,6 +1558,12 @@ def plot_peak_to_pathway_network(story_df: pd.DataFrame, out_path: Path) -> None
         if edges.empty:
             continue
         primary = edges.iloc[0]
+        preferred_lines = PATHWAY_PEAK_EVIDENCE.get(reaction, [])
+        for ln in preferred_lines:
+            cand = edges[edges["line_name"].astype(str) == str(ln)]
+            if not cand.empty:
+                primary = cand.iloc[0]
+                break
         primary_w = float(primary["sum_link_weight"]) if np.isfinite(primary["sum_link_weight"]) else 0.0
         w = max(0.0, min(1.0, primary_w / max_w))
         line_width = 1.4 + (3.6 * w)
@@ -1570,14 +1584,17 @@ def plot_peak_to_pathway_network(story_df: pd.DataFrame, out_path: Path) -> None
                 bbox={"boxstyle": "round,pad=0.12", "facecolor": "#ffffff", "edgecolor": "#d1d5db", "alpha": 0.95},
             )
 
-    ax.text(0.02, 0.02, "IDs (a-f) map to full equations in fig6b.", ha="left", va="bottom", fontsize=9.0, color="#334155")
-    ax.set_title(r"Fig6. Peak-Wavelength Links Across Reaction Halves")
+    ax.text(0.02, 0.02, footer_note, ha="left", va="bottom", fontsize=9.0, color="#334155")
+    title = f"{figure_label}. Peak-Wavelength Links Across Reaction Halves"
+    if context_label:
+        title += f" | {context_label}"
+    ax.set_title(title)
     fig.subplots_adjust(left=0.03, right=0.99, top=0.94, bottom=0.05)
     fig.savefig(out_path, dpi=260)
     plt.close(fig)
 
 
-def plot_reaction_pathway_key(story_df: pd.DataFrame, out_path: Path) -> None:
+def plot_reaction_pathway_key(story_df: pd.DataFrame, out_path: Path, figure_label: str = "Fig3") -> None:
     if story_df.empty:
         fig, ax = plt.subplots(figsize=(8, 3))
         ax.text(0.5, 0.5, "No pathway reaction key available", ha="center", va="center")
@@ -1656,14 +1673,14 @@ def plot_reaction_pathway_key(story_df: pd.DataFrame, out_path: Path) -> None:
         ax.text(
             0.105,
             0.22,
-            rf"Peak wavelengths shown on Fig6 links: {wl_text}",
+            rf"Peak wavelengths shown on Fig2 links: {wl_text}",
             ha="left",
             va="center",
             fontsize=10.6,
             color="#0f172a",
         )
 
-    fig.suptitle("Fig6b. Reaction Equation Key (letters match Fig6 right-side nodes)", fontsize=14.2, y=0.995)
+    fig.suptitle(f"{figure_label}. Reaction Equation Key (letters match pathway-story IDs)", fontsize=14.2, y=0.995)
     fig.subplots_adjust(top=0.93, bottom=0.04, left=0.03, right=0.99, hspace=0.16)
     fig.savefig(out_path, dpi=240)
     plt.close(fig)
@@ -1979,31 +1996,45 @@ def write_scope_outputs(
     story_df.to_csv(story_csv, index=False)
     out_paths.extend([estimates_csv, lines_csv, trend_csv, edges_csv, links_csv, story_csv])
 
-    fig1 = fig_dir / "fig1_reduced_reaction_pathways.png"
-    fig6 = fig_dir / "fig6_peak_to_pathway_story_map.png"
-    fig6b = fig_dir / "fig6b_reaction_pathway_key.png"
+    fig1 = fig_dir / "Fig1.png"
+    fig2 = fig_dir / "Fig2.png"
+    fig3 = fig_dir / "Fig3.png"
 
-    keep_names = {fig1.name, fig6.name, fig6b.name}
-    stale_names = {
-        "fig1_estimated_plasma_state.png",
-        "fig2_key_peak_intensity_map.png",
-        "fig3_reduced_reaction_pathways.png",
-        "fig4_validation_trend_checks.png",
-        "fig5_fit_diagnostics.png",
-        "fig7_pathway_evidence_matrix.png",
-    }
-    for old_name in stale_names:
-        old_path = fig_dir / old_name
-        if old_path.exists():
-            old_path.unlink()
-    for old_fig in fig_dir.glob("fig*.png"):
-        if old_fig.name not in keep_names:
-            old_fig.unlink()
+    group_specs: List[Tuple[Path, pd.DataFrame, str, str]] = []
+    next_fig_num = 4
+    if not link_df.empty:
+        group_rows = (
+            link_df[["dataset", "param_set", "channel", "group_label"]]
+            .drop_duplicates()
+            .sort_values(["dataset", "param_set", "channel", "group_label"], ignore_index=True)
+        )
+        for _, g in group_rows.iterrows():
+            g_label = str(g["group_label"])
+            g_links = link_df[link_df["group_label"].astype(str) == g_label].copy()
+            g_story = summarize_peak_pathway_story(g_links) if not g_links.empty else pd.DataFrame()
+            if g_story.empty:
+                continue
+            fig_path = fig_dir / f"Fig{next_fig_num}.png"
+            group_specs.append((fig_path, g_story, g_label, f"Fig{next_fig_num}"))
+            next_fig_num += 1
+
+    for old_fig in fig_dir.glob("*.png"):
+        old_fig.unlink()
 
     plot_reduced_pathways(estimates_df, story_df, fig1)
-    plot_peak_to_pathway_network(story_df, fig6)
-    plot_reaction_pathway_key(story_df, fig6b)
-    out_paths.extend([fig1, fig6, fig6b])
+    plot_peak_to_pathway_network(story_df, fig2, figure_label="Fig2", context_label=f"{scope} summary")
+    plot_reaction_pathway_key(story_df, fig3, figure_label="Fig3")
+    out_paths.extend([fig1, fig2, fig3])
+
+    for fig_path, g_story, g_label, fig_label in group_specs:
+        plot_peak_to_pathway_network(
+            g_story,
+            fig_path,
+            figure_label=fig_label,
+            context_label=g_label,
+            footer_note="IDs map to reaction equations in Fig3.",
+        )
+        out_paths.append(fig_path)
     return out_paths
 
 

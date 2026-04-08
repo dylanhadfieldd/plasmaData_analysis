@@ -8,11 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-try:
-    from analysis.plot_style import apply_publication_style, get_palette, style_axes, to_species_label
-except ModuleNotFoundError:
-    from plot_style import apply_publication_style, get_palette, style_axes, to_species_label
 from analysis.output_paths import chemspecies_figures_dir, ensure_all_scope_layouts, metadata_csv_path, metadata_section_dir
+from analysis.plot_style import apply_publication_style, get_palette, style_axes, to_species_label
 
 TARGET_MATCHES_CSV = metadata_csv_path("meta", "spectral", "target_species_peak_matches.csv")
 SCOPES = ("air", "diameter", "meta")
@@ -608,6 +605,12 @@ def scope_csv_slice(df: pd.DataFrame, scope: str, allow_global: bool = False) ->
     return df.copy() if allow_global else pd.DataFrame(columns=df.columns)
 
 
+def clear_root_pngs(fig_dir: Path) -> None:
+    fig_dir.mkdir(parents=True, exist_ok=True)
+    for old in fig_dir.glob("*.png"):
+        old.unlink()
+
+
 def main() -> int:
     apply_publication_style()
     ensure_all_scope_layouts()
@@ -640,32 +643,22 @@ def main() -> int:
             written_paths.append(out_path)
 
     meta_fig_dir = scope_fig_dir("meta")
-    plot_group_heatmap(group_long, meta_fig_dir / "fig1_group_species_concentration_heatmap.png")
-    plot_dataset_stacked(summary, meta_fig_dir / "fig2_dataset_species_concentration_mix.png")
-    plot_air_vs_diameter_delta(delta, meta_fig_dir / "fig3_air_vs_diameter_species_delta.png")
-    plot_group_total_signal(group_long, meta_fig_dir / "fig4_meta_group_total_signal.png")
-    written_paths.extend(
-        [
-            meta_fig_dir / "fig1_group_species_concentration_heatmap.png",
-            meta_fig_dir / "fig2_dataset_species_concentration_mix.png",
-            meta_fig_dir / "fig3_air_vs_diameter_species_delta.png",
-            meta_fig_dir / "fig4_meta_group_total_signal.png",
-        ]
-    )
+    clear_root_pngs(meta_fig_dir)
+    meta_figs = [meta_fig_dir / f"Fig{i}.png" for i in range(1, 5)]
+    plot_group_heatmap(group_long, meta_figs[0])
+    plot_dataset_stacked(summary, meta_figs[1])
+    plot_air_vs_diameter_delta(delta, meta_figs[2])
+    plot_group_total_signal(group_long, meta_figs[3])
+    written_paths.extend(meta_figs)
     for scope in ("air", "diameter"):
         fig_dir = scope_fig_dir(scope)
-        plot_scope_group_heatmap(group_long, scope, fig_dir / f"{scope}_group_species_concentration_heatmap.png")
-        plot_scope_species_mix(group_long, scope, fig_dir / f"{scope}_species_concentration_mix.png")
-        plot_scope_species_rank(summary, scope, fig_dir / f"{scope}_species_rank_with_variability.png")
-        plot_scope_param_heatmap(group_long, scope, fig_dir / f"{scope}_param_species_heatmap.png")
-        written_paths.extend(
-            [
-                fig_dir / f"{scope}_group_species_concentration_heatmap.png",
-                fig_dir / f"{scope}_species_concentration_mix.png",
-                fig_dir / f"{scope}_species_rank_with_variability.png",
-                fig_dir / f"{scope}_param_species_heatmap.png",
-            ]
-        )
+        clear_root_pngs(fig_dir)
+        scope_figs = [fig_dir / f"Fig{i}.png" for i in range(1, 5)]
+        plot_scope_group_heatmap(group_long, scope, scope_figs[0])
+        plot_scope_species_mix(group_long, scope, scope_figs[1])
+        plot_scope_species_rank(summary, scope, scope_figs[2])
+        plot_scope_param_heatmap(group_long, scope, scope_figs[3])
+        written_paths.extend(scope_figs)
 
     print("Wrote chemSpecies outputs:")
     for path in sorted(set(written_paths)):

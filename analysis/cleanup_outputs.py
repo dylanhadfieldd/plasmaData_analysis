@@ -53,7 +53,7 @@ def clean_scope(scope: str) -> None:
     pca_root = scope_dir / "pca"
     if pca_root.exists():
         for item in pca_root.iterdir():
-            keep = item.is_file() and item.name == "pca_scores.png"
+            keep = item.is_file() and item.suffix.lower() == ".png"
             if not keep:
                 remove_any(item)
 

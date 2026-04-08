@@ -9,15 +9,13 @@ from analysis import (
     chemical_modeling,
     chem_species_analysis,
     cleanup_outputs,
-    compare,
-    compose,
     executive_reports,
     features,
-    ind_charts,
     ms_output,
     ms_output_charts,
     pca,
     preprocess,
+    spectral_charts,
     species,
 )
 
@@ -25,9 +23,7 @@ Step = Tuple[str, Callable[[], int]]
 
 RUN_STEPS: List[Step] = [
     ("preprocess", preprocess.main),
-    ("ind_charts", ind_charts.main),
-    ("compose", compose.main),
-    ("compare", compare.main),
+    ("spectral_charts", spectral_charts.main),
     ("ms_output", ms_output.main),
     ("ms_output_charts", ms_output_charts.main),
     ("features", features.main),
