@@ -6,7 +6,9 @@ from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
-from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_csv_path
+from analysis.numeric_utils import safe_ratio, trapz_integral
+from analysis.output_paths import ensure_all_scope_layouts, metadata_csv_path
+from data_ingestion.scoped_writes import write_scoped_csv
 
 LONG_CSV = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 BANDS_CSV = Path("configs/wavelengths.csv")
@@ -39,12 +41,6 @@ def load_bands(config_path: Path) -> List[Tuple[str, float, float]]:
     return bands
 
 
-def trapz_integral(wl: np.ndarray, y: np.ndarray) -> float:
-    if wl.size < 2:
-        return float("nan")
-    return float(np.trapz(y, wl))
-
-
 def centroid(wl: np.ndarray, y: np.ndarray) -> float:
     area = float(np.trapz(y, wl))
     if not np.isfinite(area) or area <= 0:
@@ -57,12 +53,6 @@ def band_integral(wl: np.ndarray, y: np.ndarray, start: float, end: float) -> fl
     if mask.sum() < 2:
         return 0.0
     return trapz_integral(wl[mask], y[mask])
-
-
-def safe_ratio(a: float, b: float) -> float:
-    if not np.isfinite(a) or not np.isfinite(b) or b == 0:
-        return float("nan")
-    return float(a / b)
 
 
 def normalize_curve(wl: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -79,17 +69,7 @@ def normalize_curve(wl: np.ndarray, y: np.ndarray) -> np.ndarray:
 
 
 def write_scoped_features(features_df: pd.DataFrame) -> List[Path]:
-    written: List[Path] = []
-    for scope in SCOPES:
-        if scope == "meta":
-            part = features_df.copy()
-        else:
-            part = features_df[features_df["dataset"].astype(str).str.lower() == scope].copy()
-        out_path = metadata_csv_path(scope, "features", "features.csv")
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        part.to_csv(out_path, index=False)
-        written.append(out_path)
-    return written
+    return write_scoped_csv(features_df, section="features", filename="features.csv")
 
 
 def main() -> int:

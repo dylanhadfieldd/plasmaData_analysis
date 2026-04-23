@@ -12,6 +12,7 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 from scipy.optimize import curve_fit
 from scipy.signal import find_peaks, savgol_filter
 from scipy.special import wofz
+from scipy.stats import spearmanr
 
 from analysis.output_paths import (
     SCOPES,
@@ -20,7 +21,7 @@ from analysis.output_paths import (
     metadata_csv_path,
     metadata_section_dir,
 )
-from analysis.plot_style import apply_publication_style, get_palette, style_axes
+from plots.style import apply_publication_style, get_palette, style_axes
 
 H_PLANCK = 6.62607015e-34
 C_LIGHT = 299792458.0
@@ -32,6 +33,11 @@ ROTATIONAL_CENTER_NM = 391.44
 HBETA_CENTER_NM = 486.1
 ROTATIONAL_MODE = "auto"  # auto, line_fit, synthetic_band
 PRESSURE_ATM_DEFAULT = 1.0
+FIT_BOOTSTRAP_SAMPLES = 300
+SPEARMAN_PASS_THRESHOLD = 0.25
+SPEARMAN_PVALUE_THRESHOLD = 0.1
+MIN_TREND_POINTS = 4
+MIN_TREND_LEVELS = 3
 
 VIB_BAND_HEADS_NM = [349.9, 353.6, 357.6, 370.9, 375.4, 380.4, 394.2, 399.7, 405.8]
 VIB_BANDS_CSV = Path("configs/n2_vibrational_bands.csv")
@@ -165,6 +171,96 @@ def _safe_float(value: object) -> float:
         return float("nan")
 
 
+def _safe_numeric_series(df: pd.DataFrame, col: str) -> pd.Series:
+    if col not in df.columns:
+        return pd.Series(np.nan, index=df.index, dtype=float)
+    return pd.to_numeric(df[col], errors="coerce")
+
+
+def _safe_text_series(df: pd.DataFrame, col: str) -> pd.Series:
+    if col not in df.columns:
+        return pd.Series("", index=df.index, dtype=object)
+    return df[col].fillna("").astype(str)
+
+
+def _relative_ci_width(value: float, ci_low: float, ci_high: float) -> float:
+    if not np.isfinite(value) or value <= 0:
+        return float("nan")
+    if not np.isfinite(ci_low) or not np.isfinite(ci_high):
+        return float("nan")
+    if ci_high < ci_low:
+        return float("nan")
+    return float((ci_high - ci_low) / value)
+
+
+def _relative_ci_width_series(value: pd.Series, ci_low: pd.Series, ci_high: pd.Series) -> pd.Series:
+    with np.errstate(divide="ignore", invalid="ignore"):
+        rel = (ci_high - ci_low) / value
+    rel = rel.where(np.isfinite(rel), np.nan)
+    rel = rel.where((value > 0) & (ci_high >= ci_low), np.nan)
+    return rel
+
+
+def _fit_temperature_fields(fit: Dict[str, object]) -> Dict[str, float]:
+    return {
+        "temperature_ci95_low": _safe_float(fit.get("temperature_ci95_low")),
+        "temperature_ci95_high": _safe_float(fit.get("temperature_ci95_high")),
+        "temperature_bootstrap_ci95_low": _safe_float(fit.get("temperature_bootstrap_ci95_low")),
+        "temperature_bootstrap_ci95_high": _safe_float(fit.get("temperature_bootstrap_ci95_high")),
+        "rmse": _safe_float(fit.get("rmse")),
+        "slope_se": _safe_float(fit.get("slope_se")),
+        "bootstrap_samples_used": _safe_float(fit.get("bootstrap_samples_used")),
+    }
+
+
+def _rotational_result(status: str, success: bool = False, mode: str = "line_fit", **kwargs: object) -> Dict[str, object]:
+    base: Dict[str, object] = {
+        "success": bool(success),
+        "mode": str(mode),
+        "temperature": float("nan"),
+        "r2": float("nan"),
+        "rmse": float("nan"),
+        "n_points": float("nan"),
+        "status": str(status),
+        "temperature_ci95_low": float("nan"),
+        "temperature_ci95_high": float("nan"),
+        "temperature_bootstrap_ci95_low": float("nan"),
+        "temperature_bootstrap_ci95_high": float("nan"),
+        "slope_se": float("nan"),
+        "bootstrap_samples_used": 0.0,
+    }
+    for key, value in kwargs.items():
+        if key in {"status", "mode", "fallback_from"}:
+            base[key] = str(value)
+        elif key == "success":
+            base[key] = bool(value)
+        else:
+            base[key] = _safe_float(value)
+    return base
+
+
+def _boltzmann_result(status: str, **kwargs: object) -> Dict[str, object]:
+    base: Dict[str, object] = {
+        "temperature": float("nan"),
+        "r2": float("nan"),
+        "n_points": float("nan"),
+        "status": str(status),
+        "temperature_ci95_low": float("nan"),
+        "temperature_ci95_high": float("nan"),
+        "temperature_bootstrap_ci95_low": float("nan"),
+        "temperature_bootstrap_ci95_high": float("nan"),
+        "rmse": float("nan"),
+        "slope_se": float("nan"),
+        "bootstrap_samples_used": 0.0,
+    }
+    for key, value in kwargs.items():
+        if key == "status":
+            base[key] = str(value)
+        else:
+            base[key] = _safe_float(value)
+    return base
+
+
 def _norm_key(text: str) -> str:
     return str(text).strip().lower()
 
@@ -276,31 +372,132 @@ def integrated_line_signal(
 
 
 def fit_linear_temperature(x_vals: np.ndarray, y_vals: np.ndarray) -> Dict[str, float]:
-    if x_vals.size < 3:
-        return {"temperature": float("nan"), "slope": float("nan"), "intercept": float("nan"), "r2": float("nan")}
-    slope, intercept = np.polyfit(x_vals, y_vals, 1)
-    pred = intercept + (slope * x_vals)
-    ss_res = float(np.nansum((y_vals - pred) ** 2))
-    ss_tot = float(np.nansum((y_vals - np.nanmean(y_vals)) ** 2))
+    x = np.asarray(x_vals, dtype=float)
+    y = np.asarray(y_vals, dtype=float)
+    finite = np.isfinite(x) & np.isfinite(y)
+    x = x[finite]
+    y = y[finite]
+    n_raw = int(x.size)
+
+    out = {
+        "temperature": float("nan"),
+        "slope": float("nan"),
+        "intercept": float("nan"),
+        "r2": float("nan"),
+        "rmse": float("nan"),
+        "slope_se": float("nan"),
+        "intercept_se": float("nan"),
+        "temperature_se": float("nan"),
+        "temperature_ci95_low": float("nan"),
+        "temperature_ci95_high": float("nan"),
+        "temperature_bootstrap_ci95_low": float("nan"),
+        "temperature_bootstrap_ci95_high": float("nan"),
+        "bootstrap_samples_used": 0.0,
+        "n_points_raw": float(n_raw),
+        "n_points_used": float(n_raw),
+        "outlier_fraction": 0.0,
+    }
+    if n_raw < 3:
+        return out
+
+    try:
+        slope0, intercept0 = np.polyfit(x, y, 1)
+    except Exception:
+        return out
+
+    if n_raw >= 6:
+        resid0 = y - (intercept0 + (slope0 * x))
+        med = float(np.nanmedian(resid0))
+        mad = float(np.nanmedian(np.abs(resid0 - med)))
+        if np.isfinite(mad) and mad > 0:
+            robust_sigma = 1.4826 * mad
+            keep = np.abs(resid0 - med) <= (3.5 * robust_sigma)
+            keep_n = int(keep.sum())
+            if keep_n >= 3 and keep_n < n_raw:
+                x = x[keep]
+                y = y[keep]
+
+    n = int(x.size)
+    out["n_points_used"] = float(n)
+    if n_raw > 0 and n <= n_raw:
+        out["outlier_fraction"] = float((n_raw - n) / n_raw)
+    if n < 3:
+        return out
+
+    try:
+        slope, intercept = np.polyfit(x, y, 1)
+    except Exception:
+        return out
+    pred = intercept + (slope * x)
+    resid = y - pred
+    ss_res = float(np.nansum(resid**2))
+    ss_tot = float(np.nansum((y - np.nanmean(y)) ** 2))
     r2 = float(1.0 - (ss_res / ss_tot)) if ss_tot > 0 else float("nan")
-    if slope >= 0:
-        return {"temperature": float("nan"), "slope": slope, "intercept": intercept, "r2": r2}
-    temperature = -1.0 / (K_BOLTZMANN * slope)
-    return {"temperature": float(temperature), "slope": slope, "intercept": intercept, "r2": r2}
+    rmse = float(np.sqrt(ss_res / max(n, 1)))
+
+    x_bar = float(np.nanmean(x))
+    sxx = float(np.nansum((x - x_bar) ** 2))
+    slope_se = float("nan")
+    intercept_se = float("nan")
+    if n > 2 and np.isfinite(sxx) and sxx > 0:
+        sigma2 = ss_res / float(n - 2)
+        if np.isfinite(sigma2) and sigma2 >= 0:
+            slope_se = float(np.sqrt(sigma2 / sxx))
+            intercept_se = float(np.sqrt(sigma2 * ((1.0 / n) + (x_bar * x_bar / sxx))))
+
+    out.update(
+        {
+            "slope": float(slope),
+            "intercept": float(intercept),
+            "r2": r2,
+            "rmse": rmse,
+            "slope_se": slope_se,
+            "intercept_se": intercept_se,
+        }
+    )
+
+    if slope < 0 and np.isfinite(slope):
+        temperature = -1.0 / (K_BOLTZMANN * slope)
+        out["temperature"] = float(temperature)
+        if np.isfinite(slope_se):
+            temp_se = abs(1.0 / (K_BOLTZMANN * (slope**2))) * slope_se
+            out["temperature_se"] = float(temp_se)
+            out["temperature_ci95_low"] = float(max(0.0, temperature - (1.96 * temp_se)))
+            out["temperature_ci95_high"] = float(temperature + (1.96 * temp_se))
+
+    if n >= 4:
+        rng_seed = int((abs(np.nanmean(x)) * 1e6) + (abs(np.nanmean(y)) * 1e6) + n) % (2**32 - 1)
+        rng = np.random.default_rng(rng_seed)
+        boot_t: List[float] = []
+        for _ in range(FIT_BOOTSTRAP_SAMPLES):
+            idx = rng.integers(0, n, size=n)
+            xb = x[idx]
+            yb = y[idx]
+            if np.unique(xb).size < 3:
+                continue
+            try:
+                sb, _ = np.polyfit(xb, yb, 1)
+            except Exception:
+                continue
+            if np.isfinite(sb) and sb < 0:
+                tb = -1.0 / (K_BOLTZMANN * sb)
+                if np.isfinite(tb) and tb > 0:
+                    boot_t.append(float(tb))
+        if boot_t:
+            boot_arr = np.asarray(boot_t, dtype=float)
+            out["temperature_bootstrap_ci95_low"] = float(np.nanpercentile(boot_arr, 2.5))
+            out["temperature_bootstrap_ci95_high"] = float(np.nanpercentile(boot_arr, 97.5))
+            out["bootstrap_samples_used"] = float(boot_arr.size)
+            if not np.isfinite(out["temperature_ci95_low"]) or not np.isfinite(out["temperature_ci95_high"]):
+                out["temperature_ci95_low"] = out["temperature_bootstrap_ci95_low"]
+                out["temperature_ci95_high"] = out["temperature_bootstrap_ci95_high"]
+    return out
 
 
 def rotational_line_fit(wl: np.ndarray, y: np.ndarray) -> Dict[str, float]:
     mask = (wl >= ROTATIONAL_CENTER_NM - 2.5) & (wl <= ROTATIONAL_CENTER_NM + 2.5)
     if int(mask.sum()) < 6:
-        return {
-            "success": False,
-            "mode": "line_fit",
-            "temperature": float("nan"),
-            "r2": float("nan"),
-            "rmse": float("nan"),
-            "n_points": 0.0,
-            "status": "insufficient_window_points",
-        }
+        return _rotational_result("insufficient_window_points", success=False, mode="line_fit", n_points=0.0)
 
     xw = wl[mask]
     yw = y[mask]
@@ -315,15 +512,12 @@ def rotational_line_fit(wl: np.ndarray, y: np.ndarray) -> Dict[str, float]:
         prominence = float(np.nanmax(ys) - np.nanmin(ys)) * 0.1
     peak_idx, _ = find_peaks(ys, prominence=max(prominence, 1e-20))
     if peak_idx.size < 4:
-        return {
-            "success": False,
-            "mode": "line_fit",
-            "temperature": float("nan"),
-            "r2": float("nan"),
-            "rmse": float("nan"),
-            "n_points": float(peak_idx.size),
-            "status": "insufficient_detected_rotational_peaks",
-        }
+        return _rotational_result(
+            "insufficient_detected_rotational_peaks",
+            success=False,
+            mode="line_fit",
+            n_points=float(peak_idx.size),
+        )
 
     peak_int = ys[peak_idx]
     order = np.argsort(peak_int)[::-1][: min(10, peak_idx.size)]
@@ -333,42 +527,34 @@ def rotational_line_fit(wl: np.ndarray, y: np.ndarray) -> Dict[str, float]:
     peak_corr = np.clip(peak_y - baseline, 0.0, None)
     peak_corr = peak_corr[np.isfinite(peak_corr) & (peak_corr > 0)]
     if peak_corr.size < 4:
-        return {
-            "success": False,
-            "mode": "line_fit",
-            "temperature": float("nan"),
-            "r2": float("nan"),
-            "rmse": float("nan"),
-            "n_points": float(peak_corr.size),
-            "status": "insufficient_positive_peaks",
-        }
+        return _rotational_result("insufficient_positive_peaks", success=False, mode="line_fit", n_points=float(peak_corr.size))
 
     k_prime = np.arange(1, peak_corr.size + 1, dtype=float)
     x_rot = k_prime * (k_prime + 1.0)
     y_rot = np.log(peak_corr / np.maximum(k_prime, 1e-12))
     fit = fit_linear_temperature(x_rot, y_rot)
     if not np.isfinite(fit["temperature"]):
-        return {
-            "success": False,
-            "mode": "line_fit",
-            "temperature": float("nan"),
-            "r2": fit["r2"],
-            "rmse": float("nan"),
-            "n_points": float(peak_corr.size),
-            "status": "nonphysical_rotational_slope",
-        }
+        return _rotational_result(
+            "nonphysical_rotational_slope",
+            success=False,
+            mode="line_fit",
+            r2=fit["r2"],
+            n_points=float(peak_corr.size),
+            **_fit_temperature_fields(fit),
+        )
 
     pred = fit["intercept"] + (fit["slope"] * x_rot)
     rmse = float(np.sqrt(np.nanmean((y_rot - pred) ** 2)))
-    return {
-        "success": True,
-        "mode": "line_fit",
-        "temperature": float(fit["temperature"]),
-        "r2": float(fit["r2"]),
-        "rmse": rmse,
-        "n_points": float(peak_corr.size),
-        "status": "ok",
-    }
+    return _rotational_result(
+        "ok",
+        success=True,
+        mode="line_fit",
+        temperature=fit["temperature"],
+        r2=fit["r2"],
+        n_points=float(peak_corr.size),
+        **_fit_temperature_fields(fit),
+        rmse=rmse,
+    )
 
 
 def synthetic_band_profile(
@@ -390,38 +576,14 @@ def synthetic_band_profile(
     return ((g_r @ intens) + (0.78 * (g_p @ intens))).astype(float)
 
 
-def rotational_synthetic_fit(wl: np.ndarray, y: np.ndarray) -> Dict[str, float]:
-    mask = (wl >= ROTATIONAL_CENTER_NM - 4.0) & (wl <= ROTATIONAL_CENTER_NM + 4.0)
-    if int(mask.sum()) < 8:
-        return {
-            "success": False,
-            "mode": "synthetic_band",
-            "temperature": float("nan"),
-            "r2": float("nan"),
-            "rmse": float("nan"),
-            "n_points": 0.0,
-            "status": "insufficient_window_points",
-        }
-
-    xw = wl[mask]
-    yw = y[mask].astype(float)
-    baseline = line_baseline(xw, yw, center_nm=ROTATIONAL_CENTER_NM, inner_half_width_nm=2.0, outer_half_width_nm=3.8)
-    y_corr = np.clip(yw - baseline, 0.0, None)
-    if not np.isfinite(y_corr).any() or float(np.nanmax(y_corr)) <= 0:
-        return {
-            "success": False,
-            "mode": "synthetic_band",
-            "temperature": float("nan"),
-            "r2": float("nan"),
-            "rmse": float("nan"),
-            "n_points": float(xw.size),
-            "status": "no_positive_signal",
-        }
-
-    temps = np.linspace(450.0, 6500.0, 130)
-    sigmas = np.linspace(0.10, 1.20, 40)
-    best = {"rmse": float("inf"), "temperature": float("nan"), "r2": float("nan")}
-
+def _evaluate_rotational_grid(
+    xw: np.ndarray,
+    y_corr: np.ndarray,
+    temps: np.ndarray,
+    sigmas: np.ndarray,
+    best: Dict[str, float],
+    accepted: List[Tuple[float, float]],
+) -> Dict[str, float]:
     for temp in temps:
         for sigma in sigmas:
             p = synthetic_band_profile(xw, temperature_k=float(temp), sigma_nm=float(sigma))
@@ -448,28 +610,68 @@ def rotational_synthetic_fit(wl: np.ndarray, y: np.ndarray) -> Dict[str, float]:
                     "offset": offset,
                     "sigma": float(sigma),
                 }
+            accepted.append((float(temp), rmse))
+    return best
+
+
+def rotational_synthetic_fit(wl: np.ndarray, y: np.ndarray) -> Dict[str, float]:
+    mask = (wl >= ROTATIONAL_CENTER_NM - 4.0) & (wl <= ROTATIONAL_CENTER_NM + 4.0)
+    if int(mask.sum()) < 8:
+        return _rotational_result("insufficient_window_points", success=False, mode="synthetic_band", n_points=0.0)
+
+    xw = wl[mask]
+    yw = y[mask].astype(float)
+    baseline = line_baseline(xw, yw, center_nm=ROTATIONAL_CENTER_NM, inner_half_width_nm=2.0, outer_half_width_nm=3.8)
+    y_corr = np.clip(yw - baseline, 0.0, None)
+    if not np.isfinite(y_corr).any() or float(np.nanmax(y_corr)) <= 0:
+        return _rotational_result("no_positive_signal", success=False, mode="synthetic_band", n_points=float(xw.size))
+
+    temps = np.linspace(450.0, 6500.0, 76)
+    sigmas = np.linspace(0.10, 1.20, 24)
+    best = {"rmse": float("inf"), "temperature": float("nan"), "r2": float("nan")}
+    accepted: List[Tuple[float, float]] = []
+    best = _evaluate_rotational_grid(xw, y_corr, temps, sigmas, best, accepted)
+
+    best_temp = _safe_float(best.get("temperature"))
+    best_sigma = _safe_float(best.get("sigma"))
+    if np.isfinite(best_temp) and np.isfinite(best_sigma):
+        t_low = max(350.0, best_temp - 700.0)
+        t_high = min(8500.0, best_temp + 700.0)
+        s_low = max(0.05, best_sigma - 0.15)
+        s_high = min(1.8, best_sigma + 0.15)
+        refine_t = np.linspace(t_low, t_high, 55)
+        refine_s = np.linspace(s_low, s_high, 24)
+        best = _evaluate_rotational_grid(xw, y_corr, refine_t, refine_s, best, accepted)
 
     if not np.isfinite(best.get("temperature", np.nan)):
-        return {
-            "success": False,
-            "mode": "synthetic_band",
-            "temperature": float("nan"),
-            "r2": float("nan"),
-            "rmse": float("nan"),
-            "n_points": float(xw.size),
-            "status": "grid_search_failed",
-        }
+        return _rotational_result("grid_search_failed", success=False, mode="synthetic_band", n_points=float(xw.size))
 
-    return {
-        "success": True,
-        "mode": "synthetic_band",
-        "temperature": float(best["temperature"]),
-        "r2": float(best["r2"]),
-        "rmse": float(best["rmse"]),
-        "n_points": float(xw.size),
-        "status": "ok",
-        "sigma_nm": float(best["sigma"]),
-    }
+    ci_low = float("nan")
+    ci_high = float("nan")
+    if accepted and np.isfinite(best["rmse"]) and best["rmse"] > 0:
+        acc = np.asarray(accepted, dtype=float)
+        threshold = float(best["rmse"]) * 1.05
+        t_keep = acc[acc[:, 1] <= threshold, 0]
+        if t_keep.size:
+            ci_low = float(np.nanpercentile(t_keep, 2.5))
+            ci_high = float(np.nanpercentile(t_keep, 97.5))
+
+    if not np.isfinite(ci_low) or not np.isfinite(ci_high):
+        ci_low = max(0.0, float(best["temperature"]) * 0.9)
+        ci_high = float(best["temperature"]) * 1.1
+
+    return _rotational_result(
+        "ok",
+        success=True,
+        mode="synthetic_band",
+        temperature=best["temperature"],
+        r2=best["r2"],
+        rmse=best["rmse"],
+        n_points=float(xw.size),
+        sigma_nm=best["sigma"],
+        temperature_ci95_low=ci_low,
+        temperature_ci95_high=ci_high,
+    )
 
 
 def estimate_rotational_temperature(wl: np.ndarray, y: np.ndarray, mode: str = ROTATIONAL_MODE) -> Dict[str, float]:
@@ -501,12 +703,18 @@ def estimate_vibrational_temperature(wl: np.ndarray, y: np.ndarray, vib_meta: pd
         rows.append({"x": e_ev * E_CHARGE, "y": y_log})
 
     if len(rows) < 4:
-        return {"temperature": float("nan"), "r2": float("nan"), "n_points": float(len(rows)), "status": "insufficient_vibrational_bands"}
+        return _boltzmann_result("insufficient_vibrational_bands", n_points=float(len(rows)))
 
     fit_df = pd.DataFrame(rows)
     fit = fit_linear_temperature(fit_df["x"].to_numpy(dtype=float), fit_df["y"].to_numpy(dtype=float))
     status = "ok" if np.isfinite(fit["temperature"]) else "nonphysical_vibrational_slope"
-    return {"temperature": float(fit["temperature"]), "r2": float(fit["r2"]), "n_points": float(len(rows)), "status": status}
+    return _boltzmann_result(
+        status,
+        temperature=fit["temperature"],
+        r2=fit["r2"],
+        n_points=float(len(rows)),
+        **_fit_temperature_fields(fit),
+    )
 
 
 def estimate_excitation_temperature(wl: np.ndarray, y: np.ndarray, line_meta: pd.DataFrame) -> Dict[str, float]:
@@ -533,18 +741,45 @@ def estimate_excitation_temperature(wl: np.ndarray, y: np.ndarray, line_meta: pd
         rows.append({"x": e_ev * E_CHARGE, "y": y_log})
 
     if len(rows) < 3:
-        return {"temperature": float("nan"), "r2": float("nan"), "n_points": float(len(rows)), "status": "insufficient_atomic_lines"}
+        return _boltzmann_result("insufficient_atomic_lines", n_points=float(len(rows)))
 
     fit_df = pd.DataFrame(rows)
     fit = fit_linear_temperature(fit_df["x"].to_numpy(dtype=float), fit_df["y"].to_numpy(dtype=float))
     status = "ok" if np.isfinite(fit["temperature"]) else "nonphysical_excitation_slope"
-    return {"temperature": float(fit["temperature"]), "r2": float(fit["r2"]), "n_points": float(len(rows)), "status": status}
+    return _boltzmann_result(
+        status,
+        temperature=fit["temperature"],
+        r2=fit["r2"],
+        n_points=float(len(rows)),
+        **_fit_temperature_fields(fit),
+    )
 
 
 def voigt_profile_model(x: np.ndarray, amp: float, center: float, sigma: float, gamma: float, offset: float) -> np.ndarray:
     z = ((x - center) + (1j * gamma)) / (sigma * np.sqrt(2.0))
     profile = np.real(wofz(z)) / (sigma * np.sqrt(2.0 * np.pi))
     return (amp * profile) + offset
+
+
+def _electron_density_result(status: str, **kwargs: object) -> Dict[str, float]:
+    base: Dict[str, float] = {
+        "estimated_electron_density": float("nan"),
+        "estimated_electron_density_ci95_low": float("nan"),
+        "estimated_electron_density_ci95_high": float("nan"),
+        "hbeta_lorentz_fwhm_nm": float("nan"),
+        "hbeta_lorentz_fwhm_ci95_low_nm": float("nan"),
+        "hbeta_lorentz_fwhm_ci95_high_nm": float("nan"),
+        "hbeta_stark_fwhm_nm": float("nan"),
+        "hbeta_vdw_fwhm_nm": float("nan"),
+        "electron_density_fit_r2": float("nan"),
+        "electron_density_status": status,
+    }
+    for key, value in kwargs.items():
+        if key == "electron_density_status":
+            base[key] = str(value)
+        else:
+            base[key] = _safe_float(value)
+    return base
 
 
 def estimate_electron_density(
@@ -555,44 +790,23 @@ def estimate_electron_density(
 ) -> Dict[str, float]:
     mask = (wl >= HBETA_CENTER_NM - 4.0) & (wl <= HBETA_CENTER_NM + 4.0)
     if int(mask.sum()) < 8:
-        return {
-            "estimated_electron_density": float("nan"),
-            "hbeta_lorentz_fwhm_nm": float("nan"),
-            "hbeta_stark_fwhm_nm": float("nan"),
-            "hbeta_vdw_fwhm_nm": float("nan"),
-            "electron_density_fit_r2": float("nan"),
-            "electron_density_status": "insufficient_hbeta_points",
-        }
+        return _electron_density_result("insufficient_hbeta_points")
 
     xw = wl[mask]
     yw = y[mask]
     y_base = line_baseline(xw, yw, center_nm=HBETA_CENTER_NM, inner_half_width_nm=1.6, outer_half_width_nm=3.8)
     y_corr = np.clip(yw - y_base, 0.0, None)
     if not np.isfinite(y_corr).any() or float(np.nanmax(y_corr)) <= 0:
-        return {
-            "estimated_electron_density": float("nan"),
-            "hbeta_lorentz_fwhm_nm": float("nan"),
-            "hbeta_stark_fwhm_nm": float("nan"),
-            "hbeta_vdw_fwhm_nm": float("nan"),
-            "electron_density_fit_r2": float("nan"),
-            "electron_density_status": "no_hbeta_signal",
-        }
+        return _electron_density_result("no_hbeta_signal")
 
     amp0 = float(np.nanmax(y_corr))
     p0 = [amp0, HBETA_CENTER_NM, 0.25, 0.25, 0.0]
     bounds = ([0.0, HBETA_CENTER_NM - 1.0, 0.02, 0.005, -np.inf], [np.inf, HBETA_CENTER_NM + 1.0, 3.0, 3.0, np.inf])
 
     try:
-        popt, _ = curve_fit(voigt_profile_model, xw, y_corr, p0=p0, bounds=bounds, maxfev=20000)
+        popt, pcov = curve_fit(voigt_profile_model, xw, y_corr, p0=p0, bounds=bounds, maxfev=20000)
     except Exception:
-        return {
-            "estimated_electron_density": float("nan"),
-            "hbeta_lorentz_fwhm_nm": float("nan"),
-            "hbeta_stark_fwhm_nm": float("nan"),
-            "hbeta_vdw_fwhm_nm": float("nan"),
-            "electron_density_fit_r2": float("nan"),
-            "electron_density_status": "voigt_fit_failed",
-        }
+        return _electron_density_result("voigt_fit_failed")
 
     pred = voigt_profile_model(xw, *popt)
     ss_res = float(np.nansum((y_corr - pred) ** 2))
@@ -604,25 +818,61 @@ def estimate_electron_density(
     t_eff = rotational_temperature_k if np.isfinite(rotational_temperature_k) and rotational_temperature_k > 0 else 300.0
     delta_vdw = 3.6 * float(pressure_atm) / (float(t_eff) ** 0.7)
     delta_stark = lorentz_fwhm_nm - delta_vdw
+
+    gamma_se = float("nan")
+    if isinstance(pcov, np.ndarray) and pcov.ndim == 2 and pcov.shape[0] > 3 and pcov.shape[1] > 3:
+        gamma_var = _safe_float(pcov[3, 3])
+        if np.isfinite(gamma_var) and gamma_var > 0:
+            gamma_se = float(np.sqrt(gamma_var))
+
+    lorentz_ci_low = float("nan")
+    lorentz_ci_high = float("nan")
+    if np.isfinite(gamma_se):
+        lorentz_se = 2.0 * gamma_se
+        lorentz_ci_low = max(0.0, lorentz_fwhm_nm - (1.96 * lorentz_se))
+        lorentz_ci_high = lorentz_fwhm_nm + (1.96 * lorentz_se)
+
     if not np.isfinite(delta_stark) or delta_stark <= 0:
-        return {
-            "estimated_electron_density": float("nan"),
-            "hbeta_lorentz_fwhm_nm": lorentz_fwhm_nm,
-            "hbeta_stark_fwhm_nm": delta_stark,
-            "hbeta_vdw_fwhm_nm": delta_vdw,
-            "electron_density_fit_r2": r2,
-            "electron_density_status": "invalid_nonpositive_stark_width",
-        }
+        return _electron_density_result(
+            "invalid_nonpositive_stark_width",
+            hbeta_lorentz_fwhm_nm=lorentz_fwhm_nm,
+            hbeta_lorentz_fwhm_ci95_low_nm=lorentz_ci_low,
+            hbeta_lorentz_fwhm_ci95_high_nm=lorentz_ci_high,
+            hbeta_stark_fwhm_nm=delta_stark,
+            hbeta_vdw_fwhm_nm=delta_vdw,
+            electron_density_fit_r2=r2,
+        )
 
     ne_cm3 = 2e11 * (delta_stark ** 1.5)
-    return {
-        "estimated_electron_density": float(ne_cm3),
-        "hbeta_lorentz_fwhm_nm": float(lorentz_fwhm_nm),
-        "hbeta_stark_fwhm_nm": float(delta_stark),
-        "hbeta_vdw_fwhm_nm": float(delta_vdw),
-        "electron_density_fit_r2": r2,
-        "electron_density_status": "ok",
-    }
+
+    ne_ci_low = float("nan")
+    ne_ci_high = float("nan")
+    if np.isfinite(gamma_se):
+        rng_seed = int(abs(np.nanmean(xw)) * 1e6 + abs(np.nanmean(y_corr)) * 1e3) % (2**32 - 1)
+        rng = np.random.default_rng(rng_seed)
+        gamma_draws = rng.normal(loc=gamma, scale=gamma_se, size=2000)
+        gamma_draws = gamma_draws[np.isfinite(gamma_draws) & (gamma_draws > 0)]
+        if gamma_draws.size:
+            lorentz_draws = 2.0 * gamma_draws
+            stark_draws = lorentz_draws - delta_vdw
+            stark_draws = stark_draws[np.isfinite(stark_draws) & (stark_draws > 0)]
+            if stark_draws.size:
+                ne_draws = 2e11 * (stark_draws**1.5)
+                ne_ci_low = float(np.nanpercentile(ne_draws, 2.5))
+                ne_ci_high = float(np.nanpercentile(ne_draws, 97.5))
+
+    return _electron_density_result(
+        "ok",
+        estimated_electron_density=ne_cm3,
+        estimated_electron_density_ci95_low=ne_ci_low,
+        estimated_electron_density_ci95_high=ne_ci_high,
+        hbeta_lorentz_fwhm_nm=lorentz_fwhm_nm,
+        hbeta_lorentz_fwhm_ci95_low_nm=lorentz_ci_low,
+        hbeta_lorentz_fwhm_ci95_high_nm=lorentz_ci_high,
+        hbeta_stark_fwhm_nm=delta_stark,
+        hbeta_vdw_fwhm_nm=delta_vdw,
+        electron_density_fit_r2=r2,
+    )
 
 
 def infer_gas_condition_from_param_set(param_set: str) -> Dict[str, float]:
@@ -724,6 +974,66 @@ def collect_key_line_table(
     return pd.DataFrame(rows), lookup
 
 
+def _rotational_estimate_columns(rot: Dict[str, object]) -> Dict[str, object]:
+    temp = _safe_float(rot.get("temperature"))
+    ci_low = _safe_float(rot.get("temperature_ci95_low"))
+    ci_high = _safe_float(rot.get("temperature_ci95_high"))
+    return {
+        "estimated_rotational_temperature": temp,
+        "rotational_temperature_ci95_low": ci_low,
+        "rotational_temperature_ci95_high": ci_high,
+        "rotational_temperature_bootstrap_ci95_low": _safe_float(rot.get("temperature_bootstrap_ci95_low")),
+        "rotational_temperature_bootstrap_ci95_high": _safe_float(rot.get("temperature_bootstrap_ci95_high")),
+        "rotational_temperature_rel_ci95": _relative_ci_width(temp, ci_low, ci_high),
+        "rotational_fit_mode": str(rot.get("mode", "")),
+        "rotational_fit_r2": _safe_float(rot.get("r2")),
+        "rotational_fit_rmse": _safe_float(rot.get("rmse")),
+        "rotational_fit_points": _safe_float(rot.get("n_points")),
+        "rotational_fit_status": str(rot.get("status", "")),
+        "rotational_fit_slope_se": _safe_float(rot.get("slope_se")),
+        "rotational_fit_bootstrap_samples": _safe_float(rot.get("bootstrap_samples_used")),
+    }
+
+
+def _boltzmann_estimate_columns(prefix: str, fit: Dict[str, object]) -> Dict[str, object]:
+    temp = _safe_float(fit.get("temperature"))
+    ci_low = _safe_float(fit.get("temperature_ci95_low"))
+    ci_high = _safe_float(fit.get("temperature_ci95_high"))
+    return {
+        f"estimated_{prefix}_temperature": temp,
+        f"{prefix}_temperature_ci95_low": ci_low,
+        f"{prefix}_temperature_ci95_high": ci_high,
+        f"{prefix}_temperature_bootstrap_ci95_low": _safe_float(fit.get("temperature_bootstrap_ci95_low")),
+        f"{prefix}_temperature_bootstrap_ci95_high": _safe_float(fit.get("temperature_bootstrap_ci95_high")),
+        f"{prefix}_temperature_rel_ci95": _relative_ci_width(temp, ci_low, ci_high),
+        f"{prefix}_fit_r2": _safe_float(fit.get("r2")),
+        f"{prefix}_fit_rmse": _safe_float(fit.get("rmse")),
+        f"{prefix}_fit_points": _safe_float(fit.get("n_points")),
+        f"{prefix}_fit_status": str(fit.get("status", "")),
+        f"{prefix}_fit_slope_se": _safe_float(fit.get("slope_se")),
+        f"{prefix}_fit_bootstrap_samples": _safe_float(fit.get("bootstrap_samples_used")),
+    }
+
+
+def _electron_estimate_columns(elec: Dict[str, object]) -> Dict[str, object]:
+    ne = _safe_float(elec.get("estimated_electron_density"))
+    ne_low = _safe_float(elec.get("estimated_electron_density_ci95_low"))
+    ne_high = _safe_float(elec.get("estimated_electron_density_ci95_high"))
+    return {
+        "estimated_electron_density": ne,
+        "estimated_electron_density_ci95_low": ne_low,
+        "estimated_electron_density_ci95_high": ne_high,
+        "estimated_electron_density_rel_ci95": _relative_ci_width(ne, ne_low, ne_high),
+        "hbeta_lorentz_fwhm_nm": _safe_float(elec.get("hbeta_lorentz_fwhm_nm")),
+        "hbeta_lorentz_fwhm_ci95_low_nm": _safe_float(elec.get("hbeta_lorentz_fwhm_ci95_low_nm")),
+        "hbeta_lorentz_fwhm_ci95_high_nm": _safe_float(elec.get("hbeta_lorentz_fwhm_ci95_high_nm")),
+        "hbeta_stark_fwhm_nm": _safe_float(elec.get("hbeta_stark_fwhm_nm")),
+        "hbeta_vdw_fwhm_nm": _safe_float(elec.get("hbeta_vdw_fwhm_nm")),
+        "electron_density_fit_r2": _safe_float(elec.get("electron_density_fit_r2")),
+        "electron_density_status": str(elec.get("electron_density_status", "")),
+    }
+
+
 def build_scope_estimates(
     scope: str,
     vib_meta: pd.DataFrame,
@@ -763,26 +1073,10 @@ def build_scope_estimates(
                 "param_set": param_set,
                 "channel": channel,
                 "group_label": build_group_label(dataset, param_set, channel),
-                "estimated_rotational_temperature": _safe_float(rot.get("temperature")),
-                "rotational_fit_mode": str(rot.get("mode", "")),
-                "rotational_fit_r2": _safe_float(rot.get("r2")),
-                "rotational_fit_rmse": _safe_float(rot.get("rmse")),
-                "rotational_fit_points": _safe_float(rot.get("n_points")),
-                "rotational_fit_status": str(rot.get("status", "")),
-                "estimated_vibrational_temperature": _safe_float(vib.get("temperature")),
-                "vibrational_fit_r2": _safe_float(vib.get("r2")),
-                "vibrational_fit_points": _safe_float(vib.get("n_points")),
-                "vibrational_fit_status": str(vib.get("status", "")),
-                "estimated_excitation_temperature": _safe_float(exc.get("temperature")),
-                "excitation_fit_r2": _safe_float(exc.get("r2")),
-                "excitation_fit_points": _safe_float(exc.get("n_points")),
-                "excitation_fit_status": str(exc.get("status", "")),
-                "estimated_electron_density": _safe_float(elec.get("estimated_electron_density")),
-                "hbeta_lorentz_fwhm_nm": _safe_float(elec.get("hbeta_lorentz_fwhm_nm")),
-                "hbeta_stark_fwhm_nm": _safe_float(elec.get("hbeta_stark_fwhm_nm")),
-                "hbeta_vdw_fwhm_nm": _safe_float(elec.get("hbeta_vdw_fwhm_nm")),
-                "electron_density_fit_r2": _safe_float(elec.get("electron_density_fit_r2")),
-                "electron_density_status": str(elec.get("electron_density_status", "")),
+                **_rotational_estimate_columns(rot),
+                **_boltzmann_estimate_columns("vibrational", vib),
+                **_boltzmann_estimate_columns("excitation", exc),
+                **_electron_estimate_columns(elec),
                 "relative_dissociation_proxy": _safe_float(proxy.get("relative_dissociation_proxy")),
                 "relative_dissociation_proxy_ar": _safe_float(proxy.get("relative_dissociation_proxy_ar")),
                 "relative_dissociation_proxy_o2": _safe_float(proxy.get("relative_dissociation_proxy_o2")),
@@ -1736,15 +2030,76 @@ def plot_pathway_evidence_matrix(story_df: pd.DataFrame, out_path: Path) -> None
 
 
 def spearman_rho(x: pd.Series, y: pd.Series) -> float:
-    x_rank = pd.Series(x).rank(method="average").to_numpy(dtype=float)
-    y_rank = pd.Series(y).rank(method="average").to_numpy(dtype=float)
-    if x_rank.size < 2:
-        return float("nan")
-    sx = float(np.nanstd(x_rank))
-    sy = float(np.nanstd(y_rank))
-    if sx == 0 or sy == 0:
-        return float("nan")
-    return float(np.corrcoef(x_rank, y_rank)[0, 1])
+    rho, _ = spearman_stats(x, y)
+    return rho
+
+
+def spearman_stats(x: pd.Series, y: pd.Series) -> Tuple[float, float]:
+    x_num = pd.to_numeric(pd.Series(x), errors="coerce")
+    y_num = pd.to_numeric(pd.Series(y), errors="coerce")
+    valid = np.isfinite(x_num.to_numpy(dtype=float)) & np.isfinite(y_num.to_numpy(dtype=float))
+    if int(valid.sum()) < 2:
+        return float("nan"), float("nan")
+    rho, pvalue = spearmanr(x_num[valid], y_num[valid])
+    rho_f = _safe_float(rho)
+    p_f = _safe_float(pvalue)
+    if not np.isfinite(rho_f):
+        return float("nan"), float("nan")
+    return rho_f, p_f
+
+
+def _metric_quality_mask(estimates_df: pd.DataFrame, metric: str) -> pd.Series:
+    metric_vals = _safe_numeric_series(estimates_df, metric)
+    mask = np.isfinite(metric_vals)
+
+    if metric == "estimated_rotational_temperature":
+        status_ok = _safe_text_series(estimates_df, "rotational_fit_status").str.lower() == "ok"
+        r2_ok = _safe_numeric_series(estimates_df, "rotational_fit_r2") >= 0.30
+        rel_ci = _relative_ci_width_series(
+            metric_vals,
+            _safe_numeric_series(estimates_df, "rotational_temperature_ci95_low"),
+            _safe_numeric_series(estimates_df, "rotational_temperature_ci95_high"),
+        )
+        ci_ok = (~np.isfinite(rel_ci)) | (rel_ci <= 1.50)
+        return mask & (metric_vals > 0) & status_ok & r2_ok & ci_ok
+
+    if metric == "estimated_vibrational_temperature":
+        status_ok = _safe_text_series(estimates_df, "vibrational_fit_status").str.lower() == "ok"
+        r2_ok = _safe_numeric_series(estimates_df, "vibrational_fit_r2") >= 0.20
+        rel_ci = _relative_ci_width_series(
+            metric_vals,
+            _safe_numeric_series(estimates_df, "vibrational_temperature_ci95_low"),
+            _safe_numeric_series(estimates_df, "vibrational_temperature_ci95_high"),
+        )
+        ci_ok = (~np.isfinite(rel_ci)) | (rel_ci <= 2.00)
+        return mask & (metric_vals > 0) & status_ok & r2_ok & ci_ok
+
+    if metric == "estimated_excitation_temperature":
+        status_ok = _safe_text_series(estimates_df, "excitation_fit_status").str.lower() == "ok"
+        r2_ok = _safe_numeric_series(estimates_df, "excitation_fit_r2") >= 0.20
+        rel_ci = _relative_ci_width_series(
+            metric_vals,
+            _safe_numeric_series(estimates_df, "excitation_temperature_ci95_low"),
+            _safe_numeric_series(estimates_df, "excitation_temperature_ci95_high"),
+        )
+        ci_ok = (~np.isfinite(rel_ci)) | (rel_ci <= 2.00)
+        return mask & (metric_vals > 0) & status_ok & r2_ok & ci_ok
+
+    if metric == "estimated_electron_density":
+        status_ok = _safe_text_series(estimates_df, "electron_density_status").str.lower() == "ok"
+        r2_ok = _safe_numeric_series(estimates_df, "electron_density_fit_r2") >= 0.20
+        rel_ci = _relative_ci_width_series(
+            metric_vals,
+            _safe_numeric_series(estimates_df, "estimated_electron_density_ci95_low"),
+            _safe_numeric_series(estimates_df, "estimated_electron_density_ci95_high"),
+        )
+        ci_ok = (~np.isfinite(rel_ci)) | (rel_ci <= 3.00)
+        return mask & (metric_vals > 0) & status_ok & r2_ok & ci_ok
+
+    if metric == "relative_dissociation_proxy":
+        return mask & (metric_vals >= 0)
+
+    return mask
 
 
 def build_trend_checks(estimates_df: pd.DataFrame) -> pd.DataFrame:
@@ -1767,52 +2122,82 @@ def build_trend_checks(estimates_df: pd.DataFrame) -> pd.DataFrame:
                     "metric": metric,
                     "expected_direction": expected,
                     "spearman_rho": float("nan"),
+                    "spearman_pvalue": float("nan"),
                     "n_points": 0,
+                    "n_points_raw": 0,
+                    "n_points_filtered_out": 0,
                     "n_levels": 0,
                     "trend_status": "insufficient_data",
                     "note": "missing_required_columns",
+                    "rho_threshold": SPEARMAN_PASS_THRESHOLD,
+                    "pvalue_threshold": SPEARMAN_PVALUE_THRESHOLD,
                 }
             )
             continue
-        d = estimates_df[[variable, metric]].copy()
-        d[variable] = pd.to_numeric(d[variable], errors="coerce")
-        d[metric] = pd.to_numeric(d[metric], errors="coerce")
-        d = d.dropna()
-        n_points = int(len(d))
-        n_levels = int(d[variable].nunique())
-        if n_points < 3 or n_levels < 3:
+
+        x_all = _safe_numeric_series(estimates_df, variable)
+        y_all = _safe_numeric_series(estimates_df, metric)
+        raw_mask = np.isfinite(x_all) & np.isfinite(y_all)
+        quality_mask = _metric_quality_mask(estimates_df, metric)
+        keep = raw_mask & quality_mask
+
+        n_points_raw = int(raw_mask.sum())
+        n_points = int(keep.sum())
+        n_levels = int(x_all[keep].nunique())
+        filtered = int(n_points_raw - n_points)
+        if n_points < MIN_TREND_POINTS or n_levels < MIN_TREND_LEVELS:
             rows.append(
                 {
                     "variable": variable,
                     "metric": metric,
                     "expected_direction": expected,
                     "spearman_rho": float("nan"),
+                    "spearman_pvalue": float("nan"),
                     "n_points": n_points,
+                    "n_points_raw": n_points_raw,
+                    "n_points_filtered_out": filtered,
                     "n_levels": n_levels,
                     "trend_status": "insufficient_data",
-                    "note": "need_at_least_3_points_and_3_levels",
+                    "note": f"need_at_least_{MIN_TREND_POINTS}_points_and_{MIN_TREND_LEVELS}_levels_after_quality_filter",
+                    "rho_threshold": SPEARMAN_PASS_THRESHOLD,
+                    "pvalue_threshold": SPEARMAN_PVALUE_THRESHOLD,
                 }
             )
             continue
 
-        rho = spearman_rho(d[variable], d[metric])
+        rho, pvalue = spearman_stats(x_all[keep], y_all[keep])
         if not np.isfinite(rho):
             status = "insufficient_data"
             note = "non_finite_correlation"
         else:
             sign = 1.0 if expected == "positive" else -1.0
-            status = "pass" if (sign * rho) >= 0.25 else "fail"
-            note = ""
+            aligned_rho = sign * rho
+            direction_ok = aligned_rho >= SPEARMAN_PASS_THRESHOLD
+            pvalue_ok = np.isfinite(pvalue) and pvalue <= SPEARMAN_PVALUE_THRESHOLD
+            if direction_ok and pvalue_ok:
+                status = "pass"
+                note = ""
+            elif direction_ok:
+                status = "weak_pass"
+                note = "direction_matches_but_not_statistically_significant"
+            else:
+                status = "fail"
+                note = ""
         rows.append(
             {
                 "variable": variable,
                 "metric": metric,
                 "expected_direction": expected,
                 "spearman_rho": rho,
+                "spearman_pvalue": pvalue,
                 "n_points": n_points,
+                "n_points_raw": n_points_raw,
+                "n_points_filtered_out": filtered,
                 "n_levels": n_levels,
                 "trend_status": status,
                 "note": note,
+                "rho_threshold": SPEARMAN_PASS_THRESHOLD,
+                "pvalue_threshold": SPEARMAN_PVALUE_THRESHOLD,
             }
         )
     return pd.DataFrame(rows)
@@ -1848,6 +2233,8 @@ def plot_trend_checks(trend_df: pd.DataFrame, out_path: Path) -> None:
     for status in trend_df["trend_status"].astype(str).tolist():
         if status == "pass":
             colors.append("#2a9d8f")
+        elif status == "weak_pass":
+            colors.append("#e9a03b")
         elif status == "fail":
             colors.append("#d1495b")
         else:
@@ -1865,7 +2252,19 @@ def plot_trend_checks(trend_df: pd.DataFrame, out_path: Path) -> None:
     style_axes(ax, grid_axis="x")
 
     for i, (_, r) in enumerate(trend_df.iterrows()):
-        ax.text(0.98, i, f"{r['trend_status']} (n={int(r['n_points'])})", ha="right", va="center", transform=ax.get_yaxis_transform(), fontsize=8.4)
+        n_used = int(_safe_float(r.get("n_points")))
+        n_raw = int(_safe_float(r.get("n_points_raw")))
+        pvalue = _safe_float(r.get("spearman_pvalue"))
+        p_text = f", p={pvalue:.2g}" if np.isfinite(pvalue) else ""
+        ax.text(
+            0.98,
+            i,
+            f"{r['trend_status']} (n={n_used}/{n_raw}{p_text})",
+            ha="right",
+            va="center",
+            transform=ax.get_yaxis_transform(),
+            fontsize=8.4,
+        )
 
     fig.tight_layout()
     fig.savefig(out_path, dpi=220)

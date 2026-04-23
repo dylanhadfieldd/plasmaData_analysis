@@ -7,8 +7,8 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 
-from analysis.output_paths import ensure_all_scope_layouts, metadata_csv_path, metadata_section_dir, pca_dir
-from analysis.plot_style import apply_publication_style, get_palette, style_axes
+from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_csv_path, metadata_section_dir, pca_dir
+from plots.style import apply_publication_style, get_palette, style_axes
 
 IN_CSV = metadata_csv_path("meta", "features", "features.csv")
 N_COMPONENTS = 5
@@ -156,7 +156,7 @@ def main() -> int:
     status = max(status, run_pca_block(df, "meta", color_col="dataset"))
 
     if "dataset" in df.columns:
-        for scope in ("air", "diameter"):
+        for scope in [s for s in SCOPES if s in {"air", "diameter"}]:
             part = df[df["dataset"].astype(str).str.lower() == scope].reset_index(drop=True)
             status = max(status, run_pca_block(part, scope, color_col="param_set"))
 

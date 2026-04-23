@@ -68,19 +68,19 @@ diameter,0.5mm,Base,diameter | 0.5mm | Base,e + N2+ -> e + N2+(B),$e + N_2^{+} \
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.16135218303792143,N2_337,$N_2$ (337.0 nm),337.0,6.499999999999995e-06,0.5726872246696031,0.16135218303792143
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.16135218303792143,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.16135218303792143,Ar_750,$Ar$ (750.4 nm),750.4,,0.0,0.0
-diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.4970581097030161,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,1.1350000000000001e-05,1.0,0.2728380870573925
-diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.4970581097030161,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,7.25e-06,0.6387665198237885,0.17427983534503041
-diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.4970581097030161,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,2.0775e-06,0.18303964757709248,0.04994018730059319
-diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.4970581097030161,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.12250648261085899,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,1.1350000000000001e-05,1.0,0.06724452074154272
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.12250648261085899,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,7.25e-06,0.6387665198237885,0.0429535484912938
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.12250648261085899,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,2.0775e-06,0.18303964757709248,0.012308413378022463
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.12250648261085899,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.16135218303792143,N2_337,$N_2$ (337.0 nm),337.0,6.499999999999995e-06,0.5726872246696031,0.08190146341388377
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.16135218303792143,N2_379,$N_2$ (379.0 nm),379.0,5.750000000000004e-06,0.5066079295154188,0.07245129455843576
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.16135218303792143,N2CB_370.9,$N_2(C \rightarrow B)$ (370.9 nm),370.9,5.555e-07,0.048942731277533034,0.006999425065601918
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.16135218303792143,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.16135218303792143,N2CB_357.6,$N_2(C \rightarrow B)$ (357.6 nm),357.6,0.0,0.0,0.0
-diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.4970581097030161,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,7.25e-06,0.6387665198237885,0.3393287472078029
-diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.4970581097030161,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,2.0775e-06,0.18303964757709248,0.09723523756196006
-diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.4970581097030161,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,1.2925e-06,0.11387665198237883,0.06049412493325313
-diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.4970581097030161,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.12250648261085899,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,7.25e-06,0.6387665198237885,0.08363201496504027
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.12250648261085899,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,2.0775e-06,0.18303964757709248,0.023964898081361537
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.12250648261085899,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,1.2925e-06,0.11387665198237883,0.014909569564457176
+diameter,0.5mm,Middle,diameter | 0.5mm | Middle,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.12250648261085899,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.0,N2_337,$N_2$ (337.0 nm),337.0,5.050000000000001e-06,1.0,0.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.0,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.0,Ar_750,$Ar$ (750.4 nm),750.4,,0.0,0.0
@@ -101,19 +101,19 @@ diameter,0.5mm,Tip,diameter | 0.5mm | Tip,e + N2+ -> e + N2+(B),$e + N_2^{+} \ri
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.0,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,1.685e-06,0.3336633663366336,0.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,e + O2 -> e + O + O,$e + O_2 \rightarrow e + O + O$,0.0,OH_308,$OH$ (308.0 nm),308.0,5.9499999999999706e-09,0.0011782178217821721,0.0
 diameter,0.5mm,Tip,diameter | 0.5mm | Tip,e + O2 -> e + O + O,$e + O_2 \rightarrow e + O + O$,0.0,O_777,$O$ (777.2 nm),777.2,,0.0,0.0
-diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.6829221935037726,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,3.9500000000000003e-07,0.45402298850574707,0.6632757964937058
-diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.6829221935037726,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,1.1699999999999999e-08,0.013448275862068962,0.019646397010066728
-diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.6829221935037726,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
-diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.6829221935037726,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,0.0,0.0,0.0
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.7181584384953733,N2CB_394.2,$N_2(C \rightarrow B)$ (394.2 nm),394.2,3.9500000000000003e-07,0.45402298850574707,0.6974983604762047
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.7181584384953733,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,1.1699999999999999e-08,0.013448275862068962,0.020660078019168592
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.7181584384953733,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> 2e + N2+,$e + N_2 \rightarrow 2e + N_2^{+}$,0.7181584384953733,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,0.0,0.0,0.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.4459088500742121,N2_379,$N_2$ (379.0 nm),379.0,8.700000000000001e-07,1.0,0.4402663559718147
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.4459088500742121,N2CB_370.9,$N_2(C \rightarrow B)$ (370.9 nm),370.9,1.1150000000000004e-08,0.01281609195402299,0.005642494102397396
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.4459088500742121,N2_337,$N_2$ (337.0 nm),337.0,0.0,0.0,0.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.4459088500742121,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2 -> e + N2(C),$e + N_2 \rightarrow e + N_2(C)$,0.4459088500742121,N2CB_357.6,$N_2(C \rightarrow B)$ (357.6 nm),357.6,0.0,0.0,0.0
-diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.6829221935037726,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,2.79e-07,0.3206896551724137,0.6554361609478931
-diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.6829221935037726,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,1.1699999999999999e-08,0.013448275862068962,0.02748603255587939
-diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.6829221935037726,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
-diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.6829221935037726,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,0.0,0.0,0.0
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.7181584384953733,N2CB_405.8,$N_2(C \rightarrow B)$ (405.8 nm),405.8,2.79e-07,0.3206896551724137,0.6892542288964884
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.7181584384953733,N2CB_399.7,$N_2(C \rightarrow B)$ (399.7 nm),399.7,1.1699999999999999e-08,0.013448275862068962,0.028904209598884994
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.7181584384953733,N2plus_391,$N_2^{+}$ (391.44 nm),391.44,0.0,0.0,0.0
+diameter,1mm,0.5 cm below,diameter | 1mm | 0.5 cm below,e + N2+ -> e + N2+(B),$e + N_2^{+} \rightarrow e + N_2^{+}(B)$,0.7181584384953733,N2plus_428,$N_2^{+}$ (428.0 nm),428.0,0.0,0.0,0.0
 diameter,1mm,Base,diameter | 1mm | Base,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.0,N2_337,$N_2$ (337.0 nm),337.0,1.2800000000000013e-05,1.0,0.0
 diameter,1mm,Base,diameter | 1mm | Base,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.0,N2CB_353.6,$N_2(C \rightarrow B)$ (353.6 nm),353.6,0.0,0.0,0.0
 diameter,1mm,Base,diameter | 1mm | Base,Ar* + N2 -> Ar + N2(C),$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$,0.0,Ar_750,$Ar$ (750.4 nm),750.4,,0.0,0.0

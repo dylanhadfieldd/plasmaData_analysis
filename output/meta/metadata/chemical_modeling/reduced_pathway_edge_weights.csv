@@ -1,10 +1,10 @@
 reaction,weight,reaction_latex
 e + N2 -> e + N2(C),0.4491750204065756,$e + N_2 \rightarrow e + N_2(C)$
-e + N2 -> 2e + N2+,0.21799803032067977,$e + N_2 \rightarrow 2e + N_2^{+}$
-e + N2 -> e + N + N,0.11799803032067974,$e + N_2 \rightarrow e + N + N$
-e + N2+ -> e + N2+(B),0.21799803032067977,$e + N_2^{+} \rightarrow e + N_2^{+}(B)$
+e + N2 -> 2e + N2+,0.18406649211062254,$e + N_2 \rightarrow 2e + N_2^{+}$
+e + N2 -> e + N + N,0.0995374513668925,$e + N_2 \rightarrow e + N + N$
+e + N2+ -> e + N2+(B),0.18406649211062254,$e + N_2^{+} \rightarrow e + N_2^{+}(B)$
 Ar* + N2 -> Ar + N2(C),0.22045072767930712,$Ar^{*} + N_2 \rightarrow Ar + N_2(C)$
 e + O2 -> e + O + O,0.22872429272726846,$e + O_2 \rightarrow e + O + O$
-e + O2 -> O2-,0.38200196967932026,$e + O_2 \rightarrow O_2^{-}$
+e + O2 -> O2-,0.4004625486331075,$e + O_2 \rightarrow O_2^{-}$
 N + O2 -> NO + O,0.0,$N + O_2 \rightarrow NO + O$
 O + H2O_trace -> 2OH,0.06036960697928571,$O + H_2O_{trace} \rightarrow 2OH$

@@ -7,6 +7,7 @@ from typing import List
 import pandas as pd
 from openpyxl import Workbook
 from openpyxl.styles import Font
+from analysis.output_paths import SCOPES
 
 try:
     from openpyxl.drawing.image import Image as XLImage
@@ -14,7 +15,6 @@ except Exception:  # pragma: no cover
     XLImage = None
 
 OUTPUT_ROOT = Path("output")
-SCOPES = ("air", "diameter", "meta")
 
 
 def read_csv_or_note(path: Path) -> pd.DataFrame:

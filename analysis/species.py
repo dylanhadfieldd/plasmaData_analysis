@@ -7,7 +7,9 @@ from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
+from analysis.numeric_utils import safe_ratio, trapz_integral
 from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_csv_path
+from data_ingestion.scoped_writes import write_scoped_csv
 
 IN_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 WINDOWS_CSV = Path("configs/species_windows.csv")
@@ -32,18 +34,6 @@ DEFAULT_WINDOWS: List[Tuple[str, float, float, str]] = [
 def slug(text: str) -> str:
     out = SAFE_TEXT_RE.sub("_", str(text).strip().lower()).strip("_")
     return out or "window"
-
-
-def trapz_integral(wl: np.ndarray, y: np.ndarray) -> float:
-    if wl.size < 2:
-        return 0.0
-    return float(np.trapz(y, wl))
-
-
-def safe_ratio(a: float, b: float) -> float:
-    if not np.isfinite(a) or not np.isfinite(b) or b == 0:
-        return float("nan")
-    return float(a / b)
 
 
 def load_windows(config_path: Path) -> List[Dict[str, object]]:
@@ -92,7 +82,7 @@ def extract_window_metrics(wl: np.ndarray, y: np.ndarray, start_nm: float, end_n
 
     wl_win = wl[mask]
     y_win = y[mask]
-    area = trapz_integral(wl_win, y_win)
+    area = trapz_integral(wl_win, y_win, empty_value=0.0)
     peak_idx = int(np.nanargmax(y_win)) if y_win.size else 0
     peak = float(y_win[peak_idx]) if y_win.size else float("nan")
     peak_nm = float(wl_win[peak_idx]) if wl_win.size else float("nan")
@@ -126,21 +116,7 @@ def add_grouped_species_features(row: Dict[str, object]) -> None:
 
 
 def write_scoped_csvs(df: pd.DataFrame, section: str, filename: str, allow_global: bool = False) -> List[Path]:
-    written: List[Path] = []
-    for scope in SCOPES:
-        if scope == "meta":
-            part = df.copy()
-        elif "dataset" in df.columns:
-            part = df[df["dataset"].astype(str).str.lower() == scope].copy()
-        elif allow_global:
-            part = df.copy()
-        else:
-            part = pd.DataFrame(columns=df.columns)
-        out_path = metadata_csv_path(scope, section, filename)
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        part.to_csv(out_path, index=False)
-        written.append(out_path)
-    return written
+    return write_scoped_csv(df, section=section, filename=filename, allow_global=allow_global, scopes=SCOPES)
 
 
 def main() -> int:
@@ -163,7 +139,7 @@ def main() -> int:
         g = g.sort_values("wavelength_nm")
         wl = g["wavelength_nm"].to_numpy(dtype=float)
         y = g["irradiance_W_m2_nm"].to_numpy(dtype=float)
-        total = trapz_integral(wl, y)
+        total = trapz_integral(wl, y, empty_value=0.0)
 
         row: Dict[str, object] = {}
         if isinstance(key, tuple):

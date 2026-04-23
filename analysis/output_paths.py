@@ -1,9 +1,40 @@
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
+from typing import Iterable, List, Tuple
 
 OUTPUT_ROOT = Path("output")
-SCOPES = ("air", "diameter", "meta")
+DEFAULT_SCOPES = ("air", "diameter", "meta")
+SCOPES: List[str] = list(DEFAULT_SCOPES)
+VALID_SCOPES = set(DEFAULT_SCOPES)
+
+
+def normalize_scopes(scopes: Iterable[str] | None) -> List[str]:
+    if scopes is None:
+        return list(DEFAULT_SCOPES)
+
+    normalized: List[str] = []
+    for raw in scopes:
+        scope = str(raw).strip().lower()
+        if not scope:
+            continue
+        if scope not in VALID_SCOPES:
+            raise ValueError(f"Unsupported scope '{scope}'. Valid scopes: {sorted(VALID_SCOPES)}")
+        if scope not in normalized:
+            normalized.append(scope)
+
+    return normalized or list(DEFAULT_SCOPES)
+
+
+def set_active_scopes(scopes: Iterable[str] | None) -> Tuple[str, ...]:
+    selected = normalize_scopes(scopes)
+    SCOPES[:] = selected
+    return tuple(SCOPES)
+
+
+def active_scopes() -> Tuple[str, ...]:
+    return tuple(SCOPES)
 
 
 def scope_root(scope: str) -> Path:
@@ -81,3 +112,15 @@ def ensure_scope_layout(scope: str) -> None:
 def ensure_all_scope_layouts() -> None:
     for scope in SCOPES:
         ensure_scope_layout(scope)
+
+
+def clear_scope_outputs(scope: str) -> None:
+    root = scope_root(scope)
+    if root.exists():
+        shutil.rmtree(root, ignore_errors=True)
+
+
+def reset_active_scope_outputs() -> None:
+    for scope in SCOPES:
+        clear_scope_outputs(scope)
+    ensure_all_scope_layouts()
