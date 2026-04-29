@@ -1,0 +1,8 @@
+matplotlib
+numpy
+openpyxl
+pandas
+reportlab
+scikit-learn
+scipy
+

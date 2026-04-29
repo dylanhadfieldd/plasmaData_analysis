@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 
 from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_section_dir, spectral_diagnostics_dir
+from plots.figure_utils import clear_figure_files, write_message_figure
 from plots.style import apply_publication_style, get_palette, spectral_interval_label, style_axes, to_species_label
 
 RAW_DIR = metadata_section_dir("meta", "spectral")
@@ -42,12 +43,7 @@ def fig_path(index: int) -> Path:
 
 
 def write_note_figure(path: Path, message: str, size: tuple[float, float] = (8, 4)) -> Path:
-    fig, ax = plt.subplots(figsize=size)
-    ax.text(0.5, 0.5, message, ha="center", va="center")
-    ax.axis("off")
-    fig.savefig(path, dpi=DPI)
-    plt.close(fig)
-    return path
+    return write_message_figure(path, message, figsize=size, dpi=DPI)
 
 
 def plot_averaged_spectra(curves: pd.DataFrame) -> Path:
@@ -299,9 +295,7 @@ def plot_nist_top1_species(nist_matches: pd.DataFrame, target_matches: pd.DataFr
 def main() -> int:
     apply_publication_style()
     ensure_all_scope_layouts()
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    for old in OUT_DIR.glob("*.png"):
-        old.unlink()
+    clear_figure_files(OUT_DIR, patterns=("*.png",))
 
     averaged_curves = load_csv(AVERAGED_CURVES_CSV)
     averaged_peaks = load_csv(AVERAGED_PEAKS_CSV)

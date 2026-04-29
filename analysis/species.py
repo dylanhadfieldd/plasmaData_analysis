@@ -8,8 +8,8 @@ from typing import Dict, List, Tuple
 import numpy as np
 import pandas as pd
 from analysis.numeric_utils import safe_ratio, trapz_integral
-from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_csv_path
-from data_ingestion.scoped_writes import write_scoped_csv
+from analysis.output_paths import ensure_all_scope_layouts, metadata_csv_path
+from analysis.scoped_outputs import write_scoped_csv
 
 IN_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 WINDOWS_CSV = Path("configs/species_windows.csv")
@@ -115,10 +115,6 @@ def add_grouped_species_features(row: Dict[str, object]) -> None:
     row["balmer_to_n2plus_ratio"] = safe_ratio(balmer, n2_plus)
 
 
-def write_scoped_csvs(df: pd.DataFrame, section: str, filename: str, allow_global: bool = False) -> List[Path]:
-    return write_scoped_csv(df, section=section, filename=filename, allow_global=allow_global, scopes=SCOPES)
-
-
 def main() -> int:
     ensure_all_scope_layouts()
 
@@ -167,7 +163,7 @@ def main() -> int:
         return 2
 
     features_df = pd.DataFrame(rows).sort_values(["dataset", "sample_id"], ignore_index=True)
-    features_written = write_scoped_csvs(features_df, "species", "species_features.csv")
+    features_written = write_scoped_csv(features_df, section="species", filename="species_features.csv")
 
     summary_cols = [c for c in features_df.columns if c.endswith("_area") or c.endswith("_ratio")]
     summary = (
@@ -176,7 +172,7 @@ def main() -> int:
         .reset_index()
     )
     summary.columns = ["__".join([str(x) for x in col if str(x) != ""]).strip("__") for col in summary.columns]
-    summary_written = write_scoped_csvs(summary, "species", "species_summary.csv")
+    summary_written = write_scoped_csv(summary, section="species", filename="species_summary.csv")
 
     print(f"Wrote {metadata_csv_path('meta', 'species', 'species_features.csv')} ({len(features_df)} rows)")
     print(f"Wrote {metadata_csv_path('meta', 'species', 'species_summary.csv')}")

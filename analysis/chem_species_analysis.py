@@ -9,6 +9,8 @@ import numpy as np
 import pandas as pd
 
 from analysis.output_paths import SCOPES, chemspecies_figures_dir, ensure_all_scope_layouts, metadata_csv_path, metadata_section_dir
+from analysis.scoped_outputs import scoped_slice
+from plots.figure_utils import write_message_figure
 from plots.style import apply_publication_style, get_palette, style_axes, to_species_label
 
 TARGET_MATCHES_CSV = metadata_csv_path("meta", "spectral", "target_species_peak_matches.csv")
@@ -262,11 +264,41 @@ def scope_rows(group_long: pd.DataFrame, scope: str) -> pd.DataFrame:
 
 
 def write_empty_figure(out_path: Path, message: str, figsize: tuple[float, float] = (8.0, 4.0)) -> None:
-    fig, ax = plt.subplots(figsize=figsize)
-    ax.text(0.5, 0.5, message, ha="center", va="center")
-    ax.axis("off")
-    fig.savefig(out_path, dpi=DPI)
-    plt.close(fig)
+    write_message_figure(out_path, message, figsize=figsize, dpi=DPI)
+
+
+def top_species_by_mean(df: pd.DataFrame, value_col: str, n_top: int = TOP_SPECIES) -> List[str]:
+    if df.empty:
+        return []
+    return (
+        df.groupby("species", dropna=False)[value_col]
+        .mean()
+        .sort_values(ascending=False)
+        .head(n_top)
+        .index.tolist()
+    )
+
+
+def pivot_top_species(
+    df: pd.DataFrame,
+    index_col: str,
+    value_col: str,
+    aggfunc: str = "sum",
+) -> pd.DataFrame:
+    top_species = top_species_by_mean(df, value_col)
+    if not top_species:
+        return pd.DataFrame()
+    return (
+        df[df["species"].isin(top_species)]
+        .pivot_table(
+            index=index_col,
+            columns="species",
+            values=value_col,
+            aggfunc=aggfunc,
+            fill_value=0.0,
+        )
+        .sort_index()
+    )
 
 
 def plot_scope_group_heatmap(group_long: pd.DataFrame, scope: str, out_path: Path) -> None:
@@ -275,24 +307,7 @@ def plot_scope_group_heatmap(group_long: pd.DataFrame, scope: str, out_path: Pat
         write_empty_figure(out_path, f"No {scope} group concentration data")
         return
 
-    top_species = (
-        d.groupby("species", dropna=False)["relative_concentration"]
-        .mean()
-        .sort_values(ascending=False)
-        .head(TOP_SPECIES)
-        .index.tolist()
-    )
-    mat = (
-        d[d["species"].isin(top_species)]
-        .pivot_table(
-            index="scope_group",
-            columns="species",
-            values="relative_concentration",
-            aggfunc="sum",
-            fill_value=0.0,
-        )
-        .sort_index()
-    )
+    mat = pivot_top_species(d, index_col="scope_group", value_col="relative_concentration", aggfunc="sum")
     if mat.empty:
         write_empty_figure(out_path, f"No {scope} species rows for heatmap")
         return
@@ -319,24 +334,7 @@ def plot_scope_species_mix(group_long: pd.DataFrame, scope: str, out_path: Path)
         write_empty_figure(out_path, f"No {scope} species concentration mix")
         return
 
-    top_species = (
-        d.groupby("species", dropna=False)["relative_concentration"]
-        .mean()
-        .sort_values(ascending=False)
-        .head(TOP_SPECIES)
-        .index.tolist()
-    )
-    p = (
-        d[d["species"].isin(top_species)]
-        .pivot_table(
-            index="scope_group",
-            columns="species",
-            values="relative_concentration",
-            aggfunc="sum",
-            fill_value=0.0,
-        )
-        .sort_index()
-    )
+    p = pivot_top_species(d, index_col="scope_group", value_col="relative_concentration", aggfunc="sum")
     if p.empty:
         write_empty_figure(out_path, f"No {scope} species selected for mix")
         return
@@ -406,24 +404,7 @@ def plot_scope_param_heatmap(group_long: pd.DataFrame, scope: str, out_path: Pat
         write_empty_figure(out_path, f"No {scope} parameter-species data")
         return
 
-    top_species = (
-        d.groupby("species", dropna=False)["relative_concentration"]
-        .mean()
-        .sort_values(ascending=False)
-        .head(TOP_SPECIES)
-        .index.tolist()
-    )
-    mat = (
-        d[d["species"].isin(top_species)]
-        .pivot_table(
-            index="param_set",
-            columns="species",
-            values="relative_concentration",
-            aggfunc="mean",
-            fill_value=0.0,
-        )
-        .sort_index()
-    )
+    mat = pivot_top_species(d, index_col="param_set", value_col="relative_concentration", aggfunc="mean")
     if mat.empty:
         write_empty_figure(out_path, f"No {scope} parameter-level heatmap rows")
         return
@@ -446,31 +427,10 @@ def plot_scope_param_heatmap(group_long: pd.DataFrame, scope: str, out_path: Pat
 
 def plot_group_heatmap(group_long: pd.DataFrame, out_path: Path) -> None:
     if group_long.empty:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.text(0.5, 0.5, "No target species concentration data", ha="center", va="center")
-        ax.axis("off")
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
+        write_empty_figure(out_path, "No target species concentration data", figsize=(8, 4))
         return
 
-    top_species = (
-        group_long.groupby("species", dropna=False)["relative_concentration"]
-        .mean()
-        .sort_values(ascending=False)
-        .head(TOP_SPECIES)
-        .index.tolist()
-    )
-    d = group_long[group_long["species"].isin(top_species)].copy()
-    mat = (
-        d.pivot_table(
-            index="group_label",
-            columns="species",
-            values="relative_concentration",
-            aggfunc="sum",
-            fill_value=0.0,
-        )
-        .sort_index()
-    )
+    mat = pivot_top_species(group_long, index_col="group_label", value_col="relative_concentration", aggfunc="sum")
 
     fig, ax = plt.subplots(figsize=(11.2, max(4.6, 0.35 * len(mat.index))))
     im = ax.imshow(mat.to_numpy(dtype=float), aspect="auto", cmap="YlGnBu")
@@ -491,37 +451,14 @@ def plot_group_heatmap(group_long: pd.DataFrame, out_path: Path) -> None:
 def plot_dataset_stacked(summary: pd.DataFrame, out_path: Path) -> None:
     d = summary[summary["dataset"].isin(["air", "diameter", "combined"])].copy()
     if d.empty:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.text(0.5, 0.5, "No dataset concentration summary", ha="center", va="center")
-        ax.axis("off")
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
+        write_empty_figure(out_path, "No dataset concentration summary", figsize=(8, 4))
         return
 
-    top_species = (
-        d.groupby("species", dropna=False)["mean_relative_concentration"]
-        .mean()
-        .sort_values(ascending=False)
-        .head(TOP_SPECIES)
-        .index.tolist()
-    )
-    p = (
-        d[d["species"].isin(top_species)]
-        .pivot_table(
-            index="dataset",
-            columns="species",
-            values="mean_relative_concentration",
-            aggfunc="mean",
-            fill_value=0.0,
-        )
-        .reindex(index=[x for x in ["air", "diameter", "combined"] if x in d["dataset"].unique()])
+    p = pivot_top_species(d, index_col="dataset", value_col="mean_relative_concentration", aggfunc="mean").reindex(
+        index=[x for x in ["air", "diameter", "combined"] if x in d["dataset"].unique()]
     )
     if p.empty:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.text(0.5, 0.5, "No species selected for stacked view", ha="center", va="center")
-        ax.axis("off")
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
+        write_empty_figure(out_path, "No species selected for stacked view", figsize=(8, 4))
         return
 
     p = p.div(p.sum(axis=1).replace(0, np.nan), axis=0).fillna(0.0)
@@ -544,11 +481,7 @@ def plot_dataset_stacked(summary: pd.DataFrame, out_path: Path) -> None:
 
 def plot_air_vs_diameter_delta(delta_df: pd.DataFrame, out_path: Path) -> None:
     if delta_df.empty:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.text(0.5, 0.5, "No air vs diameter species delta data", ha="center", va="center")
-        ax.axis("off")
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
+        write_empty_figure(out_path, "No air vs diameter species delta data", figsize=(8, 4))
         return
 
     d = delta_df.head(TOP_SPECIES).sort_values("air_minus_diameter", ascending=True)
@@ -569,11 +502,7 @@ def plot_air_vs_diameter_delta(delta_df: pd.DataFrame, out_path: Path) -> None:
 
 def plot_group_total_signal(group_long: pd.DataFrame, out_path: Path) -> None:
     if group_long.empty:
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.text(0.5, 0.5, "No group signal data", ha="center", va="center")
-        ax.axis("off")
-        fig.savefig(out_path, dpi=DPI)
-        plt.close(fig)
+        write_empty_figure(out_path, "No group signal data", figsize=(8, 4))
         return
 
     d = (
@@ -594,14 +523,6 @@ def plot_group_total_signal(group_long: pd.DataFrame, out_path: Path) -> None:
     fig.tight_layout()
     fig.savefig(out_path, dpi=DPI)
     plt.close(fig)
-
-
-def scope_csv_slice(df: pd.DataFrame, scope: str, allow_global: bool = False) -> pd.DataFrame:
-    if scope == "meta":
-        return df.copy()
-    if "dataset" in df.columns:
-        return df[df["dataset"].astype(str).str.lower() == scope].copy()
-    return df.copy() if allow_global else pd.DataFrame(columns=df.columns)
 
 
 def clear_root_pngs(fig_dir: Path) -> None:
@@ -634,7 +555,7 @@ def main() -> int:
     for scope in SCOPES:
         for name, df in csv_outputs.items():
             allow_global = name == "air_vs_diameter_species_delta.csv"
-            part = scope_csv_slice(df, scope, allow_global=allow_global)
+            part = scoped_slice(df, scope, allow_global=allow_global)
             if part.empty:
                 continue
             out_path = scope_csv_dir(scope) / name

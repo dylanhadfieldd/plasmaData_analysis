@@ -15,6 +15,7 @@ from analysis.output_paths import (
     spectral_composed_dir,
     spectral_individual_dir,
 )
+from plots.figure_utils import clear_figure_files
 from plots.style import apply_publication_style, get_palette, spectral_interval_label, style_axes
 
 INPUT_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
@@ -34,9 +35,7 @@ def normalize_curve(y: np.ndarray) -> np.ndarray:
 
 
 def clear_pngs(path: Path) -> None:
-    path.mkdir(parents=True, exist_ok=True)
-    for old in path.glob("*.png"):
-        old.unlink()
+    clear_figure_files(path, patterns=("*.png",))
 
 
 def grouped_label(row: pd.Series) -> str:

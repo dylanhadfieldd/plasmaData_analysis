@@ -1,8 +1,17 @@
-reports/
-msOutput/
-chemSpecies_output/
-stats/
+# Python caches
 __pycache__/
-analysis/__pycache__/
-*.pyc
+*.py[cod]
 
+# Local environments
+.venv/
+venv/
+
+# Regenerated analysis outputs
+output/
+reaction_wavelength_narrative.generated.*
+
+# Legacy/generated output folders
+/reports/
+/msOutput/
+/chemSpecies_output/
+/stats/

@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 from analysis.output_paths import metadata_csv_path, spectral_labels_dir
+from plots.figure_utils import clear_figure_files
 from plots.style import spectral_interval_label, style_axes, to_species_label
 
 LABELED_TOP_N = 8
@@ -240,9 +241,7 @@ def write_labeled_assets(scope: str) -> None:
     curves_csv = metadata_csv_path(scope, "spectral", "averaged_curves_long.csv")
     trace_csv = metadata_csv_path(scope, "spectral", "labeled_peak_traceability.csv")
     labels_dir = spectral_labels_dir(scope)
-    labels_dir.mkdir(parents=True, exist_ok=True)
-    for old in labels_dir.glob("*.png"):
-        old.unlink()
+    clear_figure_files(labels_dir, patterns=("*.png",))
 
     trace = build_labeled_traceability(scope)
     if not trace.empty:

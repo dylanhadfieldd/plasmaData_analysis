@@ -14,10 +14,11 @@ import pandas as pd
 from analysis.output_paths import active_scopes
 
 OUTPUT_ROOT = Path("output")
-NARRATIVE_MD_PATH = Path("reaction wavelength narrative.md")
-NARRATIVE_PDF_PATH = Path("reaction wavelength narrative.pdf")
-NARRATIVE_MD_FALLBACK = Path("reaction_wavelength_narrative.generated.md")
-NARRATIVE_PDF_FALLBACK = Path("reaction_wavelength_narrative.generated.pdf")
+NARRATIVE_REPORT_DIR = Path("docs") / "reports"
+NARRATIVE_MD_PATH = NARRATIVE_REPORT_DIR / "reaction_wavelength_narrative.md"
+NARRATIVE_PDF_PATH = NARRATIVE_REPORT_DIR / "reaction_wavelength_narrative.pdf"
+NARRATIVE_MD_FALLBACK = NARRATIVE_REPORT_DIR / "reaction_wavelength_narrative.generated.md"
+NARRATIVE_PDF_FALLBACK = NARRATIVE_REPORT_DIR / "reaction_wavelength_narrative.generated.pdf"
 
 
 def _safe_float(value: object) -> float:
@@ -1357,6 +1358,8 @@ def _write_simple_text_pdf(path: Path, lines: Sequence[str]) -> None:
 
 
 def _write_text_with_fallback(path: Path, text: str, fallback: Path) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fallback.parent.mkdir(parents=True, exist_ok=True)
     try:
         path.write_text(text, encoding="utf-8")
         return path
@@ -1376,6 +1379,8 @@ def _write_pdf_with_fallback(
     wavelength_summary: pd.DataFrame,
     story_summary: pd.DataFrame,
 ) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fallback.parent.mkdir(parents=True, exist_ok=True)
     try:
         _build_styled_pdf(
             path=path,

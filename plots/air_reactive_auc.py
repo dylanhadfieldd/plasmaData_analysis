@@ -9,7 +9,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from analysis.numeric_utils import trapz_integral
 from analysis.output_paths import chemspecies_figures_dir, ensure_all_scope_layouts, metadata_csv_path
+from data_ingestion.loading import parse_air_file as parse_raw_air_file
+from plots.figure_utils import clear_figure_files
 from plots.style import apply_publication_style, style_axes
 
 
@@ -52,53 +55,16 @@ SPECIES_COLORS: Dict[str, str] = {
 PNG_DPI = 600
 
 
-def trapz(y: np.ndarray, x: np.ndarray) -> float:
-    return float(np.trapz(y, x))
-
-
 def prepare_output_dirs() -> None:
-    FIG_ROOT.mkdir(parents=True, exist_ok=True)
     for stale_dir in (FIG_ROOT / "group1_auc_vs_species", FIG_ROOT / "group2_auc_vs_air_input"):
         if stale_dir.exists():
             shutil.rmtree(stale_dir, ignore_errors=True)
-    for old in FIG_ROOT.glob("*.png"):
-        old.unlink()
-    for old in FIG_ROOT.glob("*.svg"):
-        old.unlink()
+    clear_figure_files(FIG_ROOT)
 
 
 def parse_air_file(path: Path) -> pd.DataFrame:
-    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
-    header_idx: int | None = None
-    for i, line in enumerate(lines):
-        s = line.strip().lower()
-        if not s:
-            continue
-        if "wavelength" in s and ("," in s or "\t" in s):
-            header_idx = i
-            break
-    if header_idx is None:
-        raise ValueError(f"Could not parse spectrum header in {path}")
-
-    df = pd.read_csv(pd.io.common.StringIO("\n".join(lines[header_idx:])), sep=",", engine="python")
-    cols = [str(c).strip().lower() for c in df.columns]
-    df.columns = cols
-
-    wl_col = next((c for c in cols if "wavelength" in c), None)
-    int_col = next((c for c in cols if "irradiance" in c or "intensity" in c), None)
-    if wl_col is None:
-        raise ValueError(f"No wavelength column in {path}")
-    if int_col is None:
-        int_col = next((c for c in cols if c != wl_col), None)
-    if int_col is None:
-        raise ValueError(f"No intensity-like column in {path}")
-
-    out = df[[wl_col, int_col]].copy()
-    out.columns = ["wavelength_nm", "intensity"]
-    out["wavelength_nm"] = pd.to_numeric(out["wavelength_nm"], errors="coerce")
-    out["intensity"] = pd.to_numeric(out["intensity"], errors="coerce")
-    out = out.dropna(subset=["wavelength_nm", "intensity"]).sort_values("wavelength_nm").reset_index(drop=True)
-    return out
+    _, _, spectrum = parse_raw_air_file(path)[0]
+    return spectrum.rename(columns={"irradiance_W_m2_nm": "intensity"}).reset_index(drop=True)
 
 
 def load_air_long() -> pd.DataFrame:
@@ -137,7 +103,7 @@ def baseline_correct_window(wl: np.ndarray, y: np.ndarray, start_nm: float, end_
     y_win = y[mask]
     baseline = np.linspace(y_win[0], y_win[-1], y_win.size)
     corrected = np.clip(y_win - baseline, 0.0, None)
-    return trapz(corrected, wl_win)
+    return trapz_integral(wl_win, corrected, empty_value=0.0)
 
 
 def per_spectrum_auc(df: pd.DataFrame) -> pd.DataFrame:
@@ -155,7 +121,7 @@ def per_spectrum_auc(df: pd.DataFrame) -> pd.DataFrame:
 
         bg = float(np.nanpercentile(y, 5))
         y_bg = np.clip(y - bg, 0.0, None)
-        total_area = trapz(y_bg, wl)
+        total_area = trapz_integral(wl, y_bg)
         if not np.isfinite(total_area) or total_area <= 0:
             total_area = float("nan")
 
@@ -306,7 +272,6 @@ def validate_complete(table: pd.DataFrame) -> None:
 def main() -> int:
     apply_publication_style()
     ensure_all_scope_layouts()
-    np.random.seed(0)
 
     df = load_air_long()
     if df.empty:

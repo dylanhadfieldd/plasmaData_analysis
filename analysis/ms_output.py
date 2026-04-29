@@ -22,7 +22,7 @@ from data_ingestion.nist_wire import (
     get_nist_lines_for_range as fetch_nist_lines_for_range,
     load_target_species_lines as load_target_species_lines_ingestion,
 )
-from data_ingestion.scoped_writes import write_scoped_csv as write_scoped_section_csv
+from analysis.scoped_outputs import write_scoped_csv as write_scoped_section_csv
 
 IN_LONG = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 NIST_CSV = Path("configs/nist_lines.csv")
@@ -233,4 +233,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

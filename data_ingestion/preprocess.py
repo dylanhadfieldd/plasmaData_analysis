@@ -7,6 +7,7 @@ from typing import Dict, List
 import pandas as pd
 
 from analysis.output_paths import SCOPES, ensure_all_scope_layouts, metadata_section_dir
+from analysis.scoped_outputs import scoped_slice
 from data_ingestion.loading import (
     INPUT_DIRS,
     WAVELENGTH_ROUND,
@@ -37,14 +38,9 @@ def write_scoped_base_raw(metadata_df: pd.DataFrame, spectra_long_df: pd.DataFra
     for scope in SCOPES:
         raw_dir = metadata_section_dir(scope, "spectral")
         raw_dir.mkdir(parents=True, exist_ok=True)
-        if scope == "meta":
-            m_part = metadata_df.copy()
-            s_part = spectra_long_df.copy()
-        else:
-            m_part = metadata_df[metadata_df["dataset"].astype(str).str.lower() == scope].copy()
-            s_part = spectra_long_df[spectra_long_df["dataset"].astype(str).str.lower() == scope].copy()
-
-        write_outputs(m_part.reset_index(drop=True), s_part.reset_index(drop=True), raw_dir)
+        m_part = scoped_slice(metadata_df, scope, allow_global=True).reset_index(drop=True)
+        s_part = scoped_slice(spectra_long_df, scope, allow_global=True).reset_index(drop=True)
+        write_outputs(m_part, s_part, raw_dir)
 
 
 def build_preprocessed_frames() -> tuple[pd.DataFrame, pd.DataFrame, int, int]:
@@ -137,4 +133,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

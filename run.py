@@ -4,14 +4,20 @@ from __future__ import annotations
 
 import argparse
 import re
-from typing import Callable, List, Sequence, Tuple
+from dataclasses import dataclass
+from typing import Callable, Sequence
 
 from analysis.output_paths import active_scopes, reset_active_scope_outputs, set_active_scopes
 
-Step = Tuple[str, Callable[[], int], str | None]
+
+@dataclass(frozen=True)
+class PipelineStep:
+    name: str
+    run: Callable[[], int]
+    required_scope: str | None = None
 
 
-def load_steps() -> List[Step]:
+def load_steps() -> list[PipelineStep]:
     from analysis import (
         chemical_modeling,
         chem_species_analysis,
@@ -19,25 +25,25 @@ def load_steps() -> List[Step]:
         features,
         ms_output,
         pca,
-        preprocess,
         reaction_narrative,
         species,
     )
+    from data_ingestion import preprocess
     from plots import air_reactive_auc, ms_output_charts, spectral_charts
 
     return [
-        ("preprocess", preprocess.main, None),
-        ("spectral_charts", spectral_charts.main, None),
-        ("ms_output", ms_output.main, None),
-        ("ms_output_charts", ms_output_charts.main, None),
-        ("features", features.main, None),
-        ("species", species.main, None),
-        ("chem_species_analysis", chem_species_analysis.main, None),
-        ("air_reactive_auc", air_reactive_auc.main, "air"),
-        ("pca", pca.main, None),
-        ("chemical_modeling", chemical_modeling.main, None),
-        ("reaction_narrative", reaction_narrative.main, None),
-        ("executive_reports", executive_reports.main, None),
+        PipelineStep("preprocess", preprocess.main),
+        PipelineStep("spectral_charts", spectral_charts.main),
+        PipelineStep("ms_output", ms_output.main),
+        PipelineStep("ms_output_charts", ms_output_charts.main),
+        PipelineStep("features", features.main),
+        PipelineStep("species", species.main),
+        PipelineStep("chem_species_analysis", chem_species_analysis.main),
+        PipelineStep("air_reactive_auc", air_reactive_auc.main, required_scope="air"),
+        PipelineStep("pca", pca.main),
+        PipelineStep("chemical_modeling", chemical_modeling.main),
+        PipelineStep("reaction_narrative", reaction_narrative.main),
+        PipelineStep("executive_reports", executive_reports.main),
     ]
 
 
@@ -53,8 +59,8 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def resolve_scopes(modes: Sequence[str]) -> Tuple[str, ...]:
-    parsed_modes: List[str] = []
+def resolve_scopes(modes: Sequence[str]) -> tuple[str, ...]:
+    parsed_modes: list[str] = []
     raw_modes = list(modes or ["all"])
     for token in raw_modes:
         parts = [p.strip().lower() for p in re.split(r"[,/]+", str(token)) if p.strip()]
@@ -76,7 +82,7 @@ def resolve_scopes(modes: Sequence[str]) -> Tuple[str, ...]:
     include_diameter = "diameter" in selected
     include_meta = "meta" in selected or include_air or include_diameter
 
-    scopes: List[str] = []
+    scopes: list[str] = []
     if include_air:
         scopes.append("air")
     if include_diameter:
@@ -112,14 +118,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"Missing dependency: {missing}. Install project requirements and re-run.")
         return 2
 
-    for name, fn, required_scope in run_steps:
-        if required_scope and required_scope not in scope_set:
-            print(f"\n== {name} (skipped: requires scope={required_scope}) ==")
+    for step in run_steps:
+        if step.required_scope and step.required_scope not in scope_set:
+            print(f"\n== {step.name} (skipped: requires scope={step.required_scope}) ==")
             continue
-        print(f"\n== {name} ==")
-        code = fn()
+        print(f"\n== {step.name} ==")
+        code = step.run()
         if code != 0:
-            print(f"\nStopped at {name} (exit code {code})")
+            print(f"\nStopped at {step.name} (exit code {code})")
             return code
     print("\nAll requested steps completed.")
     return 0

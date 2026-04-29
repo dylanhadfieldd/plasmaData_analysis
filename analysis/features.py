@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from analysis.numeric_utils import safe_ratio, trapz_integral
 from analysis.output_paths import ensure_all_scope_layouts, metadata_csv_path
-from data_ingestion.scoped_writes import write_scoped_csv
+from analysis.scoped_outputs import write_scoped_csv
 
 LONG_CSV = metadata_csv_path("meta", "spectral", "spectra_long.csv")
 BANDS_CSV = Path("configs/wavelengths.csv")
